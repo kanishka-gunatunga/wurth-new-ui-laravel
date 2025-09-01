@@ -357,7 +357,7 @@
                 <div id="flush-collapseThree" class="accordion-collapse collapse"
                     data-bs-parent="#accordionFlushExample">
                     <ul class="sidebar-list">
-                        <li class="nav-item">
+                        <li class="nav-item" href="{{ url('/create-notifications') }}">
                             <a class="nav-link">
                                 <span class="me-4">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -373,7 +373,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link">
+                            <a class="nav-link" href="{{ url('/notifications') }}">
                                 <span class="me-4">
                                     <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -391,31 +391,11 @@
 
 
                                 </span>
-                                Payment Notification
+                                Notification
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <span class="me-4">
-                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_969_18210)">
-                                            <path
-                                                d="M4.58342 21.0832H17.4167M7.11067 5.27709L9.05583 7.22225M9.05583 7.22225C9.57156 6.70653 10.2707 6.4165 11.0001 6.4165M9.05583 7.22225C8.54011 7.73798 8.25008 8.43716 8.25008 9.1665M8.25008 9.1665H5.50008M8.25008 9.1665C8.25008 9.89585 8.54011 10.595 9.05583 11.1108M9.05583 11.1108L7.11067 13.0559M9.05583 11.1108C9.57156 11.6265 10.2707 11.9165 11.0001 11.9165M11.0001 11.9165V14.6665M11.0001 11.9165C11.7294 11.9165 12.4286 11.6265 12.9443 11.1108M12.9443 11.1108L14.8895 13.0559M12.9443 11.1108C13.4601 10.595 13.7501 9.89585 13.7501 9.1665M16.5001 9.1665H13.7501M13.7501 9.1665C13.7501 8.43716 13.4601 7.73798 12.9443 7.22225M14.8895 5.27709L12.9443 7.22225M12.9443 7.22225C12.4286 6.70653 11.7294 6.4165 11.0001 6.4165M11.0001 6.4165V3.6665M0.916748 17.4165H21.0834V0.916504H0.916748V17.4165ZM7.33342 21.0832H14.6667V17.4165H7.33342V21.0832Z"
-                                                stroke="black" stroke-width="1.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_969_18210">
-                                                <rect width="22" height="22" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-
-                                </span>
-                                System Notification
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
 

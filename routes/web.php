@@ -109,3 +109,13 @@ Route::get('/customers', function () {
 Route::get('/inquiries', function () {
     return view('finance.inquiries');
 });
+
+// notifications
+Route::get('/notifications', function () {
+    return view('finance.notifications.notifications');
+});
+
+
+Route::get('/create-notification', function () {
+    return view('finance.notifications.create-notification');
+});
