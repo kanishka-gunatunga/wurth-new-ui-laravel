@@ -206,7 +206,4 @@
     </div>
 @endsection
 
-@section('bottom-bar')
-    <button type="button">Cancel</button>
-    <button type="submit">Submit</button>
-@endsection
+

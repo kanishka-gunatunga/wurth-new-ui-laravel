@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- <link rel="stylesheet" href="../wruth-demo/public/css/"> -->
+    <link rel="stylesheet" href="{{ asset('css/log.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<!-- <style>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('./public/images/Login.png');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+.login-div {
+    width: 100%;
+    
+    
+}
+.login-card {
+    width: 533px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    min-height: 562px;
+}
+img {
+    max-width: 100%;
+    width: 246px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-btn{
+    background-color: #ED2027;
+    color: #fff;
+    width: 100%;
+    height: 53px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+
+
+}
+.login-btn:hover{
+    background-color: #b92227;
+    color: #FFFFFF;
+}
+
+.login-title{
+font-family: 'Inter', sans-serif;;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 29.78px;
+}
+
+.login-input{
+    border-color: #B0B0B0;
+    font-family: 'Poppins', sans-serif;;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px !important;
+    height: 48px;
+}
+
+.input-div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-icon{
+
+    position: absolute;
+    left: 20px;
+    
+}
+
+.envelop{
+    top: 14px;
+    width: 22px; 
+    height: 22px; 
+}
+
+.key{
+    top: 9px;
+    width: 30.28px; 
+    height: 30.28px; 
+}
+
+.input-div .form-control{
+    padding-left: 50px; 
+    height: 48px; 
+}
+
+.input-div .form-control:focus{
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border-color: #ED2027;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgba(255, 42, 42, 0.53);
+}
+
+
+.logo{
+    width: 246px;
+    height: 72px;
+    align-self: center;
+}
+
+.forgot-password-link{
+    text-decoration: none;
+    color: #000;
+    font-family: 'Poppins', sans-serif;;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.register-text{
+    font-family: 'Poppins', sans-serif;;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.register-text-link{
+    text-decoration: none;
+    color: #7C7C7C;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-div{
+    width: 90%;
+  }
+}
+
+</style> -->
+<body>
+    <div class="d-flex align-items-center justify-content-center login-div">
+        <div class="card login-card d-flex align-items-center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <img src="{{ asset('images/wruth-logo.png') }}" alt="Logo" class="logo">
+                    </div>
+                    <div>
+                        <form>
+                            <p class="login-title text-center mb-5">REGISTER</p>
+                            <div class="my-4 input-div">
+                                <img src="{{ asset('images/Email.png') }}" alt="" class="input-icon envelop">
+                                <input type="text" class="form-control login-input " id="exampleInputName" aria-describedby="NameHelp" placeholder="Name">
+                            </div>
+                            <div class="my-4 input-div">
+                                <img src="{{ asset('images/Email.png') }}" alt="" class="input-icon envelop">
+                                <input type="email" class="form-control login-input " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="mb-4 input-div">
+                                <img src="{{ asset('images/Key Security.png') }}" alt="" class="input-icon key" height="23.28">
+                                <input type="password" class="form-control login-input" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+
+                            <div class="mb-4 input-div">
+                                <img src="{{ asset('images/Key Security.png') }}" alt="" class="input-icon key" height="23.28">
+                                <input type="password" class="form-control login-input" id="exampleInputPassword1" placeholder="Confirm Password">
+                            </div>
+                            
+                            <!-- <a href="" class="forgot-password-link"><p class="forgot-password-text my-4">Forgot Password?</p></a> -->
+                            <button type="submit" class="btn login-btn">Register</button>
+                           
+                            {{-- <p class="text-center mt-4 register-text">Have an account? <a href="https://loops-it.github.io/wurth-lanka/login.html" class="register-text-link">Login</a></p> --}}
+                        <p class="text-center mt-4 register-text">Have an account? <a href="{{url('login')}}" class="register-text-link">Login</a></p>
+                        </form>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

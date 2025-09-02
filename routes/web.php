@@ -7,6 +7,24 @@ Route::get('/', function () {
 });
 
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/forgot-password-1', function () {
+    return view('forgot_password_screen_1');
+});
+
+Route::get('/forgot-password-2', function () {
+    return view('forgot_password_screen_2');
+});
+
+
 // ###################################################################  FINANCE    ###############################################################################
 // finance dashboard
 Route::get('/dashboard', function () {
@@ -177,4 +195,26 @@ Route::get('/admin-add-new-user', function () {
 
 Route::get('/admin-user-management', function () {
     return view('admin.user-management');
+});
+
+Route::get('/admin-division-management-details', function () {
+    return view('admin.division-management-details');
+});
+
+
+Route::get('/admin-edit-temporary-customer', function () {
+    return view('admin.edit-temporary-customer');
+});
+
+
+Route::get('/admin-view-user', function () {
+    return view('admin.view-user');
+});
+
+Route::get('/admin-customer-details', function () {
+    return view('admin.customer-details');
+});
+
+Route::get('/admin-reports', function () {
+    return view('admin.reports');
 });

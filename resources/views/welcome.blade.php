@@ -59,9 +59,9 @@
 
         /* Bottom bar */
         .bottom-bar {
-            background: #f1f1f1;
-            padding: 15px;
-            border-top: 1px solid #ccc;
+            background: #fff5f6;
+            /* padding: 15px; */
+            border-top: none;
             text-align: right;
         }
 
