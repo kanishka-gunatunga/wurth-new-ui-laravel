@@ -20,7 +20,7 @@
 
     <div class="sidebar-content">
         <ul class="sidebar-list">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="{{ url('dashboard') }}" class="nav-link">
                     <span class="me-4">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"

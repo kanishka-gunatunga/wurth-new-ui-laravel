@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
     <style>
         /* Search box styles */
         #search-box-wrapper {
@@ -66,7 +65,7 @@
             <div class="col-lg-6 col-12">
                 <h1 class="header-title">Customers</h1>
             </div>
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <div id="search-box-wrapper" class="collapsed">
                     <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                     <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
@@ -117,9 +116,19 @@
                 <!-- Customers List Tab Pane -->
                 <div id="customer-list" class="tab-pane fade show active" role="tabpanel"
                     aria-labelledby="customer-list-tab">
-                    <div class="col-12 d-flex justify-content-end pe-5 mb-5">
-                        <a href="{{url('admin-add-new-customer')}}">
-                            <button class="add-new-division-btn">+ Add New Customer</button>
+                    <div class="col-12 d-flex justify-content-end  mb-5">
+                        <a href="{{ url('admin-add-new-customer') }}">
+                            {{-- <button class="add-new-division-btn">+ Add New Customer</button> --}}
+                            <button class="red-action-btn-lg add-new-payment-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.50726 10.5634H4.85938V9.0141H9.50726V4.36621H11.0566V9.0141H15.7044V10.5634H11.0566V15.2113H9.50726V10.5634Z"
+                                        fill="white" />
+                                </svg>
+
+                                Add New Customer
+                            </button>
                         </a>
                     </div>
 
@@ -180,7 +189,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="searchByFilter"
         aria-labelledby="offcanvasRightLabel">
@@ -457,7 +466,7 @@
                     </label>
                 </div>
             </div>
-            
+
 
             <script>
                 // Shared pagination object
@@ -604,7 +613,7 @@
                     <td>${data[i].contactPerson}</td>
                     <td>${data[i].totalOutstanding.toFixed(2)}</td>
                     <td class="sticky-column">
-                        <a href="{{url('admin-customer-details')}}">
+                        <a href="{{ url('admin-customer-details') }}">
                         
                         <button class="black-action-btn">View More</button>
                         </a>
@@ -616,7 +625,7 @@
                     <td>${data[i].admNumber}</td>
                     <td>${data[i].customerId}</td>
                     <td>
-                        <a href="{{url('admin-edit-temporary-customer')}}">
+                        <a href="{{ url('admin-edit-temporary-customer') }}">
                         <button class="action-btn">
                             Edit
                         </button>
@@ -713,5 +722,4 @@
                     });
                 });
             </script>
-
-@endsection
+        @endsection

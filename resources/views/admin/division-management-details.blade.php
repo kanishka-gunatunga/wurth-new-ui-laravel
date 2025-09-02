@@ -79,11 +79,11 @@
 
     <hr class="red-line mt-0">
 
-    <div class="col-12 d-flex justify-content-end pe-5 mb-5">
-        <a href="add-new-division.html">
-            <button class="add-new-division-btn">Edit Division</button>
-        </a>
-    </div>
+        <div class="col-12 d-flex justify-content-end  mb-5">
+            <a href="add-new-division.html">
+                <button class="add-new-division-btn">Edit Division</button>
+            </a>
+        </div>
 
     <div class="styled-tab-sub p-4">
         <div class="tab-content">

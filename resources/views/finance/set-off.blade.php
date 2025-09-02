@@ -86,7 +86,7 @@
 
         <div class="styled-tab-main">
             <div class="header-and-content-gap-md"></div>
-            <div class="col-12 d-block d-lg-flex d-md-flex justify-content-between gap-5">
+            <div class="g-5 row">
                 <div class="col-md-6">
                     <div>
                         <p class="card-section-title">Invoice no. or Return Cheque No.</p>
@@ -202,22 +202,21 @@
                 <textarea class="additional-notes" rows="3" placeholder="Enter Write-Off Reason Here"></textarea>
             </div>
         </div>
-        <div
-            class="action-button-lg-row d-block d-md-flex d-lg-flex d-xl-flex justify-content-end align-items-center mt-5 d-">
-            <button class="black-action-btn-lg mb-3 cancel">
-                Cancel
-            </button>
 
 
-
-            <button class="red-action-btn-lg mb-3 submit">
-                Submit
-            </button>
+    </div>
 
 
+@endsection
+@section('bottom-bar')
+    <div class="action-button-lg-row">
+        <button class="black-action-btn-lg mb-3 cancel">
+            Cancel
+        </button>
 
-
-        </div>
+        <button class="red-action-btn-lg mb-3 submit">
+            Submit
+        </button>
 
     </div>
 

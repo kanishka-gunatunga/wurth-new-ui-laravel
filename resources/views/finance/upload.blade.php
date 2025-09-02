@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
     <style>
         .import {
             background-color: white;
@@ -185,15 +184,17 @@
                 </div>
             </div>
         </div>
-
-
-
-        <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
-            <button class="btn btn-danger submit">Import Data</button>
-        </div>
+    </div>
+@endsection
+@section('bottom-bar')
+    <div class="action-button-lg-row">
+        <button class="red-action-btn-lg mb-3 submit">
+            Submit
+        </button>
     </div>
 
-    
+
+
 
     <!-- Toast message -->
     <div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
@@ -284,6 +285,4 @@
             }, 3000);
         });
     </script>
-
-
 @endsection

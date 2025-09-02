@@ -22,8 +22,14 @@
                                 id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
 
                                 <!-- Search Icon -->
-                                <img src="/public/images/search-icon.svg" alt="Search" class="me-2"
-                                    style="width:16px; height:16px;">
+                                <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.393 16.92L20.473 20M19.5 11.5C19.5 13.4891 18.7098 15.3968 17.3033 16.8033C15.8968 18.2098 13.9891 19 12 19C10.0109 19 8.10322 18.2098 6.6967 16.8033C5.29018 15.3968 4.5 13.4891 4.5 11.5C4.5 9.51088 5.29018 7.60322 6.6967 6.1967C8.10322 4.79018 10.0109 4 12 4C13.9891 4 15.8968 4.79018 17.3033 6.1967C18.7098 7.60322 19.5 9.51088 19.5 11.5Z"
+                                        stroke="#AAB6C1" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
 
                                 <!-- Text -->
                                 <span class="flex-grow-1">Search ADM Name</span>
@@ -86,6 +92,8 @@
                                 placeholder="Returned Date">
                             <img src="/public/images/calender-icon.svg" style="width:18px; height:18px; top: 50%;"
                                 class="input-icon">
+
+                                
                         </div>
                     </div>
 
@@ -166,71 +174,82 @@
                     </div>
                 </div>
 
-                <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
-                    <button class="btn btn-dark cancel">Cancel</button>
-                    <button class="btn btn-danger submit">Submit</button>
-                </div>
+
 
         </div>
 
         </form>
     </div>
+@endsection
+@section('bottom-bar')
+    <div class="action-button-lg-row ">
+        <button class="black-action-btn-lg mb-3">
+            Cancel
+        </button>
 
-   
 
-    <!-- Toast message -->
-    <div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
-        role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
-        <div class="d-flex align-items-center">
-            <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="12" fill="#fff" />
-                    <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
-            </span>
-            <div class="toast-body flex-grow-1">
-                Submitted successfully
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
-                onclick="document.getElementById('user-toast').style.display='none';"></button>
-        </div>
+
+        <button class="red-action-btn-lg mb-3">
+            Submit
+        </button>
+
+
     </div>
+@endsection
+
+
+<!-- Toast message -->
+<div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
+    role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
+    <div class="d-flex align-items-center">
+        <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" fill="#fff" />
+                <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </span>
+        <div class="toast-body flex-grow-1">
+            Submitted successfully
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
+            onclick="document.getElementById('user-toast').style.display='none';"></button>
+    </div>
+</div>
 
 
 
 
-    <script>
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            const button = dropdown.querySelector('.custom-dropdown');
-            const items = dropdown.querySelectorAll('.dropdown-item');
+<script>
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const button = dropdown.querySelector('.custom-dropdown');
+        const items = dropdown.querySelectorAll('.dropdown-item');
 
-            items.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    button.innerHTML = this.textContent + '<span class="custom-arrow"></span>';
-                });
+        items.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                button.innerHTML = this.textContent + '<span class="custom-arrow"></span>';
             });
         });
-    </script>
+    });
+</script>
 
-    <script>
-        // Cancel button redirect
-        document.querySelector('.cancel').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = 'return-cheques.html';
-        });
-    </script>
+<script>
+    // Cancel button redirect
+    document.querySelector('.cancel').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'return-cheques.html';
+    });
+</script>
 
-    <script>
-        // Show toast on submit
-        document.querySelector('.submit').addEventListener('click', function(e) {
-            e.preventDefault();
-            const toast = document.getElementById('user-toast');
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 3000);
-        });
-    </script>
-@endsection
+<script>
+    // Show toast on submit
+    document.querySelector('.submit').addEventListener('click', function(e) {
+        e.preventDefault();
+        const toast = document.getElementById('user-toast');
+        toast.style.display = 'block';
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 3000);
+    });
+</script>
