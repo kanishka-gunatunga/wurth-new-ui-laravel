@@ -149,34 +149,34 @@
         </div>
         <div class="offcanvas-body">
             <div class="row">
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>ADMs</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Marketing</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Admin</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Finance</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Team Leaders</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Head of Division</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
             </div>
 
@@ -454,5 +454,13 @@
         });
     });
 </script>
+
+<script>
+                document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+                    tag.addEventListener('click', function() {
+                        tag.classList.toggle('selected');
+                    });
+                });
+            </script>
 
 @endsection
