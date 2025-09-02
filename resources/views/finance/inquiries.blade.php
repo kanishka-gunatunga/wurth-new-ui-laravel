@@ -1,5 +1,64 @@
 @extends("welcome")
 @section("content")
+
+<style>
+    /* Search box styles */
+    #search-box-wrapper {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background-color: #fff;
+        transition: width 0.3s ease;
+        border-radius: 30px;
+        height: 45px;
+        width: 45px;
+        border: 1px solid transparent;
+        position: relative;
+        width: 0;
+    }
+
+    #search-box-wrapper.collapsed {
+        width: 0;
+        padding: 0;
+        margin: 0;
+        border: 1px solid transparent;
+        background-color: transparent;
+    }
+
+    #search-box-wrapper.expanded {
+        width: 450px;
+        padding: 0 15px;
+    }
+
+    .search-input {
+        flex-grow: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 16px;
+        color: #333;
+        width: 100%;
+        /* Add padding to make space for the icon */
+        padding-left: 30px;
+    }
+
+    .search-input::placeholder {
+        color: #888;
+    }
+
+    .search-icon-inside {
+        position: absolute;
+        left: 10px;
+        /* Adjust as needed */
+        color: #888;
+    }
+
+    /* Optional: Adjust button alignment if needed */
+    .col-12.d-flex.justify-content-lg-end {
+        align-items: center;
+    }
+</style>
+
             <div class="main-wrapper">
 
                 <div class="row d-flex justify-content-between">
@@ -7,10 +66,12 @@
                         <h1 class="header-title">Inquiries</h1>
                     </div>
                     <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
-                        <button class="header-btn"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-                        <button class="header-btn" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i
-                                class="fa-solid fa-filter fa-xl"></i></button>
+                        <div id="search-box-wrapper" class="collapsed">
+            <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
+            <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+        </div>
+        <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+        <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
                     </div>
                 </div>
 
@@ -75,34 +136,34 @@
         </div>
         <div class="offcanvas-body">
             <div class="row">
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>ADMs</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Marketing</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Admin</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Finance</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Team Leaders</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
+                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
                     <span>Head of Division</span>
-                    <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
+
                 </div>
             </div>
 
@@ -594,5 +655,56 @@
     };
 </script>
 
+<!-- expand search bar  -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchWrapper = document.getElementById("search-box-wrapper");
+        const searchToggleButton = document.getElementById("search-toggle-button");
+        const searchInput = searchWrapper.querySelector(".search-input");
+
+        let idleTimeout;
+        const idleTime = 5000; // 5 seconds (5000 milliseconds)
+
+        function collapseSearch() {
+            searchWrapper.classList.remove("expanded");
+            searchWrapper.classList.add("collapsed");
+            searchToggleButton.classList.remove("d-none"); // Show the button
+            clearTimeout(idleTimeout); // Clear any existing timer
+        }
+
+        function startIdleTimer() {
+            clearTimeout(idleTimeout); // Clear previous timer
+            idleTimeout = setTimeout(() => {
+                if (!searchInput.value) { // Only collapse if input is empty
+                    collapseSearch();
+                }
+            }, idleTime);
+        }
+
+        searchToggleButton.addEventListener("click", function () {
+            if (searchWrapper.classList.contains("collapsed")) {
+                searchWrapper.classList.remove("collapsed");
+                searchWrapper.classList.add("expanded");
+                searchToggleButton.classList.add("d-none"); // Hide the button
+                searchInput.focus();
+                startIdleTimer();
+            } else {
+                collapseSearch();
+            }
+        });
+
+        searchInput.addEventListener("keydown", function () {
+            startIdleTimer(); // Reset the timer on any keypress
+        });
+    });
+</script>
+
+<script>
+                document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+                    tag.addEventListener('click', function() {
+                        tag.classList.toggle('selected');
+                    });
+                });
+            </script>
 
 @endsection

@@ -218,3 +218,13 @@ Route::get('/admin-customer-details', function () {
 Route::get('/admin-reports', function () {
     return view('admin.reports');
 });
+
+
+
+Route::get('/admin-dashboard', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin-locked-users', function () {
+    return view('admin.security.locked-users');
+});

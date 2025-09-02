@@ -57,15 +57,75 @@
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #000000 !important;
+  color: #cc0000 !important;
 }
 
 .styled-tab-main .nav-link.active {
   border-top: 2px solid red !important;
-  color: #ee2128 !important;
+  color: #CC0000 !important;
   border-radius: 0;
   border-left: none;
   border-right: none;
+  background-color: #fff5f6 !important;
+}
+
+.styled-tab-main .nav-tabs {
+  border-bottom: none !important;
+}
+
+.styled-tab-sub {
+  /* border-color: #CC0000; */
+  background-color: white;
+}
+
+.styled-tab-sub .nav-link {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #575757 !important;
+  border-bottom: 2px solid #bfbfbf4d !important;
+}
+
+.styled-tab-sub .nav-link.active {
+  border-bottom: 2px solid red !important;
+  border-top: none !important;
+  color: #575757 !important;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  background-color: white !important;
+}
+
+.styled-tab-sub .nav-tabs {
+  border-bottom: none !important;
+}
+
+/* small tab version*/
+.styled-tab-small {
+  /* border-color: #CC0000; */
+  background-color: white;
+}
+
+.styled-tab-small .nav-link {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #CC0000 !important;
+  border-bottom: none !important;
+}
+
+.styled-tab-small .nav-link.active {
+  border-top: none !important;
+  color: white !important;
+  border-radius: 10px;
+  border-left: none;
+  border-right: none;
+  background-color: #CC0000 !important;
+  border-bottom: none !important;
+}
+
+.styled-tab-small .nav-tabs {
+  border-bottom: none !important;
 }
 
 .add-new-division-btn {
@@ -138,6 +198,58 @@
 .division-table .table tbody tr {
   font-weight: 400;
 }
+
+
+
+
+
+
+/* division-table sub */
+.division-table-sub {
+  border: solid 1px #dee2e6;
+  position: relative;
+  overflow-x: auto; /* enable horizontal scrolling */
+  scrollbar-width: none; /* hide scrollbar Firefox */
+}
+
+.division-table-sub::-webkit-scrollbar {
+  display: none; /* hide scrollbar Chrome/Safari */
+}
+
+/* force table width so only 6 cols fit */
+.division-table-sub .table {
+  font-family: Poppins;
+  font-size: 18px;
+  min-width: 900px; /* adjust this until only 6 columns are visible */
+}
+
+/* Fix the last column (Actions) */
+.division-table-sub .table th:last-child,
+.division-table-sub .table td:last-child {
+  position: sticky;
+  right: 0;
+  background: #fff; /* solid background */
+  z-index: 2;
+}
+
+/* keep header font bold */
+.division-table-sub .table thead tr {
+  font-weight: 500;
+}
+
+.division-table-sub .table tbody tr {
+  font-weight: 400;
+}
+
+.division-table-sub .unlock-btn {
+  background-color: #008448;
+  color: white;
+}
+
+
+
+
+
 
 .pagination .page-link {
   display: flex;
@@ -507,4 +619,25 @@
   border-color: #cc0000;
   background: #cc0000 !important; /* dark red */
   color: #fff !important;
+}
+
+.temp-customers-bg {
+  background: #fff;
+}
+
+.section-title {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 600; /* Make font bold */
+}
+
+.detail-label {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500; /* Make font bold */
+}
+
+.detail-value {
+  font-family: Poppins;
+  font-size: 18px;
 }
