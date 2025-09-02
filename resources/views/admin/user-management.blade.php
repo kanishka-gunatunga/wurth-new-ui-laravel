@@ -313,8 +313,10 @@
                     <td>${data[i].mobile}</td>
                     <td>${data[i].email}</td>
                     <td class="sticky-column">
-                        <button class="black-action-btn" onclick="window.location.href='view-user.html?userId=${data[i].userId}'">View More</button> 
-                    </td>
+                        <a href="{{url('admin-view-user')}}">
+                        <button class="black-action-btn">View More</button> 
+                    </a>
+                        </td>
                 </tr>
             `;
                         tableBody.innerHTML += row;

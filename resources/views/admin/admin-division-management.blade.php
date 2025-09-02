@@ -315,7 +315,11 @@
                 <td>${divisionManagementData[i].registeredDate}</td>
                 <td>${divisionManagementData[i].users}</td>
                 <td>
-                    <button class="action-btn btn-sm btn-dark" onclick="window.location.href='division-management-details.html?division=${encodeURIComponent(divisionManagementData[i].divisionName)}'">View More</button>
+                    <a href={{url('admin-division-management-details')}}>
+                    <button class="action-btn btn-sm btn-dark">
+                        View More
+                    </button>
+                    </a>
                 </td>
             </tr>`;
                         tableBody.innerHTML += row;
