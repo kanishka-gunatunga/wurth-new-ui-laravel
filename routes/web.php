@@ -178,3 +178,12 @@ Route::get('/admin-add-new-user', function () {
 Route::get('/admin-user-management', function () {
     return view('admin.user-management');
 });
+
+
+Route::get('/admin-dashboard', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin-locked-users', function () {
+    return view('admin.security.locked-users');
+});

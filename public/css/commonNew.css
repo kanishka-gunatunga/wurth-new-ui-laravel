@@ -139,6 +139,58 @@
   font-weight: 400;
 }
 
+
+
+
+
+
+/* division-table sub */
+.division-table-sub {
+  border: solid 1px #dee2e6;
+  position: relative;
+  overflow-x: auto; /* enable horizontal scrolling */
+  scrollbar-width: none; /* hide scrollbar Firefox */
+}
+
+.division-table-sub::-webkit-scrollbar {
+  display: none; /* hide scrollbar Chrome/Safari */
+}
+
+/* force table width so only 6 cols fit */
+.division-table-sub .table {
+  font-family: Poppins;
+  font-size: 18px;
+  min-width: 900px; /* adjust this until only 6 columns are visible */
+}
+
+/* Fix the last column (Actions) */
+.division-table-sub .table th:last-child,
+.division-table-sub .table td:last-child {
+  position: sticky;
+  right: 0;
+  background: #fff; /* solid background */
+  z-index: 2;
+}
+
+/* keep header font bold */
+.division-table-sub .table thead tr {
+  font-weight: 500;
+}
+
+.division-table-sub .table tbody tr {
+  font-weight: 400;
+}
+
+.division-table-sub .unlock-btn {
+  background-color: #008448;
+  color: white;
+}
+
+
+
+
+
+
 .pagination .page-link {
   display: flex;
   align-items: center;
