@@ -6,7 +6,7 @@
                     <div class="col-lg-6 col-12">
                         <h1 class="header-title">All Outstanding</h1>
                     </div>
-                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                         <button class="header-btn"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
                         <button class="header-btn" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i

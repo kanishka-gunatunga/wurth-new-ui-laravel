@@ -64,7 +64,7 @@
             <div class="col-lg-6 col-12">
                 <h1 class="header-title">Customers</h1>
             </div>
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <div id="search-box-wrapper" class="collapsed">
                     <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                     <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
@@ -115,7 +115,7 @@
                 <!-- Customers List Tab Pane -->
                 <div id="customer-list" class="tab-pane fade show active" role="tabpanel"
                     aria-labelledby="customer-list-tab">
-                    <div class="col-12 d-flex justify-content-end pe-5 mb-5">
+                    <div class="col-12 d-flex justify-content-end  mb-5">
                         <a href="add-new-customer.html">
                             <button class="add-new-division-btn">+ Add New Customer</button>
                         </a>

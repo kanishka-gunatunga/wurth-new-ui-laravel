@@ -65,12 +65,12 @@
             text-align: right;
         }
 
-        .bottom-bar button {
+        /* .bottom-bar button {
             padding: 8px 16px;
             margin-left: 10px;
-        }
+        } */
 
-        @media (max-width: 1024px) {
+        /* @media (max-width: 1024px) {
             .content-wrapper {
                 max-width: 700px;
             }
@@ -80,7 +80,7 @@
             .content-wrapper {
                 max-width: 700px;
             }
-        }
+        } */
     </style>
 </head>
 

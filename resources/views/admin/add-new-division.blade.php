@@ -63,15 +63,34 @@
                         <textarea class="form-control division-description" placeholder="Division Description" style="height: 152px"></textarea>
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
+                {{-- <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
                     <button class="btn btn-dark cancel">Cancel</button>
                     <button class="btn btn-danger submit">Submit</button>
-                </div>
+                </div> --}}
 
             </div>
 
         </form>
     </div>
+
+</div>
+@endsection
+@section('bottom-bar')
+
+<div
+        class="action-button-lg-row">
+        <button class="black-action-btn-lg mb-3 cancel">
+            Cancel
+        </button>
+
+
+
+        <button class="red-action-btn-lg mb-3 submit">
+            Submit
+        </button>
+
+
+
 
 </div>
 

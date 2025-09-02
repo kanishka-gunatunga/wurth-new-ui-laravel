@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
     <style>
         /* Search box styles */
         #search-box-wrapper {
@@ -66,7 +65,7 @@
             <div class="col-lg-6 col-12">
                 <h1 class="header-title">Return Cheque</h1>
             </div>
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <div id="search-box-wrapper" class="collapsed">
                     <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                     <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
@@ -83,10 +82,24 @@
 
 
         <div class="col-12 d-flex justify-content-end pe-5 mb-3 gap-3">
-            <a href="../upload.html" style="text-decoration: none;">
+            <a href="{{url('upload')}}" style="text-decoration: none;">
                 <button class="add-new-division-btn"
                     style="background-color: black; color: white; display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;">
-                    <img src="/public/images/return-cheque-icon.svg" alt="import" style="width:16px; height:16px;">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1784_47778)">
+                            <path
+                                d="M3.23663 1.24316H12.5471L16.7366 5.43266V17.7432H9.98663V16.2432H15.2366V7.24316H10.7366V2.74316H4.73663V10.2432H3.23663V1.24316ZM12.2366 3.05366V5.74316H14.9261L12.2366 3.05366ZM6.27413 11.0592L9.91763 14.7447L6.27413 18.4302L5.20762 17.3757L7.06763 15.4947H1.73438V13.9947H7.06688L5.20688 12.1137L6.27413 11.0592Z"
+                                fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1784_47778">
+                                <rect width="18" height="18" fill="white"
+                                    transform="translate(0.986328 0.493164)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
                     <span>Import Return Cheques</span>
                 </button>
             </a>
@@ -123,7 +136,7 @@
 
 
     </div>
-   
+
     <div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="searchByFilter"
         aria-labelledby="offcanvasRightLabel">
         <div class="row d-flex justify-content-end">
@@ -404,51 +417,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sidebar = document.getElementById("sidebar");
-            const toggleButton = document.getElementById("sidebarToggle");
-            const sidebarLinks = document.querySelectorAll(".sidebar-list li a");
-
-            // Toggle sidebar visibility
-            if (toggleButton) {
-                toggleButton.addEventListener("click", function() {
-                    sidebar.classList.toggle("collapsed");
-                });
-            }
-
-            // Set active class on navigation
-            const currentPath = window.location.pathname;
-
-            sidebarLinks.forEach((link) => {
-                const href = link.getAttribute("href");
-
-                if (href && currentPath.endsWith(href.replace("../", ""))) {
-                    link.parentElement.classList.add("active");
-                } else {
-                    link.parentElement.classList.remove("active");
-                }
-            });
-
-            // Handle dropdown functionality
-            const dropdownItems = document.querySelectorAll(
-                ".sidebar-list li a .dropdown-arrow"
-            );
-            dropdownItems.forEach((arrow) => {
-                arrow.parentElement.addEventListener("click", function(e) {
-                    e.preventDefault();
-                    const listItem = this.parentElement;
-                    listItem.classList.toggle("expanded");
-                });
-            });
-        });
-    </script>
-
-
+    
 
 
     <script>
@@ -583,9 +552,11 @@
                 <td>${returnChequeData[i].type}</td>
                 <td>${returnChequeData[i].reason}</td>
                 <td class="sticky-column">
-                    <button class="action-btn btn-sm btn-dark" onclick="window.location.href='return-cheque-details.html'">
-                        View More
-                    </button>
+                    <a href="{{url('return-cheque-details')}}" style="text-decoration: none;">
+                        <button class="action-btn btn-sm btn-dark">
+                            View More
+                        </button>
+                    </a>
                 </td>
             </tr>`;
                 tableBody.innerHTML += row;
@@ -676,6 +647,4 @@
             });
         });
     </script>
-
-
 @endsection

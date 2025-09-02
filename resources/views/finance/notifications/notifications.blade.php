@@ -66,7 +66,7 @@
         <div class="col-lg-6 col-12">
             <h1 class="header-title">Notifications</h1>
         </div>
-        <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+        <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                 <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />

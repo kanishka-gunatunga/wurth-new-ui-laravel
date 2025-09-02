@@ -6,7 +6,7 @@
             <div class="col-lg-6 col-12">
                 <h1 class="header-title">Division 1</h1>
             </div>
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <button class="header-btn"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
                 <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter"
                     aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
@@ -15,7 +15,7 @@
 
         <hr class="red-line mt-0">
 
-        <div class="col-12 d-flex justify-content-end pe-5 mb-5">
+        <div class="col-12 d-flex justify-content-end  mb-5">
             <a href="add-new-division.html">
                 <button class="add-new-division-btn">Edit Division</button>
             </a>

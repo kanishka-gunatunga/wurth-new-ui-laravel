@@ -1,6 +1,5 @@
 @extends('welcome')
 @section('content')
-
     <style>
         /* Search box styles */
         #search-box-wrapper {
@@ -67,7 +66,7 @@
             <div class="col-lg-6 col-12">
                 <h1 class="header-title">User Management</h1>
             </div>
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <div id="search-box-wrapper" class="collapsed">
                     <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                     <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
@@ -95,9 +94,19 @@
                     </a>
                 </li>
             </ul>
-            <div class="col-12 d-flex justify-content-end pe-5 mb-3">
-                <a href="{{url("admin-add-new-user")}}">
-                    <button class="add-new-division-btn">+ Add New User</button>
+            <div class="col-12 d-flex justify-content-end mb-3">
+                <a href="{{ url('admin-add-new-user') }}">
+                    {{-- <button class="add-new-division-btn">+ Add New User</button> --}}
+                    <button class="red-action-btn-lg add-new-payment-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M9.50726 10.5634H4.85938V9.0141H9.50726V4.36621H11.0566V9.0141H15.7044V10.5634H11.0566V15.2113H9.50726V10.5634Z"
+                                fill="white" />
+                        </svg>
+
+                        Add New User
+                    </button>
                 </a>
             </div>
 
@@ -218,7 +227,7 @@
                     </label>
                 </div>
             </div>
-           
+
 
 
             <!-- link view more to the view user page -->
@@ -313,7 +322,7 @@
                     <td>${data[i].mobile}</td>
                     <td>${data[i].email}</td>
                     <td class="sticky-column">
-                        <a href="{{url('admin-view-user')}}">
+                        <a href="{{ url('admin-view-user') }}">
                         <button class="black-action-btn">View More</button> 
                     </a>
                         </td>
@@ -422,4 +431,4 @@
                     });
                 });
             </script>
-@endsection
+        @endsection

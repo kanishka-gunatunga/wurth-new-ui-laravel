@@ -162,75 +162,87 @@
 
                     </div>
                 </div>
-                <!-- <div class="mb-4 col-12 col-lg-9">
-                                <label for="head-of-division-select permission" class="form-label custom-input-label">Permissions
-                                </label>
 
-                                <div class="col-3">
-                                    <div class="access-control-checks">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                5643678
-                                            </label>
-                                        </div>
-                                    </div>
 
-                                    <div class="access-control-checks">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                5643678
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                            </div> -->
+
+
+                <div class="col-3">
+                    <div class="row access-control-checks">
+
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Generate Reports
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Export Reports
+                            </label>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Access Activity Logs
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
 
         </form>
 
-
-        {{-- <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
-            <button class="btn btn-danger submit">Update User</button>
-        </div> --}}
     </div>
+
 @endsection
 @section('bottom-bar')
-    <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
-        <button class="btn btn-danger submit">Update User</button>
+    <div class="action-button-lg-row" style="margin-top: 55px">
+
+        <button class="red-action-btn-lg submit">
+            Update User
+        </button>
     </div>
 @endsection
 
 
-<!-- Toast message -->
-<div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
-    role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
-    <div class="d-flex align-items-center">
-        <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="12" fill="#fff" />
-                <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </span>
-        <div class="toast-body flex-grow-1">
-            Update user successfully
+    <!-- Toast message -->
+    <div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
+        role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
+        <div class="d-flex align-items-center">
+            <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="12" fill="#fff" />
+                    <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
+            <div class="toast-body flex-grow-1">
+                Update user successfully
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
+                onclick="document.getElementById('user-toast').style.display='none';"></button>
         </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
-            onclick="document.getElementById('user-toast').style.display='none';"></button>
     </div>
-</div>
 
 
-<script>
-    // Show toast on submit
-    document.querySelector('.submit').addEventListener('click', function(e) {
-        e.preventDefault();
-        const toast = document.getElementById('user-toast');
-        toast.style.display = 'block';
-        setTimeout(() => {
-            toast.style.display = 'none';
-        }, 3000);
-    });
-</script>
+    <script>
+        // Show toast on submit
+        document.querySelector('.submit').addEventListener('click', function(e) {
+            e.preventDefault();
+            const toast = document.getElementById('user-toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+

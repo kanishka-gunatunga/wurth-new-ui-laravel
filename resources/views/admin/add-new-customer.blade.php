@@ -1,67 +1,66 @@
 @extends('welcome')
 @section('content')
-
     <!-- <style>
-        .custom-input,
-        .custom-input option {
-            
-            height: 50px;
-            padding: 14px;
-            border-radius: 4px;
-            border: 1px solid;
-            border-color: #9D9D9D;
-            background-color: #FFFFFF;
-            color: #AAB6C1;
-            font-family: "Poppins", sans-serif;
-            font-size: 13px;
-            font-weight: 400;
-        }
+            .custom-input,
+            .custom-input option {
+                
+                height: 50px;
+                padding: 14px;
+                border-radius: 4px;
+                border: 1px solid;
+                border-color: #9D9D9D;
+                background-color: #FFFFFF;
+                color: #AAB6C1;
+                font-family: "Poppins", sans-serif;
+                font-size: 13px;
+                font-weight: 400;
+            }
 
-        .custom-input::placeholder,
-        .division-description::placeholder {
-            color: #9D9D9D;
-        }
+            .custom-input::placeholder,
+            .division-description::placeholder {
+                color: #9D9D9D;
+            }
 
-        .outside-label {
-            font-size: 16px !important;
-            color: #9D9D9D;
+            .outside-label {
+                font-size: 16px !important;
+                color: #9D9D9D;
 
-        }
+            }
 
-        .custom-input-label,
-        .outside-label {
-            font-family: "Poppins", sans-serif;
-            font-size: 18px;
-            font-weight: 500;
-        }
+            .custom-input-label,
+            .outside-label {
+                font-family: "Poppins", sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+            }
 
-        .division-action-btn{
-            margin-top: 150px;
-        }
-        .division-action-btn .submit,
-        .division-action-btn .cancel {
-            width: 262px;
-            height: 52px;
-            padding: 15.62px;
-            border-radius: 5.47px;
-            color: #FFFFFF;
-            font-family: "Inter", sans-serif;
-            font-size: 18px;
-            font-weight: 600;
+            .division-action-btn{
+                margin-top: 150px;
+            }
+            .division-action-btn .submit,
+            .division-action-btn .cancel {
+                width: 262px;
+                height: 52px;
+                padding: 15.62px;
+                border-radius: 5.47px;
+                color: #FFFFFF;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-weight: 600;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .division-action-btn .submit {
-            background-color: #CC0000;
-        }
+            .division-action-btn .submit {
+                background-color: #CC0000;
+            }
 
-        .division-action-btn .cancel {
-            background-color: #000000;
-        }
-    </style> -->
+            .division-action-btn .cancel {
+                background-color: #000000;
+            }
+        </style> -->
 
 
     <div class="main-wrapper">
@@ -166,17 +165,29 @@
 
 
 
-                <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
+                {{-- <div class="col-12 d-flex justify-content-end division-action-btn gap-3">
                     <button class="btn btn-dark cancel">Cancel</button>
                     <button class="btn btn-danger submit">Submit</button>
-                </div>
+                </div> --}}
 
         </div>
 
         </form>
     </div>
+@endsection
+@section('bottom-bar')
+    <div class="action-button-lg-row">
+        <button class="black-action-btn-lg mb-3 cancel">
+            Cancel
+        </button>
 
-    
+
+
+        <button class="red-action-btn-lg mb-3 submit">
+            Submit
+        </button>
+
+    </div>
 
     <!-- Toast message -->
     <div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
@@ -198,7 +209,7 @@
     </div>
 
 
-    
+
     <script>
         document.querySelectorAll('.dropdown').forEach(dropdown => {
             const button = dropdown.querySelector('.custom-dropdown');
@@ -232,7 +243,4 @@
             }, 3000);
         });
     </script>
-
-
-
 @endsection

@@ -1,67 +1,71 @@
-@extends("welcome")
-@section("content")
-            <div class="main-wrapper">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-lg-6 col-12">
-                        <h1 class="header-title">Direct Payments</h1>
-                    </div>
+@extends('welcome')
+@section('content')
+    <div class="main-wrapper">
+        <div class="row d-flex justify-content-between">
+            <div class="col-lg-6 col-12">
+                <h1 class="header-title">Direct Payments</h1>
+            </div>
 
-                </div>
-
-
-
-                <div class="styled-tab-main vertical-scrollable-wrapper bg-white p-4">
-
-                    <div class="header-and-content-gap-md"></div>
-                    <div
-                        class="col-12 d-block d-lg-flex d-md-flex justify-content-between gap-5 align-items-center selected-customers">
-
-
-                        <p class="card-section-title">Selected Customers</p>
-                        <div type="button" class="text-muted uncheck-btn" onclick="uncheckAll()">
-                            Uncheck all
-                        </div>
-
-
-                    </div>
-                    <div class="header-and-content-gap-md"></div>
-                    <div class="col-12 d-flex gap-4 invoices-list-row" id="dynamic-column-container">
+        </div>
 
 
 
-                    </div>
-                </div>
-                <div class="bg-white">
-                    <div class="row flex-wrap g-3 d-flex justify-content-between align-items-center mt-5">
-                        <div class="col-6"><textarea class="additional-notes" name="" id="" rows="3"
-                                placeholder="Additional Notes"></textarea></div>
-                        <div class="col-5">
-                            <p class="red-bold-text">Final Payable Amount: <span class="red-unblod-text">&nbsp; RS.
-                                    3000000.00 </span></p>
-                        </div>
-                    </div>
-                    <div
-                        class="action-button-lg-row d-block d-md-flex d-lg-flex d-xl-flex justify-content-end align-items-center mt-5 position-relative z-index-1">
-                        <button class="black-action-btn-lg mb-3">
-                            Cancel
-                        </button>
+        <div class="styled-tab-main vertical-scrollable-wrapper bg-white p-4">
+
+            <div class="header-and-content-gap-md"></div>
+            <div
+                class="col-12 d-block d-lg-flex d-md-flex justify-content-between gap-5 align-items-center selected-customers">
 
 
-
-                        <button class="red-action-btn-lg mb-3">
-                            Submit
-                        </button>
-
-
-                    </div>
+                <p class="card-section-title">Selected Customers</p>
+                <div type="button" class="text-muted uncheck-btn" onclick="uncheckAll()">
+                    Uncheck all
                 </div>
 
 
             </div>
+            <div class="header-and-content-gap-md"></div>
+            <div class="col-12 d-flex gap-4 invoices-list-row" id="dynamic-column-container">
 
 
 
+            </div>
+        </div>
+        <div class="bg-white">
+            <div class="row flex-wrap g-3 d-flex justify-content-between align-items-center mt-5">
+                <div class="col-6">
+                    <textarea class="additional-notes" name="" id="" rows="3" placeholder="Additional Notes"></textarea>
+                </div>
+                <div class="col-5">
+                    <p class="red-bold-text">Final Payable Amount: <span class="red-unblod-text">&nbsp; RS.
+                            3000000.00 </span></p>
+                </div>
+            </div>
 
+        </div>
+
+
+    </div>
+
+    @endsection
+    @section('bottom-bar')
+    <div
+        class="action-button-lg-row ">
+        <button class="black-action-btn-lg mb-3">
+            Cancel
+        </button>
+
+
+
+        <button class="red-action-btn-lg mb-3">
+            Submit
+        </button>
+
+
+    </div>
+
+
+@endsection
 
 
 
@@ -77,15 +81,12 @@
 
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#multi-select-dropdown').select2({
                 placeholder: "Select Customer",
                 allowClear: true
             });
         });
-
-
-
     </script>
 
 
@@ -100,9 +101,9 @@
             const checkboxContainer = searchBox.closest('.checkbox-items');
 
             // If not found, fallback to searching all
-            const checkboxItems = checkboxContainer
-                ? checkboxContainer.querySelectorAll('.checkbox-item')
-                : document.querySelectorAll('.checkbox-item');
+            const checkboxItems = checkboxContainer ?
+                checkboxContainer.querySelectorAll('.checkbox-item') :
+                document.querySelectorAll('.checkbox-item');
 
             // Loop through each item to check if it matches the search query
             checkboxItems.forEach(item => {
@@ -116,8 +117,8 @@
         }
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.addEventListener('click', function (event) {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(event) {
                 const accordionToggle = event.target.closest('[data-bs-toggle="collapse"]');
 
 
@@ -149,39 +150,50 @@
     </script>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // --- CONFIGURATION ---
-    const mainContainer = document.getElementById('dynamic-column-container');
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURATION ---
+            const mainContainer = document.getElementById('dynamic-column-container');
 
-    // An array to define your columns. Add more objects to create more columns.
-    const columnsData = [
-        { title: 'Dimo Lanka', itemCount: 5 },
-        { title: 'Singer PLC', itemCount: 4 },
-        { title: 'Abans Group', itemCount: 6 },
-        { title: 'Abans Group', itemCount: 3 }
-    ];
+            // An array to define your columns. Add more objects to create more columns.
+            const columnsData = [{
+                    title: 'Dimo Lanka',
+                    itemCount: 5
+                },
+                {
+                    title: 'Singer PLC',
+                    itemCount: 4
+                },
+                {
+                    title: 'Abans Group',
+                    itemCount: 6
+                },
+                {
+                    title: 'Abans Group',
+                    itemCount: 3
+                }
+            ];
 
-    // --- DYNAMIC CREATION LOGIC ---
-    columnsData.forEach((columnData, colIndex) => {
-        const columnWrapper = document.createElement('div');
-        columnWrapper.className = 'col-md-4 d-flex flex-column';
+            // --- DYNAMIC CREATION LOGIC ---
+            columnsData.forEach((columnData, colIndex) => {
+                const columnWrapper = document.createElement('div');
+                columnWrapper.className = 'col-md-4 d-flex flex-column';
 
-        const itemsContainer = document.createElement('div');
-        itemsContainer.className = 'checkbox-items';
+                const itemsContainer = document.createElement('div');
+                itemsContainer.className = 'checkbox-items';
 
-        for (let i = 1; i <= columnData.itemCount; i++) {
-            const uniquePrefix = `col${colIndex}-item${i}`;
-            const checkboxId = `item-${uniquePrefix}`;
-            const redPlusId = `redPlus-${uniquePrefix}`;
-            const outerCollapseId = `collapseOne-${uniquePrefix}`;
-            const innerCollapseId = `collapseThree-${uniquePrefix}`;
-            const innerAccordionId = `accordionExample-${uniquePrefix}`;
-            const paymentSummaryCardId = `paymentSummary-${uniquePrefix}`;
-            const newPaymentId = `newPayment-${uniquePrefix}`;
-            const paymentMethodBtnId = `paymentMethodBtn-${uniquePrefix}`;
+                for (let i = 1; i <= columnData.itemCount; i++) {
+                    const uniquePrefix = `col${colIndex}-item${i}`;
+                    const checkboxId = `item-${uniquePrefix}`;
+                    const redPlusId = `redPlus-${uniquePrefix}`;
+                    const outerCollapseId = `collapseOne-${uniquePrefix}`;
+                    const innerCollapseId = `collapseThree-${uniquePrefix}`;
+                    const innerAccordionId = `accordionExample-${uniquePrefix}`;
+                    const paymentSummaryCardId = `paymentSummary-${uniquePrefix}`;
+                    const newPaymentId = `newPayment-${uniquePrefix}`;
+                    const paymentMethodBtnId = `paymentMethodBtn-${uniquePrefix}`;
 
-            const itemHtml = `
+                    const itemHtml = `
                 <div class="checkbox-item-container">
                     <div class="d-flex align-items-center justify-content-between border-bottom-1">
                         <label class="checkbox-item-wrapper">
@@ -265,31 +277,31 @@
                         </div>
                     </div>
                 </div>`;
-            itemsContainer.innerHTML += itemHtml;
-        }
+                    itemsContainer.innerHTML += itemHtml;
+                }
 
-        columnWrapper.innerHTML = `
+                columnWrapper.innerHTML = `
             <div>
                 <p class="invoces-list-section-title">${columnData.title}</p>
             </div>`;
-        columnWrapper.appendChild(itemsContainer);
+                columnWrapper.appendChild(itemsContainer);
 
-        mainContainer.appendChild(columnWrapper);
-    });
+                mainContainer.appendChild(columnWrapper);
+            });
 
-    // --- EVENT HANDLER: Add new accordion section when red plus clicked ---
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.red-plus-icon')) {
-            const redPlusDiv = e.target.closest('.red-plus-icon');
-            const targetId = redPlusDiv.getAttribute('data-target'); 
-            const targetContainer = document.getElementById(targetId);
+            // --- EVENT HANDLER: Add new accordion section when red plus clicked ---
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.red-plus-icon')) {
+                    const redPlusDiv = e.target.closest('.red-plus-icon');
+                    const targetId = redPlusDiv.getAttribute('data-target');
+                    const targetContainer = document.getElementById(targetId);
 
-            if (targetContainer) {
-                const uniqueId = `${targetId}-${Date.now()}`;
-                const innerAccordionId = `innerAcc-${uniqueId}`;
-                const innerCollapseId = `innerCollapse-${uniqueId}`;
-                
-                const innerAccordionHtml = `
+                    if (targetContainer) {
+                        const uniqueId = `${targetId}-${Date.now()}`;
+                        const innerAccordionId = `innerAcc-${uniqueId}`;
+                        const innerCollapseId = `innerCollapse-${uniqueId}`;
+
+                        const innerAccordionHtml = `
                     <div class="accordion" id="${innerAccordionId}">
                         <div class="accordion-item">
                             <h2 class="accordion-header">
@@ -314,57 +326,59 @@
                             <div class="payment-content mt-2"></div>
                         </div>
                     </div>`;
-                targetContainer.insertAdjacentHTML('beforeend', innerAccordionHtml);
-            }
-        }
-    });
-
-    // --- IMPROVED EVENT DELEGATION: Handle payment method selection for all accordions (including dynamic ones) ---
-    document.addEventListener("click", function (e) {
-        // Check if clicked element is a payment method list item
-        if (e.target.matches('.payment-method-list li')) {
-            const clickedItem = e.target;
-            const method = clickedItem.getAttribute("data-name");
-            
-            // Find the next payment-content div (works for both original and dynamically added accordions)
-            const accordionItem = clickedItem.closest('.accordion-item');
-            const contentDiv = accordionItem ? accordionItem.querySelector('.payment-content') : null;
-
-            if (contentDiv) {
-                // Generate unique ID for this specific payment form
-                const uniqueId = `${method}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-                
-                const content = generatePaymentContent(method, uniqueId);
-                
-                // Insert content
-                contentDiv.innerHTML = content;
-                
-                // Add event listeners for file uploads and other interactive elements
-                addEventListenersForDynamicElements(uniqueId);
-
-                // Collapse the accordion after selection
-                const collapseEl = clickedItem.closest(".accordion-collapse");
-                if (collapseEl && window.bootstrap) {
-                    const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
-                    bsCollapse.hide();
+                        targetContainer.insertAdjacentHTML('beforeend', innerAccordionHtml);
+                    }
                 }
-            }
-        }
-    });
+            });
 
-    // --- PAYMENT CONTENT GENERATION FUNCTION ---
-    function generatePaymentContent(method, uniqueId) {
+            // --- IMPROVED EVENT DELEGATION: Handle payment method selection for all accordions (including dynamic ones) ---
+            document.addEventListener("click", function(e) {
+                // Check if clicked element is a payment method list item
+                if (e.target.matches('.payment-method-list li')) {
+                    const clickedItem = e.target;
+                    const method = clickedItem.getAttribute("data-name");
 
-        // const methodButton = accordionItem.querySelector('.accordion-button');
-        // const methodText = methodButton.querySelector('.payment-method-text');
-        // const selectedIndicator = methodButton.querySelector('.selected-method-indicator');
+                    // Find the next payment-content div (works for both original and dynamically added accordions)
+                    const accordionItem = clickedItem.closest('.accordion-item');
+                    const contentDiv = accordionItem ? accordionItem.querySelector('.payment-content') :
+                        null;
 
-        // console.log(methodButton);
-        // console.log(methodText);
-        // console.log(selectedIndicator);
-        switch (method) {
-            case "cash":
-                return `
+                    if (contentDiv) {
+                        // Generate unique ID for this specific payment form
+                        const uniqueId =
+                            `${method}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+                        const content = generatePaymentContent(method, uniqueId);
+
+                        // Insert content
+                        contentDiv.innerHTML = content;
+
+                        // Add event listeners for file uploads and other interactive elements
+                        addEventListenersForDynamicElements(uniqueId);
+
+                        // Collapse the accordion after selection
+                        const collapseEl = clickedItem.closest(".accordion-collapse");
+                        if (collapseEl && window.bootstrap) {
+                            const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+                            bsCollapse.hide();
+                        }
+                    }
+                }
+            });
+
+            // --- PAYMENT CONTENT GENERATION FUNCTION ---
+            function generatePaymentContent(method, uniqueId) {
+
+                // const methodButton = accordionItem.querySelector('.accordion-button');
+                // const methodText = methodButton.querySelector('.payment-method-text');
+                // const selectedIndicator = methodButton.querySelector('.selected-method-indicator');
+
+                // console.log(methodButton);
+                // console.log(methodText);
+                // console.log(selectedIndicator);
+                switch (method) {
+                    case "cash":
+                        return `
                 <div class="mb-3">
                     <label for="amountInput_${uniqueId}" class="form-label form-label-md">Amount</label>
                     <input type="text" class="form-control form-input-md" id="amountInput_${uniqueId}" placeholder="Enter Amount">
@@ -380,8 +394,8 @@
                     <button class="red-action-btn-md" onclick="saveCashPayment('${uniqueId}')">Save</button>
                 </div>`;
 
-            case "fund_transfer":
-                return `
+                    case "fund_transfer":
+                        return `
                 <div class="mb-3">
                     <label for="amountInput_${uniqueId}" class="form-label form-label-md">Amount</label>
                     <input type="text" class="form-control form-input-md" id="amountInput_${uniqueId}" placeholder="Enter Amount">
@@ -425,8 +439,8 @@
                     <button class="red-action-btn-md" onclick="saveFundTransfer('${uniqueId}')">Save</button>
                 </div>`;
 
-            case "cheque":
-                return `<div id="chequeContent_${uniqueId}">
+                    case "cheque":
+                        return `<div id="chequeContent_${uniqueId}">
                     <div class="card card-body border-0">
                         <form id="ChequePaymentForm_${uniqueId}" class="content needs-validation p-0 border-0 px-1" novalidate>
                             <div class="input-group-collection-inner d-flex flex-column mb-3">
@@ -509,8 +523,8 @@
                     </div>    
                 </div>`;
 
-            case "card":
-                return `<div id="cardContent_${uniqueId}">
+                    case "card":
+                        return `<div id="cardContent_${uniqueId}">
                     <div class="card card-body border-0">
                         <form id="CardPaymentForm_${uniqueId}" class="content needs-validation p-0 border-0 px-1" novalidate>
                             <div class="input-group-collection-inner d-flex flex-column mb-3">
@@ -568,23 +582,23 @@
                     </div>    
                 </div>`;
 
-            default:
-                return '<p>Please select a valid payment method.</p>';
-        }
-    }
+                    default:
+                        return '<p>Please select a valid payment method.</p>';
+                }
+            }
 
-    // --- HELPER FUNCTIONS ---
+            // --- HELPER FUNCTIONS ---
 
-    // ✅ Global function for adding uploaded files
-    window.addUploadedFile = function(uniqueId, file) {
-        const uploadedFilesContainer = document.getElementById(`uploadedFilesContainer_${uniqueId}`);
-        const uploadedFilesList = document.getElementById(`uploadedFilesList_${uniqueId}`);
+            // ✅ Global function for adding uploaded files
+            window.addUploadedFile = function(uniqueId, file) {
+                const uploadedFilesContainer = document.getElementById(`uploadedFilesContainer_${uniqueId}`);
+                const uploadedFilesList = document.getElementById(`uploadedFilesList_${uniqueId}`);
 
-        if (uploadedFilesContainer && uploadedFilesList) {
-            uploadedFilesContainer.style.display = 'block';
+                if (uploadedFilesContainer && uploadedFilesList) {
+                    uploadedFilesContainer.style.display = 'block';
 
-            const fileItemDiv = document.createElement('div');
-            fileItemDiv.style.cssText = `
+                    const fileItemDiv = document.createElement('div');
+                    fileItemDiv.style.cssText = `
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -595,12 +609,12 @@
                 font-size: 10px;
             `;
 
-            const fileNameSpan = document.createElement('span');
-            fileNameSpan.textContent = file.name;
+                    const fileNameSpan = document.createElement('span');
+                    fileNameSpan.textContent = file.name;
 
-            const closeButton = document.createElement('button');
-            closeButton.innerHTML = '&times;';
-            closeButton.style.cssText = `
+                    const closeButton = document.createElement('button');
+                    closeButton.innerHTML = '&times;';
+                    closeButton.style.cssText = `
                 background-color: #dc3545;
                 color: white;
                 border: none;
@@ -612,84 +626,97 @@
                 align-items: center;
                 justify-content: center;
             `;
-            closeButton.onclick = function () {
-                fileItemDiv.remove();
-                if (uploadedFilesList.children.length === 0) {
-                    uploadedFilesContainer.style.display = 'none';
+                    closeButton.onclick = function() {
+                        fileItemDiv.remove();
+                        if (uploadedFilesList.children.length === 0) {
+                            uploadedFilesContainer.style.display = 'none';
+                        }
+                    };
+
+                    fileItemDiv.appendChild(fileNameSpan);
+                    fileItemDiv.appendChild(closeButton);
+                    uploadedFilesList.appendChild(fileItemDiv);
+
+                    const fileInput = document.getElementById(`uploadTransferScreenshotInput_${uniqueId}`);
+                    if (fileInput) fileInput.value = '';
                 }
             };
 
-            fileItemDiv.appendChild(fileNameSpan);
-            fileItemDiv.appendChild(closeButton);
-            uploadedFilesList.appendChild(fileItemDiv);
+            // Function to attach events to dynamic elements
+            function addEventListenersForDynamicElements(uniqueId) {
+                const fileUploadBtn = document.getElementById(`inputFilesDiv_${uniqueId}`);
+                const fileInput = document.getElementById(`uploadTransferScreenshotInput_${uniqueId}`);
+                const addScreenshotBtn = document.getElementById(`addAnotherScreenshotBtn_${uniqueId}`);
 
-            const fileInput = document.getElementById(`uploadTransferScreenshotInput_${uniqueId}`);
-            if (fileInput) fileInput.value = '';
-        }
-    };
+                if (fileUploadBtn && fileInput) {
+                    fileUploadBtn.addEventListener('click', function() {
+                        fileInput.click();
+                    });
 
-    // Function to attach events to dynamic elements
-    function addEventListenersForDynamicElements(uniqueId) {
-        const fileUploadBtn = document.getElementById(`inputFilesDiv_${uniqueId}`);
-        const fileInput = document.getElementById(`uploadTransferScreenshotInput_${uniqueId}`);
-        const addScreenshotBtn = document.getElementById(`addAnotherScreenshotBtn_${uniqueId}`);
-
-        if (fileUploadBtn && fileInput) {
-            fileUploadBtn.addEventListener('click', function () {
-                fileInput.click();
-            });
-
-            fileInput.addEventListener('change', function (e) {
-                if (e.target.files.length > 0) {
-                    const file = e.target.files[0];
-                    window.addUploadedFile(uniqueId, file);
+                    fileInput.addEventListener('change', function(e) {
+                        if (e.target.files.length > 0) {
+                            const file = e.target.files[0];
+                            window.addUploadedFile(uniqueId, file);
+                        }
+                    });
                 }
-            });
-        }
 
-        if (addScreenshotBtn) {
-            addScreenshotBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (fileInput) fileInput.click();
-            });
-        }
-    }
+                if (addScreenshotBtn) {
+                    addScreenshotBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (fileInput) fileInput.click();
+                    });
+                }
+            }
 
-    // Global save functions for different payment types
-    window.saveCashPayment = function(uniqueId) {
-        const amount = document.getElementById(`amountInput_${uniqueId}`)?.value;
-        const discount = document.getElementById(`discountInput_${uniqueId}`)?.value;
-        console.log('Saving cash payment:', { uniqueId, amount, discount });
-        // Add your save logic here
-    };
+            // Global save functions for different payment types
+            window.saveCashPayment = function(uniqueId) {
+                const amount = document.getElementById(`amountInput_${uniqueId}`)?.value;
+                const discount = document.getElementById(`discountInput_${uniqueId}`)?.value;
+                console.log('Saving cash payment:', {
+                    uniqueId,
+                    amount,
+                    discount
+                });
+                // Add your save logic here
+            };
 
-    window.saveFundTransfer = function(uniqueId) {
-        const amount = document.getElementById(`amountInput_${uniqueId}`)?.value;
-        const reference = document.getElementById(`transferReferenceInput_${uniqueId}`)?.value;
-        const discount = document.getElementById(`discountInput_${uniqueId}`)?.value;
-        console.log('Saving fund transfer:', { uniqueId, amount, reference, discount });
-        // Add your save logic here
-    };
+            window.saveFundTransfer = function(uniqueId) {
+                const amount = document.getElementById(`amountInput_${uniqueId}`)?.value;
+                const reference = document.getElementById(`transferReferenceInput_${uniqueId}`)?.value;
+                const discount = document.getElementById(`discountInput_${uniqueId}`)?.value;
+                console.log('Saving fund transfer:', {
+                    uniqueId,
+                    amount,
+                    reference,
+                    discount
+                });
+                // Add your save logic here
+            };
 
-    window.saveChequePayment = function(uniqueId) {
-        const formData = new FormData(document.getElementById(`ChequePaymentForm_${uniqueId}`));
-        console.log('Saving cheque payment:', { uniqueId, formData });
-        // Add your save logic here
-    };
+            window.saveChequePayment = function(uniqueId) {
+                const formData = new FormData(document.getElementById(`ChequePaymentForm_${uniqueId}`));
+                console.log('Saving cheque payment:', {
+                    uniqueId,
+                    formData
+                });
+                // Add your save logic here
+            };
 
-    window.saveCardPayment = function(uniqueId) {
-        const formData = new FormData(document.getElementById(`CardPaymentForm_${uniqueId}`));
-        console.log('Saving card payment:', { uniqueId, formData });
-        // Add your save logic here
-    };
+            window.saveCardPayment = function(uniqueId) {
+                const formData = new FormData(document.getElementById(`CardPaymentForm_${uniqueId}`));
+                console.log('Saving card payment:', {
+                    uniqueId,
+                    formData
+                });
+                // Add your save logic here
+            };
 
-    // Global function to uncheck all checkboxes
-    window.uncheckAll = function() {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(cb => cb.checked = false);
-    };
-});
-</script>
+            // Global function to uncheck all checkboxes
+            window.uncheckAll = function() {
+                let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(cb => cb.checked = false);
+            };
+        });
+    </script>
 
-
-@endsection
