@@ -7,7 +7,7 @@ Route::get('/', function () {
 });
 
 
-// ############                    finance              #############
+// ###################################################################  FINANCE    ###############################################################################
 // finance dashboard
 Route::get('/dashboard', function () {
     return view('finance.dashboard');
@@ -108,4 +108,73 @@ Route::get('/customers', function () {
 // inquiries
 Route::get('/inquiries', function () {
     return view('finance.inquiries');
+});
+
+// notifications
+Route::get('/notifications', function () {
+    return view('finance.notifications.notifications');
+});
+
+
+Route::get('/create-notification', function () {
+    return view('finance.notifications.create-notification');
+});
+
+
+
+
+
+
+
+
+
+// ###################################################################  ADMIN    ###############################################################################
+
+
+Route::get('/access-control', function () {
+    return view('admin.access-control');
+});
+
+
+Route::get('/activity-log-details', function () {
+    return view('admin.security.activity-log-details');
+});
+
+
+Route::get('/activity-log', function () {
+    return view('admin.security.activity-log');
+});
+
+
+Route::get('/admin-customers', function () {
+    return view('admin.customers');
+});
+
+Route::get('/admin-add-new-customer', function () {
+    return view('admin.add-new-customer');
+});
+
+
+Route::get('/admin-add-new-division', function () {
+    return view('admin.add-new-division');
+});
+
+
+Route::get('/admin-division-management', function () {
+    return view('admin.admin-division-management');
+});
+
+
+Route::get('/admin-backup', function () {
+    return view('admin.security.backup');
+});
+
+
+Route::get('/admin-add-new-user', function () {
+    return view('admin.add-new-user');
+});
+
+
+Route::get('/admin-user-management', function () {
+    return view('admin.user-management');
 });
