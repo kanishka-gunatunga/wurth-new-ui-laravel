@@ -604,7 +604,10 @@
                     <td>${data[i].contactPerson}</td>
                     <td>${data[i].totalOutstanding.toFixed(2)}</td>
                     <td class="sticky-column">
-                        <button class="black-action-btn" onclick="window.location.href='customer-details.html?customerId=${data[i].customerId}'">View More</button>
+                        <a href="{{url('admin-customer-details')}}">
+                        
+                        <button class="black-action-btn">View More</button>
+                        </a>
                     </td>
                 </tr>`;
                         } else if (tableId === 'temporaryCustomers') {
@@ -612,8 +615,14 @@
                     <td>${data[i].admName}</td>
                     <td>${data[i].admNumber}</td>
                     <td>${data[i].customerId}</td>
-                    <td><button class="action-btn" onclick="window.location.href='edit-temporary-customer.html'">Edit</button></td>
-                </tr>`;
+                    <td>
+                        <a href="{{url('admin-edit-temporary-customer')}}">
+                        <button class="action-btn">
+                            Edit
+                        </button>
+                        </a>
+                    </td>
+                    </tr>`;
                         }
                         tableBody.innerHTML += row;
                     }
