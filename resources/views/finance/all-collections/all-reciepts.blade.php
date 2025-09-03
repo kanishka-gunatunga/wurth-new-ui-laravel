@@ -187,6 +187,7 @@
                             </nav>
                         </div>
 
+                        
                         <div class="tab-pane fade" id="temporary-receipts-advance-payment-pane" role="tabpanel"
                             aria-labelledby="temporary-receipts-advance-payment" tabindex="0">
                             <div class="table-responsive">
