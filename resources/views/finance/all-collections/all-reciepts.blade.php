@@ -137,7 +137,7 @@
                         <div class="tab-pane fade show active" id="final-reciepts-invoices-pane" role="tabpanel"
                             aria-labelledby="final-reciepts-invoices" tabindex="0">
                             <div class="table-responsive">
-                                <table class="table custom-table-locked">
+                                <table class="table custom-table-locked" style="min-width: 1300px;">
                                     <thead>
                                         <tr>
                                             <th>Customer Name</th>
@@ -164,7 +164,7 @@
                         <div class="tab-pane fade" id="temporary-receipts-invoices-pane" role="tabpanel"
                             aria-labelledby="temporary-receipts-invoices" tabindex="0">
                             <div class="table-responsive">
-                                <table class="table custom-table-locked">
+                                <table class="table custom-table-locked" style="min-width: 1300px;">
                                     <thead>
                                         <tr>
                                             <th scope="col">Customer Name</th>
@@ -190,7 +190,7 @@
                         <div class="tab-pane fade" id="temporary-receipts-advance-payment-pane" role="tabpanel"
                             aria-labelledby="temporary-receipts-advance-payment" tabindex="0">
                             <div class="table-responsive">
-                                <table class="table custom-table-locked">
+                                <table class="table custom-table-locked" style="min-width: 1300px;">
                                     <thead>
                                         <tr>
                                             <th scope="col">Customer Name</th>
