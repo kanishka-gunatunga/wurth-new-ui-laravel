@@ -135,7 +135,7 @@ Route::get('/notifications', function () {
 
 
 Route::get('/create-notification', function () {
-    return view('finance.notifications.create-notification');
+    return view('finance.notifications.create-notifications');
 });
 
 

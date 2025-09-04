@@ -238,13 +238,13 @@
             </script>
 
             <!-- link view more to the division management details page -->
-            <script>
+            <!-- <script>
                 document.querySelectorAll('.action-btn').forEach(function(btn) {
                     btn.addEventListener('click', function() {
                         window.location.href = 'division-management-details.html';
                     });
                 });
-            </script>
+            </script> -->
 
             <script>
                 // Division Management Table Data

@@ -121,7 +121,7 @@
     // Cancel button redirect
     document.querySelector('.cancel').addEventListener('click', function(e) {
         e.preventDefault();
-        window.location.href = 'admin-division-management.html';
+        window.location.href = 'admin-division-management';
     });
 </script>
 

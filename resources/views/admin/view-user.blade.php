@@ -293,13 +293,13 @@
                 // Cancel button redirect
                 document.querySelector('.cancel').addEventListener('click', function(e) {
                     e.preventDefault();
-                    window.location.href = 'user-management.html';
+                    window.location.href = '/admin-user-management';
                 });
 
                 // Save button redirect
                 document.querySelector('.submit').addEventListener('click', function(e) {
                     e.preventDefault();
-                    window.location.href = 'user-management.html';
+                    window.location.href = '/admin-user-management';
                 });
             </script>
 

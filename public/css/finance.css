@@ -147,6 +147,12 @@ td {
     color: black;
 }
 
+.custom-table-locked {
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 1500px;
+}
+
 
 
 /* .table-responsive {
@@ -268,12 +274,28 @@ td {
 
 }
 
-.customer-payment-card {
+/* .customer-payment-card {
     border: none !important;
     border-radius: 8px !important;
     background-color: #FFFFFF !important;
     box-shadow: 1px 1px 5px 0px #0000001A !important;
 
+}
+
+.customer-payment-card .card-title {
+    border-bottom: 0.5px solid #9d9d9d40 !important;
+    padding-bottom: 8px;
+
+} */
+
+.customer-payment-card {
+    border: none !important;
+    border-radius: 8px !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 1px 1px 5px 0px #0000001A !important;
+max-height: 350px;   /* Set your desired fixed height */
+
+    overflow-y: auto;    /* Enable vertical scroll if content overflows */
 }
 
 .customer-payment-card .card-title {

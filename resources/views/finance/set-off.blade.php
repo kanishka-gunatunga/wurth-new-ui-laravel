@@ -435,7 +435,7 @@
 
                     expandTd.innerHTML = `
     <div class="d-flex align-items-center justify-content-center py-3">
-        <input type="text" class="form-control" placeholder="Write-off Amount" style="min-width:140px; max-width:180px; margin-right: 6rem;">
+        <input type="text" class="form-control" placeholder="Set-off Amount" style="min-width:140px; max-width:180px; margin-right: 6rem;">
         <label class="checkbox-item-wrapper mb-0" style="margin-bottom:0;">
             <input class="form-check-input" type="checkbox" id="fullPaymentCheck${tableId}${index}">
             <span class="checkmark"></span>
@@ -481,7 +481,7 @@
         // Cancel button redirect
         document.querySelector('.cancel').addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'finance-dahsboard.html';
+            window.location.href = 'dashboard';
         });
     </script>
 
