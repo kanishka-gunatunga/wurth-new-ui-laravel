@@ -117,7 +117,7 @@
                 <div id="customer-list" class="tab-pane fade show active" role="tabpanel"
                     aria-labelledby="customer-list-tab">
                     <div class="col-12 d-flex justify-content-end  mb-5">
-                        <a href="{{ url('admin-add-new-customer') }}">
+                        <a href="{{ url('/admin-add-new-customer') }}">
                             {{-- <button class="add-new-division-btn">+ Add New Customer</button> --}}
                             <button class="red-action-btn-lg add-new-payment-btn">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

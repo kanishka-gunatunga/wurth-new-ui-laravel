@@ -80,7 +80,7 @@
     <hr class="red-line mt-0">
 
         <div class="col-12 d-flex justify-content-end  mb-5">
-            <a href="add-new-division.html">
+            <a href="admin-add-new-division">
                 <button class="add-new-division-btn">Edit Division</button>
             </a>
         </div>

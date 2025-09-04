@@ -211,7 +211,7 @@
             Update User
         </button>
     </div>
-@endsection
+
 
 
     <!-- Toast message -->
@@ -245,4 +245,5 @@
             }, 3000);
         });
     </script>
+@endsection    
 

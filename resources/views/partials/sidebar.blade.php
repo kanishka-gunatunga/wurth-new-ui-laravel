@@ -31,7 +31,7 @@
                         </svg>
 
                     </span>
-                    Dashboard
+                    Dashboard(finance)
                 </a>
             </li>
 
@@ -47,7 +47,7 @@
                         </svg>
 
                     </span>
-                    Admin Dashboard
+                    Dashboard(admin)
                 </a>
             </li>
 
@@ -67,7 +67,7 @@
 
 
                     </span>
-                    User Management (admin)
+                    User Management(admin)
                 </a>
             </li>
 
@@ -82,7 +82,7 @@
                                 stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </span>
-                    Access Control
+                    Access Control(admin)
                 </a>
             </li>
 
@@ -98,12 +98,12 @@
 
 
                     </span>
-                    Customers
+                    Customers(admin + finance)
                 </a>
             </li>
 
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin-customers') }}">
                     <span class="me-4">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -115,9 +115,9 @@
 
 
                     </span>
-                    Customers (Admin Side)
+                    Customers(admin + finance)
                 </a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('admin-division-management') }}">
@@ -136,7 +136,7 @@
                         </svg>
 
                     </span>
-                    Division Management (admin side)
+                    Division Management(admin)
                 </a>
             </li>
 
@@ -152,7 +152,7 @@
                         </svg>
 
                     </span>
-                    All Collections
+                    All Collections(admin + finance)
                     <span class="dropdown-arrow">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -180,7 +180,7 @@
                                     </svg>
 
                                 </span>
-                                All Outstanding
+                                All Outstanding(admin + finance)
                             </a>
                         </li>
 
@@ -195,7 +195,7 @@
                                             fill="#090909" />
                                     </svg>
                                 </span>
-                                All Receipts
+                                All Receipts(admin + finance)
                             </a>
                         </li>
 
@@ -217,7 +217,7 @@
                                     </svg>
 
                                 </span>
-                                Advance Payments
+                                Advance Payments(finance)
                             </a>
                         </li>
 
@@ -231,7 +231,7 @@
                                     </svg>
 
                                 </span>
-                                Add New Collections
+                                Add New Collections(finance)
                             </a>
                         </li>
                     </ul>
@@ -255,7 +255,7 @@
                         </svg>
 
                     </span>
-                    Deposits &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    Deposits(finance) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <span class="dropdown-arrow">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -286,7 +286,7 @@
                                     </svg>
 
                                 </span>
-                                Cash Deposits
+                                Cash Deposits(finance)
                             </a>
                         </li>
 
@@ -304,7 +304,7 @@
 
 
                                 </span>
-                                Cheque Deposits
+                                Cheque Deposits(finance)
                             </a>
                         </li>
 
@@ -327,7 +327,7 @@
                                     </svg>
 
                                 </span>
-                                Fund Transfers
+                                Fund Transfers(finance)
                             </a>
                         </li>
 
@@ -343,7 +343,7 @@
                                     </svg>
 
                                 </span>
-                                Card Payments
+                                Card Payments(finance)
                             </a>
                         </li>
                     </ul>
@@ -367,7 +367,7 @@
                         </svg>
 
                     </span>
-                    Inquiries
+                    Inquiries(finance)
                 </a>
             </li>
 
@@ -384,7 +384,7 @@
                         </svg>
 
                     </span>
-                    Return Cheques
+                    Return Cheques(admin + finance)
                 </a>
             </li>
 
@@ -400,7 +400,7 @@
                         </svg>
 
                     </span>
-                    Write-Off Write-Back
+                    Write-Off & Write-Back(finance)
                 </a>
             </li>
 
@@ -416,7 +416,7 @@
                         </svg>
 
                     </span>
-                    Set-Off
+                    Set-Off(finance)
                 </a>
             </li>
 
@@ -435,7 +435,7 @@
                         </svg>
 
                     </span>
-                    Notifications
+                    Notifications(admin + finance)
                     <span class="dropdown-arrow">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -447,8 +447,8 @@
                 <div id="flush-collapseThree" class="accordion-collapse collapse"
                     data-bs-parent="#accordionFlushExample">
                     <ul class="sidebar-list">
-                        <li class="nav-item" href="{{ url('/create-notifications') }}">
-                            <a class="nav-link">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/create-notification') }}">
                                 <span class="me-4">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -458,7 +458,7 @@
                                     </svg>
 
                                 </span>
-                                Create Notifications
+                                Create Notifications(admin + finance)
                             </a>
                         </li>
 
@@ -481,7 +481,30 @@
 
 
                                 </span>
-                                Notification
+                                Payment Notifications(admin + finance)
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/notifications') }}">
+                                <span class="me-4">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_3397_13056)">
+                                            <path
+                                                d="M21.5164 4.48389V11.6646L21.6023 11.7056C24.1092 12.9061 25.8502 15.4548 25.8503 18.4165C25.8503 22.5262 22.5264 25.8501 18.4167 25.8501C14.3071 25.8501 10.9832 22.5262 10.9832 18.4165C10.9832 18.0572 11.0149 17.7074 11.0681 17.356L11.0945 17.1831H2.31714V4.48389H21.5164ZM18.4167 12.8501C15.344 12.8501 12.8505 15.3438 12.8503 18.4165C12.8503 21.4893 15.3439 23.9839 18.4167 23.9839C21.4896 23.9839 23.9832 21.4893 23.9832 18.4165C23.983 15.3438 21.4895 12.8501 18.4167 12.8501ZM18.8083 15.3169V18.3081L18.8835 18.3521L21.3962 19.8032L20.7332 20.9526L17.4832 19.0776V15.3169H18.8083ZM19.6501 8.51709H19.4998C18.965 8.517 18.4521 8.30439 18.074 7.92627C17.6959 7.54815 17.4832 7.03522 17.4832 6.50049V6.3501H6.35034V6.50049C6.35017 7.61989 5.45314 8.51692 4.33374 8.51709H4.18335V13.1499H4.33374C4.86848 13.15 5.3814 13.3626 5.75952 13.7407C6.13764 14.1188 6.35026 14.6318 6.35034 15.1665V15.3169H11.6628L11.7039 15.2339C11.8969 14.8479 12.0999 14.4868 12.3435 14.1372L12.6013 13.7661L12.1726 13.9087C12.102 13.9322 12.0291 13.9331 11.9167 13.9331C10.2013 13.9331 8.81714 12.549 8.81714 10.8335C8.81714 9.11801 10.2013 7.73389 11.9167 7.73389C13.6322 7.73389 15.0164 9.11801 15.0164 10.8335C15.0164 11.0888 14.9754 11.3467 14.9128 11.5864L14.8308 11.9028L15.1248 11.7593C16.1242 11.2702 17.239 10.9839 18.4167 10.9839C18.7761 10.9839 19.1258 11.0156 19.4773 11.0688L19.6501 11.0942V8.51709Z"
+                                                fill="black" stroke="white" stroke-width="0.3" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_3397_13056">
+                                                <rect width="26" height="26" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+
+                                </span>
+                                System Notifications(admin + finance)
                             </a>
                         </li>
 
@@ -503,25 +526,9 @@
                         </svg>
 
                     </span>
-                    Upload
+                    Upload(admin + finance)
                 </a>
             </li>
-
-            <li class="nav-item ">
-                <a class="nav-link">
-                    <span class="me-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17ZM19 19H5V5H19V19.1M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z"
-                                fill="black" />
-                        </svg>
-
-                    </span>
-                    Reports
-                </a>
-            </li>
-
 
             <li class="nav-item ">
                 <a class="nav-link" href="admin-reports">
@@ -534,7 +541,7 @@
                         </svg>
 
                     </span>
-                    Reports (admin)
+                    Reports(admin + finance)
                 </a>
             </li>
 
@@ -552,7 +559,7 @@
                                 fill="black" />
                         </svg>
                     </span>
-                    Security
+                    Security(admin)
                     <span class="dropdown-arrow">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -574,7 +581,7 @@
                                             fill="black" />
                                     </svg>
                                 </span>
-                                Backup
+                                Backup(admin)
                             </a>
                         </li>
 
@@ -591,7 +598,7 @@
 
 
                                 </span>
-                                Activity Log
+                                Activity Log(admin)
                             </a>
                         </li>
 
@@ -607,7 +614,7 @@
                                     </svg>
 
                                 </span>
-                                Locked Users
+                                Locked Users(admin)
                             </a>
                         </li>
 

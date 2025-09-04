@@ -156,7 +156,7 @@
         // Cancel button redirect
         document.querySelector('.cancel').addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'customers.html';
+            window.location.href = '/customers';
         });
     </script>
 
