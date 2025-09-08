@@ -767,7 +767,7 @@
     };
 </script>
 
-<!-- expand search bar  -->
+<!-- expand search bar and search functionality -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const searchWrapper = document.getElementById("search-box-wrapper");
@@ -775,21 +775,19 @@
         const searchInput = searchWrapper.querySelector(".search-input");
 
         let idleTimeout;
-        const idleTime = 5000; // 5 seconds (5000 milliseconds)
+        const idleTime = 5000; // 5 seconds
 
         function collapseSearch() {
             searchWrapper.classList.remove("expanded");
             searchWrapper.classList.add("collapsed");
-            searchToggleButton.classList.remove("d-none"); // Show the button
-            clearTimeout(idleTimeout); // Clear any existing timer
+            searchToggleButton.classList.remove("d-none");
+            clearTimeout(idleTimeout);
         }
 
         function startIdleTimer() {
-            clearTimeout(idleTimeout); // Clear previous timer
+            clearTimeout(idleTimeout);
             idleTimeout = setTimeout(() => {
-                if (!searchInput.value) { // Only collapse if input is empty
-                    collapseSearch();
-                }
+                if (!searchInput.value) collapseSearch();
             }, idleTime);
         }
 
@@ -797,7 +795,7 @@
             if (searchWrapper.classList.contains("collapsed")) {
                 searchWrapper.classList.remove("collapsed");
                 searchWrapper.classList.add("expanded");
-                searchToggleButton.classList.add("d-none"); // Hide the button
+                searchToggleButton.classList.add("d-none");
                 searchInput.focus();
                 startIdleTimer();
             } else {
@@ -805,10 +803,31 @@
             }
         });
 
-        searchInput.addEventListener("keydown", function() {
-            startIdleTimer(); // Reset the timer on any keypress
+        searchInput.addEventListener("input", function() {
+            filterTable(this.value);
+            startIdleTimer();
         });
+
+        searchInput.addEventListener("keydown", startIdleTimer);
     });
+
+    // Filter table based on Deposit Type, ADM Number, or ADM Name
+    function filterTable(query) {
+        const searchQuery = query.toLowerCase();
+        const tableRows = document.querySelectorAll("#cashDepositeTableBody tr");
+
+        tableRows.forEach(row => {
+            const depositType = row.children[1].textContent.toLowerCase();
+            const admNumber = row.children[3].textContent.toLowerCase();
+            const admName = row.children[4].textContent.toLowerCase();
+
+            if (depositType.includes(searchQuery) || admNumber.includes(searchQuery) || admName.includes(searchQuery)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
 </script>
 
 <script>

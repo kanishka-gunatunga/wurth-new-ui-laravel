@@ -68,7 +68,7 @@
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                <input type="text" class="search-input" placeholder="Search Invoice Number, Customer Name, ADM Number, ADM Name" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
@@ -575,6 +575,97 @@
         changePage('outstanding', 1);
     };
 </script>
+
+<!-- search function -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.querySelector("#search-box-wrapper .search-input");
+
+        searchInput.addEventListener("input", function() {
+            const query = searchInput.value.toLowerCase();
+
+            // Filter the outstanding data
+            const filteredData = outstandingTableData.filter(item =>
+                item.invoice.toLowerCase().includes(query) ||
+                item.customer.toLowerCase().includes(query) ||
+                item.admNumber.toLowerCase().includes(query) ||
+                item.admName.toLowerCase().includes(query)
+            );
+
+            // Reset current page for filtered results
+            currentPages.outstanding = 1;
+
+            renderOutstandingTable(filteredData);
+            renderOutstandingPagination(filteredData);
+        });
+
+        function renderOutstandingTable(data) {
+            const tableBody = document.getElementById("outstandingTableBody");
+            tableBody.innerHTML = "";
+
+            const startIndex = (currentPages.outstanding - 1) * rowsPerPage;
+            const endIndex = Math.min(startIndex + rowsPerPage, data.length);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const row = `
+                <tr>
+                    <td>${data[i].invoice}</td>
+                    <td>${data[i].customer}</td>
+                    <td>${data[i].date}</td>
+                    <td>${data[i].admNumber}</td>
+                    <td>${data[i].admName}</td>
+                    <td>${data[i].totalAmount.toFixed(2)}</td>
+                    <td>${data[i].outstandingBalance.toFixed(2)}</td>
+                    <td class="sticky-column">${data[i].outstandingDays}</td>
+                </tr>
+            `;
+                tableBody.innerHTML += row;
+            }
+        }
+
+        function renderOutstandingPagination(data) {
+            const pagination = document.getElementById("outstandingPagination");
+            pagination.innerHTML = "";
+
+            const totalPages = Math.ceil(data.length / rowsPerPage);
+            const currentPage = currentPages.outstanding;
+
+            // Prev button
+            pagination.innerHTML += `
+            <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="changeOutstandingPage(${currentPage - 1}, data)">Prev</a>
+            </li>
+        `;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+                <li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="changeOutstandingPage(${i}, data)">${i}</a>
+                </li>
+            `;
+            }
+
+            // Next button
+            pagination.innerHTML += `
+            <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="changeOutstandingPage(${currentPage + 1}, data)">Next</a>
+            </li>
+        `;
+        }
+
+        // Page change for filtered data
+        window.changeOutstandingPage = function(page, data) {
+            const totalPages = Math.ceil(data.length / rowsPerPage);
+            if (page < 1 || page > totalPages) return;
+
+            currentPages.outstanding = page;
+            renderOutstandingTable(data);
+            renderOutstandingPagination(data);
+        };
+    });
+</script>
+
 
 <!-- expand search bar  -->
 <script>

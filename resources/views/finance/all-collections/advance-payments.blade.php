@@ -69,7 +69,7 @@
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                <input type="text" class="search-input" placeholder="Search ADM Number or Name, Customer Name, Reason" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
@@ -714,6 +714,102 @@
         changePage('cashDeposite', 1);
     };
 </script>
+
+<!-- Search functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.querySelector("#search-box-wrapper .search-input");
+
+        searchInput.addEventListener("input", function() {
+            const query = searchInput.value.toLowerCase();
+
+            // Filter cash deposit data
+            const filteredData = cashDepositeTableData.filter(item =>
+                item.admNumber.toLowerCase().includes(query) ||
+                item.admName.toLowerCase().includes(query) ||
+                item.customerName.toLowerCase().includes(query) ||
+                item.reason.toLowerCase().includes(query)
+            );
+
+            // Reset current page for filtered results
+            currentPages.cashDeposite = 1;
+
+            renderCashDepositeTable(filteredData);
+            renderCashDepositePagination(filteredData);
+        });
+
+        function renderCashDepositeTable(data) {
+            const tableBody = document.getElementById("cashDepositeTableBody");
+            tableBody.innerHTML = "";
+
+            const startIndex = (currentPages.cashDeposite - 1) * rowsPerPage;
+            const endIndex = Math.min(startIndex + rowsPerPage, data.length);
+
+            for (let i = startIndex; i < endIndex; i++) {
+                const row = `
+                 <tr>
+                    <td>${data[i].date}</td>
+                    <td>${data[i].admNumber}</td>
+                    <td>${data[i].admName}</td>
+                    <td>${data[i].customerName}</td>
+                    <td>${data[i].paymentAmount.toFixed(2)}</td>
+                    <td>${data[i].reason}</td>
+                    <td><a href="${data[i].attachment}" download>${data[i].attachment}</a></td>
+                    <td><img src="${data[i].customerSignature}" alt="Signature" style="height:32px;"></td>
+                    <td class="sticky-column">
+                        <button class="success-action-btn">Approve</button>
+                        <button class="red-action-btn">Reject</button>
+                        <button class="black-action-btn submit">Download</button>
+                    </td>
+                </tr>
+            `;
+                tableBody.innerHTML += row;
+            }
+        }
+
+        function renderCashDepositePagination(data) {
+            const pagination = document.getElementById("cashDepositePagination");
+            pagination.innerHTML = "";
+
+            const totalPages = Math.ceil(data.length / rowsPerPage);
+            const currentPage = currentPages.cashDeposite;
+
+            // Prev button
+            pagination.innerHTML += `
+            <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="changeCashDepositePage(${currentPage - 1}, data)">Prev</a>
+            </li>
+        `;
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+                <li class="page-item ${i === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#" onclick="changeCashDepositePage(${i}, data)">${i}</a>
+                </li>
+            `;
+            }
+
+            // Next button
+            pagination.innerHTML += `
+            <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                <a class="page-link" href="#" onclick="changeCashDepositePage(${currentPage + 1}, data)">Next</a>
+            </li>
+        `;
+        }
+
+        // Page change for filtered data
+        window.changeCashDepositePage = function(page, data) {
+            const totalPages = Math.ceil(data.length / rowsPerPage);
+            if (page < 1 || page > totalPages) return;
+
+            currentPages.cashDeposite = page;
+            renderCashDepositeTable(data);
+            renderCashDepositePagination(data);
+        };
+    });
+</script>
+
 
 <!-- expand search bar  -->
 <script>

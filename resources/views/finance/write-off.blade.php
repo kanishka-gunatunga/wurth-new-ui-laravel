@@ -99,7 +99,7 @@
                                 stroke="#AAB6C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span class="w-100 mx-3">
-                            <input type="text" id="search-input" onkeyup="filterCheckboxes()"
+                            <input type="text" id="search-table1" onkeyup="filterTable('table1', this.value)"
                                 class="search-invoices-input" placeholder="Search Invoice no. or Return Cheque No.">
                         </span>
 
@@ -154,7 +154,7 @@
                                 stroke="#AAB6C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span class="w-100 mx-3">
-                            <input type="text" id="search-input" onkeyup="filterCheckboxes()"
+                            <input type="text" id="search-table2" onkeyup="filterTable('table2', this.value)"
                                 class="search-invoices-input" placeholder="Search Extra Payment Id or Credit Note Id">
                         </span>
 
@@ -202,23 +202,23 @@
             <textarea class="additional-notes" rows="3" placeholder="Enter Write-Off Reason Here"></textarea>
         </div>
     </div>
-    
+
 
 </div>
 
 @endsection
 @section('bottom-bar')
 <div
-        class="action-button-lg-row">
-        <button class="black-action-btn-lg mb-3 cancel">
-            Cancel
-        </button>
+    class="action-button-lg-row">
+    <button class="black-action-btn-lg mb-3 cancel">
+        Cancel
+    </button>
 
 
 
-        <button class="red-action-btn-lg mb-3 submit">
-            Submit
-        </button>
+    <button class="red-action-btn-lg mb-3 submit">
+        Submit
+    </button>
 
 
 
@@ -271,28 +271,54 @@
 
 
 <script>
+    function filterTable(tableId, searchValue) {
+        const filter = searchValue.toLowerCase();
+        const table = document.getElementById(tableId);
+        const rows = table.querySelectorAll("tbody tr");
+
+        rows.forEach(row => {
+            // The Invoice No. / Extra Payment Id is inside <span class="ms-2">
+            const span = row.querySelector("td span.ms-2");
+
+            if (span) {
+                const text = span.textContent.toLowerCase();
+
+                // Show or hide row
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    }
+
     function filterCheckboxes() {
         const input = document.getElementById("search-input").value.toLowerCase();
 
-        // Select both tables
+        // Both tables
         const tables = [document.getElementById("table1"), document.getElementById("table2")];
 
         tables.forEach(table => {
             const rows = table.querySelectorAll("tbody tr");
 
             rows.forEach(row => {
-                const fullName = row.querySelector("td span").textContent.toLowerCase();
-                const invoiceNumber = row.querySelectorAll("td")[1].textContent.toLowerCase();
+                // Target the span that actually holds the Invoice No. / Return No.
+                const invoiceSpan = row.querySelector("td span.ms-2");
 
-                // Show row if fullName or invoiceNumber contains the search input
-                if (fullName.includes(input) || invoiceNumber.includes(input)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+                if (invoiceSpan) {
+                    const invoiceNo = invoiceSpan.textContent.toLowerCase();
+
+                    if (invoiceNo.includes(input)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
                 }
             });
         });
     }
+
 
     // Dummy array for Table 1
     const table1Data = [{
@@ -505,4 +531,4 @@
 
 
 
-    @endsection
+@endsection

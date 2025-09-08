@@ -68,7 +68,7 @@
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                <input type="text" class="search-input" placeholder="Search Deposit Type, ADM Number or Name" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
@@ -83,7 +83,7 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Deposite Types</th>
+                        <th>Deposit Types</th>
                         <th>Status</th>
                         <th>ADM Number</th>
                         <th>ADM Name</th>
@@ -768,7 +768,7 @@
     };
 </script>
 
-<!-- expand search bar  -->
+<!-- expand search bar and search functionality -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const searchWrapper = document.getElementById("search-box-wrapper");
@@ -776,21 +776,19 @@
         const searchInput = searchWrapper.querySelector(".search-input");
 
         let idleTimeout;
-        const idleTime = 5000; // 5 seconds (5000 milliseconds)
+        const idleTime = 5000; // 5 seconds
 
         function collapseSearch() {
             searchWrapper.classList.remove("expanded");
             searchWrapper.classList.add("collapsed");
-            searchToggleButton.classList.remove("d-none"); // Show the button
-            clearTimeout(idleTimeout); // Clear any existing timer
+            searchToggleButton.classList.remove("d-none");
+            clearTimeout(idleTimeout);
         }
 
         function startIdleTimer() {
-            clearTimeout(idleTimeout); // Clear previous timer
+            clearTimeout(idleTimeout);
             idleTimeout = setTimeout(() => {
-                if (!searchInput.value) { // Only collapse if input is empty
-                    collapseSearch();
-                }
+                if (!searchInput.value) collapseSearch();
             }, idleTime);
         }
 
@@ -798,7 +796,7 @@
             if (searchWrapper.classList.contains("collapsed")) {
                 searchWrapper.classList.remove("collapsed");
                 searchWrapper.classList.add("expanded");
-                searchToggleButton.classList.add("d-none"); // Hide the button
+                searchToggleButton.classList.add("d-none");
                 searchInput.focus();
                 startIdleTimer();
             } else {
@@ -806,11 +804,33 @@
             }
         });
 
-        searchInput.addEventListener("keydown", function() {
-            startIdleTimer(); // Reset the timer on any keypress
+        searchInput.addEventListener("input", function() {
+            filterTable(this.value);
+            startIdleTimer();
         });
+
+        searchInput.addEventListener("keydown", startIdleTimer);
     });
+
+    // Filter table based on Deposit Type, ADM Number, or ADM Name
+    function filterTable(query) {
+        const searchQuery = query.toLowerCase();
+        const tableRows = document.querySelectorAll("#cashDepositeTableBody tr");
+
+        tableRows.forEach(row => {
+            const depositType = row.children[1].textContent.toLowerCase();
+            const admNumber = row.children[3].textContent.toLowerCase();
+            const admName = row.children[4].textContent.toLowerCase();
+
+            if (depositType.includes(searchQuery) || admNumber.includes(searchQuery) || admName.includes(searchQuery)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    }
 </script>
+
 
 <script>
     document.querySelectorAll('.selectable-filter').forEach(function(tag) {

@@ -2,62 +2,62 @@
 @section('content')
 
 <style>
-        /* Search box styles */
-        #search-box-wrapper {
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background-color: #fff;
-            transition: width 0.3s ease;
-            border-radius: 30px;
-            height: 45px;
-            width: 45px;
-            border: 1px solid transparent;
-            position: relative;
-            width: 0;
-        }
+    /* Search box styles */
+    #search-box-wrapper {
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background-color: #fff;
+        transition: width 0.3s ease;
+        border-radius: 30px;
+        height: 45px;
+        width: 45px;
+        border: 1px solid transparent;
+        position: relative;
+        width: 0;
+    }
 
-        #search-box-wrapper.collapsed {
-            width: 0;
-            padding: 0;
-            margin: 0;
-            border: 1px solid transparent;
-            background-color: transparent;
-        }
+    #search-box-wrapper.collapsed {
+        width: 0;
+        padding: 0;
+        margin: 0;
+        border: 1px solid transparent;
+        background-color: transparent;
+    }
 
-        #search-box-wrapper.expanded {
-            width: 450px;
-            padding: 0 15px;
-        }
+    #search-box-wrapper.expanded {
+        width: 450px;
+        padding: 0 15px;
+    }
 
-        .search-input {
-            flex-grow: 1;
-            border: none;
-            background: transparent;
-            outline: none;
-            font-size: 16px;
-            color: #333;
-            width: 100%;
-            /* Add padding to make space for the icon */
-            padding-left: 30px;
-        }
+    .search-input {
+        flex-grow: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-size: 16px;
+        color: #333;
+        width: 100%;
+        /* Add padding to make space for the icon */
+        padding-left: 30px;
+    }
 
-        .search-input::placeholder {
-            color: #888;
-        }
+    .search-input::placeholder {
+        color: #888;
+    }
 
-        .search-icon-inside {
-            position: absolute;
-            left: 10px;
-            /* Adjust as needed */
-            color: #888;
-        }
+    .search-icon-inside {
+        position: absolute;
+        left: 10px;
+        /* Adjust as needed */
+        color: #888;
+    }
 
-        /* Optional: Adjust button alignment if needed */
-        .col-12.d-flex.justify-content-lg-end {
-            align-items: center;
-        }
-    </style>
+    /* Optional: Adjust button alignment if needed */
+    .col-12.d-flex.justify-content-lg-end {
+        align-items: center;
+    }
+</style>
 
 <div class="main-wrapper">
 
@@ -65,25 +65,25 @@
         <div class="col-lg-6 col-12">
             <h1 class="header-title">Division 1</h1>
         </div>
-        <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
-                <div id="search-box-wrapper" class="collapsed">
-                    <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                    <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
-                </div>
-                <button class="header-btn" id="search-toggle-button"><i
-                        class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-                <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter"
-                    aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
+        <!-- <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div id="search-box-wrapper" class="collapsed">
+                <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
+                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
             </div>
+            <button class="header-btn" id="search-toggle-button"><i
+                    class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+            <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter"
+                aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
+        </div> -->
     </div>
 
     <hr class="red-line mt-0">
 
-        <div class="col-12 d-flex justify-content-end  mb-5">
-            <a href="admin-add-new-division">
-                <button class="add-new-division-btn">Edit Division</button>
-            </a>
-        </div>
+    <div class="col-12 d-flex justify-content-end  mb-5">
+        <a href="admin-add-new-division">
+            <button class="add-new-division-btn">Edit Division</button>
+        </a>
+    </div>
 
     <div class="styled-tab-sub p-4">
         <div class="tab-content">
@@ -400,56 +400,56 @@
         </div>
 
         <!-- expand search bar  -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const searchWrapper = document.getElementById("search-box-wrapper");
-                    const searchToggleButton = document.getElementById("search-toggle-button");
-                    const searchInput = searchWrapper.querySelector(".search-input");
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const searchWrapper = document.getElementById("search-box-wrapper");
+                const searchToggleButton = document.getElementById("search-toggle-button");
+                const searchInput = searchWrapper.querySelector(".search-input");
 
-                    let idleTimeout;
-                    const idleTime = 5000; // 5 seconds (5000 milliseconds)
+                let idleTimeout;
+                const idleTime = 5000; // 5 seconds (5000 milliseconds)
 
-                    function collapseSearch() {
-                        searchWrapper.classList.remove("expanded");
-                        searchWrapper.classList.add("collapsed");
-                        searchToggleButton.classList.remove("d-none"); // Show the button
-                        clearTimeout(idleTimeout); // Clear any existing timer
-                    }
+                function collapseSearch() {
+                    searchWrapper.classList.remove("expanded");
+                    searchWrapper.classList.add("collapsed");
+                    searchToggleButton.classList.remove("d-none"); // Show the button
+                    clearTimeout(idleTimeout); // Clear any existing timer
+                }
 
-                    function startIdleTimer() {
-                        clearTimeout(idleTimeout); // Clear previous timer
-                        idleTimeout = setTimeout(() => {
-                            if (!searchInput.value) { // Only collapse if input is empty
-                                collapseSearch();
-                            }
-                        }, idleTime);
-                    }
-
-                    searchToggleButton.addEventListener("click", function() {
-                        if (searchWrapper.classList.contains("collapsed")) {
-                            searchWrapper.classList.remove("collapsed");
-                            searchWrapper.classList.add("expanded");
-                            searchToggleButton.classList.add("d-none"); // Hide the button
-                            searchInput.focus();
-                            startIdleTimer();
-                        } else {
+                function startIdleTimer() {
+                    clearTimeout(idleTimeout); // Clear previous timer
+                    idleTimeout = setTimeout(() => {
+                        if (!searchInput.value) { // Only collapse if input is empty
                             collapseSearch();
                         }
-                    });
+                    }, idleTime);
+                }
 
-                    searchInput.addEventListener("keydown", function() {
-                        startIdleTimer(); // Reset the timer on any keypress
-                    });
+                searchToggleButton.addEventListener("click", function() {
+                    if (searchWrapper.classList.contains("collapsed")) {
+                        searchWrapper.classList.remove("collapsed");
+                        searchWrapper.classList.add("expanded");
+                        searchToggleButton.classList.add("d-none"); // Hide the button
+                        searchInput.focus();
+                        startIdleTimer();
+                    } else {
+                        collapseSearch();
+                    }
                 });
-            </script>
+
+                searchInput.addEventListener("keydown", function() {
+                    startIdleTimer(); // Reset the timer on any keypress
+                });
+            });
+        </script>
 
         <script>
-                document.querySelectorAll('.selectable-filter').forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        tag.classList.toggle('selected');
-                    });
+            document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+                tag.addEventListener('click', function() {
+                    tag.classList.toggle('selected');
                 });
-            </script>
+            });
+        </script>
 
-            
+
         @endsection

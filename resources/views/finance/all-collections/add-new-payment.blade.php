@@ -365,26 +365,20 @@
 </script>
 
 <script>
-    function filterCheckboxes() {
-        // Get the search input value and convert to lowercase for case-insensitive matching
-        const searchInput = document.getElementById('search-input').value.toLowerCase();
+function filterCheckboxes() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const checkboxItems = document.querySelectorAll('.checkbox-item');
 
-        // Get all the checkbox items
-        const checkboxItems = document.querySelectorAll('.checkbox-item');
+    checkboxItems.forEach(item => {
+        const fullName = item.querySelector('td:first-child label').textContent.toLowerCase();
+        const invoiceNumber = item.querySelector('td:nth-child(2)').textContent.toLowerCase();
 
-        // Loop through each item to check if it matches the search query
-        checkboxItems.forEach(item => {
-            // Get the data-name attribute, which contains the text to be searched
-            const itemName = item.getAttribute('data-name').toLowerCase();
-
-            // Check if the item's name includes the search input
-            if (itemName.includes(searchInput)) {
-                // If it matches, remove the 'hidden' class to show the item
-                item.classList.remove('hidden');
-            } else {
-                // If it doesn't match, add the 'hidden' class to hide the item
-                item.classList.add('hidden');
-            }
-        });
-    }
+        // Show the item if either Full Name or Invoice Number matches
+        if (fullName.includes(searchInput) || invoiceNumber.includes(searchInput)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
 </script>

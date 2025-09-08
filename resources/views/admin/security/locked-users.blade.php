@@ -70,7 +70,7 @@
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
                 <input type="text" class="search-input"
-                    placeholder="Search customer ID, Name or ADM ID, Name" />
+                    placeholder="Search Full Name, User ID" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i
                     class="fa-solid fa-magnifying-glass fa-xl"></i></button>
@@ -238,9 +238,9 @@
             </div>
         </div>
 
-        
 
-        
+
+
         <!-- link view more to the view user page -->
         <!-- <script>
     document.querySelectorAll('.action-btn').forEach(function (btn) {
@@ -251,56 +251,83 @@
 </script> -->
 
         <script>
-    document.querySelectorAll('.selectable-filter').forEach(function (tag) {
-        tag.addEventListener('click', function () {
-            tag.classList.toggle('selected');
-        });
-    });
-</script>
+            document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+                tag.addEventListener('click', function() {
+                    tag.classList.toggle('selected');
+                });
+            });
+        </script>
 
-<!-- expand search bar  -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const searchWrapper = document.getElementById("search-box-wrapper");
-                    const searchToggleButton = document.getElementById("search-toggle-button");
-                    const searchInput = searchWrapper.querySelector(".search-input");
+        <!-- expand search bar  -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const searchWrapper = document.getElementById("search-box-wrapper");
+                const searchToggleButton = document.getElementById("search-toggle-button");
+                const searchInput = searchWrapper.querySelector(".search-input");
 
-                    let idleTimeout;
-                    const idleTime = 5000; // 5 seconds (5000 milliseconds)
+                let idleTimeout;
+                const idleTime = 5000; // 5 seconds (5000 milliseconds)
 
-                    function collapseSearch() {
-                        searchWrapper.classList.remove("expanded");
-                        searchWrapper.classList.add("collapsed");
-                        searchToggleButton.classList.remove("d-none"); // Show the button
-                        clearTimeout(idleTimeout); // Clear any existing timer
-                    }
+                function collapseSearch() {
+                    searchWrapper.classList.remove("expanded");
+                    searchWrapper.classList.add("collapsed");
+                    searchToggleButton.classList.remove("d-none"); // Show the button
+                    clearTimeout(idleTimeout); // Clear any existing timer
+                }
 
-                    function startIdleTimer() {
-                        clearTimeout(idleTimeout); // Clear previous timer
-                        idleTimeout = setTimeout(() => {
-                            if (!searchInput.value) { // Only collapse if input is empty
-                                collapseSearch();
-                            }
-                        }, idleTime);
-                    }
-
-                    searchToggleButton.addEventListener("click", function() {
-                        if (searchWrapper.classList.contains("collapsed")) {
-                            searchWrapper.classList.remove("collapsed");
-                            searchWrapper.classList.add("expanded");
-                            searchToggleButton.classList.add("d-none"); // Hide the button
-                            searchInput.focus();
-                            startIdleTimer();
-                        } else {
+                function startIdleTimer() {
+                    clearTimeout(idleTimeout); // Clear previous timer
+                    idleTimeout = setTimeout(() => {
+                        if (!searchInput.value) { // Only collapse if input is empty
                             collapseSearch();
                         }
-                    });
+                    }, idleTime);
+                }
 
-                    searchInput.addEventListener("keydown", function() {
-                        startIdleTimer(); // Reset the timer on any keypress
+                searchToggleButton.addEventListener("click", function() {
+                    if (searchWrapper.classList.contains("collapsed")) {
+                        searchWrapper.classList.remove("collapsed");
+                        searchWrapper.classList.add("expanded");
+                        searchToggleButton.classList.add("d-none"); // Hide the button
+                        searchInput.focus();
+                        startIdleTimer();
+                    } else {
+                        collapseSearch();
+                    }
+                });
+
+                searchInput.addEventListener("keydown", function() {
+                    startIdleTimer(); // Reset the timer on any keypress
+                });
+            });
+        </script>
+
+        <!-- search functionality -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const lockedUserSearchInput = document.querySelector("#search-box-wrapper .search-input");
+                const lockedUserTableBody = document.querySelector(".division-table-sub tbody");
+
+                lockedUserSearchInput.addEventListener("input", function() {
+                    const query = this.value.toLowerCase();
+
+                    // Loop through all rows in the table
+                    const rows = lockedUserTableBody.querySelectorAll("tr");
+                    rows.forEach(row => {
+                        const fullName = row.cells[1].textContent.toLowerCase();
+                        const userId = row.cells[2].textContent.toLowerCase();
+
+                        // Show row if it matches query in either Full Name or User ID
+                        if (fullName.includes(query) || userId.includes(query)) {
+                            row.style.display = "";
+                        } else {
+                            row.style.display = "none";
+                        }
                     });
                 });
-            </script>
+            });
+        </script>
 
 
-@endsection
+
+        @endsection

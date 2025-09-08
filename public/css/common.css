@@ -49,10 +49,11 @@ body {
 
 .form-select:focus,
 .form-control:focus {
-  border-color: #ff7e8b !important;
-  outline: 0 !important;
-  box-shadow: 0 0 4px 0rem #ff7e8b !important;
+  border-color: none !important; /* keeps original border */
+  outline: 0 !important;            /* removes default blue outline */
+  box-shadow: none !important;      /* removes focus glow */
 }
+
 
 .form-control:focus {
   color: var(--bs-body-color);
