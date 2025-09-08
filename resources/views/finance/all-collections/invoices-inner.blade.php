@@ -6,11 +6,16 @@
             <h1 class="header-title">Direct Payments</h1>
         </div>
 
+
+        <hr class="red-line mt-0">
+
     </div>
 
 
 
-    <div class="styled-tab-main vertical-scrollable-wrapper bg-white p-4">
+
+
+    <div class="vertical-scrollable-wrapper bg-white p-4">
 
         <div class="header-and-content-gap-md"></div>
         <div
@@ -30,19 +35,23 @@
 
 
         </div>
-    </div>
-    <div class="bg-white">
-        <div class="row flex-wrap g-3 d-flex justify-content-between align-items-center mt-5">
-            <div class="col-6">
-                <textarea class="additional-notes" name="" id="" rows="3" placeholder="Additional Notes"></textarea>
-            </div>
-            <div class="col-5">
-                <p class="red-bold-text">Final Payable Amount: <span class="red-unblod-text">&nbsp; RS.
-                        3000000.00 </span></p>
-            </div>
-        </div>
 
+
+        <div class="bg-white">
+            <div class="row flex-wrap g-3 d-flex justify-content-between align-items-center mt-5">
+                <!-- <hr class="mb-0" style="color: #D3D3D3; border-width: 2px;"> -->
+                <div class="col-6">
+                    <textarea class="additional-notes" name="" id="" rows="3" placeholder="Additional Notes"></textarea>
+                </div>
+                <div class="col-5">
+                    <p class="red-bold-text">Final Payable Amount: <span class="red-unblod-text">&nbsp; RS.
+                            3000000.00 </span></p>
+                </div>
+            </div>
+
+        </div>
     </div>
+
 
 
 </div>
@@ -60,8 +69,8 @@
 
 
     <button class="red-action-btn-lg mb-3 submit">
-            Submit
-        </button>
+        Submit
+    </button>
 
 
 </div>

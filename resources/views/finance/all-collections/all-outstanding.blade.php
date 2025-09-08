@@ -59,335 +59,336 @@
     }
 </style>
 
-            <div class="main-wrapper">
+<div class="main-wrapper">
 
-                <div class="row d-flex justify-content-between">
-                    <div class="col-lg-6 col-12">
-                        <h1 class="header-title">All Outstanding</h1>
-                    </div>
-                    <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
-                        <div id="search-box-wrapper" class="collapsed">
-            <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-            <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+    <div class="row d-flex justify-content-between">
+        <div class="col-lg-6 col-12">
+            <h1 class="header-title">All Outstanding</h1>
         </div>
-        <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-        <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
-                    </div>
-                </div>
+        <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
+            <div id="search-box-wrapper" class="collapsed">
+                <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
+                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+            </div>
+            <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+            <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
+        </div>
+    </div>
 
 
-                <div class="styled-tab-main">
-                    <div class="table-responsive">
-                        <table class="table custom-table-locked" style="min-width: 1600px;">
-                            <thead>
-                                <tr>
-                                    <th>Invoice Number</th>
-                                    <th>Customer Name</th>
-                                    <th>Invoice Date</th>
-                                    <th>ADM Number</th>
-                                    <th>ADM Name</th>
-                                    <th>Total Invoice Amount</th>
-                                    <th>Outstanding Balance</th>
-                                    <th class="sticky-column">Outstanding Days</th>
+    <div class="styled-tab-main">
+        <div class="header-and-content-gap-lg"></div>
+        <div class="table-responsive">
+            <table class="table custom-table-locked" style="min-width: 1600px;">
+                <thead>
+                    <tr>
+                        <th>Invoice Number</th>
+                        <th>Customer Name</th>
+                        <th>Invoice Date</th>
+                        <th>ADM Number</th>
+                        <th>ADM Name</th>
+                        <th>Total Invoice Amount</th>
+                        <th>Outstanding Balance</th>
+                        <th class="sticky-column">Outstanding Days</th>
 
-                                </tr>
-                            </thead>
-                            <tbody id="outstandingTableBody">
-                            </tbody>
-                        </table>
+                    </tr>
+                </thead>
+                <tbody id="outstandingTableBody">
+                </tbody>
+            </table>
 
-                    </div>
-                    <nav class="d-flex justify-content-center mt-5">
-                        <ul id="finalPagination" class="pagination"></ul>
-                    </nav>
-                </div>
-
-
+        </div>
+        <nav class="d-flex justify-content-center mt-5">
+            <ul id="finalPagination" class="pagination"></ul>
+        </nav>
+    </div>
 
 
+
+
+
+</div>
+
+
+
+<div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="searchByFilter"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="row d-flex justify-content-end">
+        <button type="button" class="btn-close rounded-circle" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-header d-flex justify-content-between">
+        <div class="col-6">
+            <span class="offcanvas-title" id="offcanvasRightLabel">Search </span> <span class="title-rest"> &nbsp;by
+                Filter
+            </span>
+        </div class="col-6">
+
+        <div>
+            <button class="btn rounded-phill">Clear All</button>
+        </div>
+    </div>
+    <div class="offcanvas-body">
+        <div class="row">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>ADMs</span>
 
             </div>
 
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Marketing</span>
 
+            </div>
 
-    <div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="searchByFilter"
-        aria-labelledby="offcanvasRightLabel">
-        <div class="row d-flex justify-content-end">
-            <button type="button" class="btn-close rounded-circle" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Admin</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Finance</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Team Leaders</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Head of Division</span>
+
+            </div>
         </div>
 
-        <div class="offcanvas-header d-flex justify-content-between">
-            <div class="col-6">
-                <span class="offcanvas-title" id="offcanvasRightLabel">Search </span> <span class="title-rest"> &nbsp;by
-                    Filter
-                </span>
-            </div class="col-6">
 
-            <div>
-                <button class="btn rounded-phill">Clear All</button>
+        <div class="mt-5 filter-categories">
+            <p class="filter-title">AMD Number</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    5643678
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    5643678
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    5643678
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    5643678
+                </label>
+            </div>
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    5643678
+                </label>
             </div>
         </div>
-        <div class="offcanvas-body">
-            <div class="row">
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>ADMs</span>
 
-                </div>
+        <!-- Divisions -->
+        <div class="mt-5 radio-selection filter-categories">
+            <p class="filter-title">Divisions</p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Division 1
+                </label>
+            </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Marketing</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Division 2
+                </label>
+            </div>
 
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Division 3
+                </label>
+            </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Admin</span>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Division 4
+                </label>
+            </div>
 
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Division 5
+                </label>
+            </div>
+        </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Finance</span>
 
-                </div>
+        <div class="mt-5 filter-categories">
+            <p class="filter-title">User Role</p>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Team Leaders</span>
 
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    All
+                </label>
+            </div>
 
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Head of Division</span>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    System Administration
+                </label>
+            </div>
 
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Head of Division
+                </label>
             </div>
 
 
-            <div class="mt-5 filter-categories">
-                <p class="filter-title">AMD Number</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        5643678
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        5643678
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        5643678
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        5643678
-                    </label>
-                </div>
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        5643678
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Regional Sales Managers
+                </label>
             </div>
 
-            <!-- Divisions -->
-            <div class="mt-5 radio-selection filter-categories">
-                <p class="filter-title">Divisions</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Division 1
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Division 2
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Division 3
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Division 4
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        Division 5
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Area Sales Managers
+                </label>
             </div>
 
-
-            <div class="mt-5 filter-categories">
-                <p class="filter-title">User Role</p>
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        All
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        System Administration
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Head of Division
-                    </label>
-                </div>
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Regional Sales Managers
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Area Sales Managers
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Team Leaders
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        ADMs
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Finance Department Managers
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Team Leaders
+                </label>
             </div>
 
-            <div class="mt-5 filter-categories">
-                <p class="filter-title">Date</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    ADMs
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Finance Department Managers
+                </label>
+            </div>
+        </div>
+
+        <div class="mt-5 filter-categories">
+            <p class="filter-title">Date</p>
 
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Today
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Today
+                </label>
+            </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Yesterday
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Yesterday
+                </label>
+            </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        This Week
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    This Week
+                </label>
+            </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        This Month
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    This Month
+                </label>
+            </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        This Year
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    This Year
+                </label>
+            </div>
+        </div>
+
+
+        <div class="mt-5 filter-categories">
+            <p class="filter-title">Time</p>
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    09:00 AM - 1:00 PM
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    09:00 AM - 1:00 PM
+                </label>
             </div>
 
 
-            <div class="mt-5 filter-categories">
-                <p class="filter-title">Time</p>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    09:00 AM - 1:00 PM
+                </label>
+            </div>
 
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        09:00 AM - 1:00 PM
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    09:00 AM - 1:00 PM
+                </label>
+            </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        09:00 AM - 1:00 PM
-                    </label>
-                </div>
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        09:00 AM - 1:00 PM
-                    </label>
-                </div>
-
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        09:00 AM - 1:00 PM
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        09:00 AM - 1:00 PM
-                    </label>
-                </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    09:00 AM - 1:00 PM
+                </label>
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
 
 
 
@@ -402,7 +403,7 @@
 
     const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Grape', 'Mango', 'Orange', 'Pineapple', 'Strawberry'];
 
-    searchInput.addEventListener('input', function () {
+    searchInput.addEventListener('input', function() {
         const query = this.value.toLowerCase();
         searchDropdown.innerHTML = '';
 
@@ -413,7 +414,7 @@
                     const div = document.createElement('div');
                     div.className = 'search-item';
                     div.textContent = item;
-                    div.addEventListener('click', function () {
+                    div.addEventListener('click', function() {
                         searchInput.value = item;
                         searchDropdown.classList.remove('show');
                     });
@@ -428,7 +429,7 @@
         }
     });
 
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', function(e) {
         if (!searchDropdown.contains(e.target) && e.target !== searchInput) {
             searchDropdown.classList.remove('show');
         }
@@ -437,8 +438,7 @@
 
 <script>
     // final receipts invoices
-    const outstandingTableData = [
-        {
+    const outstandingTableData = [{
             invoice: "INV001",
             customer: "John Doe",
             date: "2024-06-01",
@@ -491,7 +491,9 @@
     ];
 
     const rowsPerPage = 10;
-    const currentPages = { outstanding: 1 }; // keep track of current page for each table
+    const currentPages = {
+        outstanding: 1
+    }; // keep track of current page for each table
 
     // Table render function
     function renderTable(tableId, data, page) {
@@ -569,14 +571,14 @@
     }
 
     // Initial load after page ready
-    window.onload = function () {
+    window.onload = function() {
         changePage('outstanding', 1);
     };
 </script>
 
 <!-- expand search bar  -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const searchWrapper = document.getElementById("search-box-wrapper");
         const searchToggleButton = document.getElementById("search-toggle-button");
         const searchInput = searchWrapper.querySelector(".search-input");
@@ -600,7 +602,7 @@
             }, idleTime);
         }
 
-        searchToggleButton.addEventListener("click", function () {
+        searchToggleButton.addEventListener("click", function() {
             if (searchWrapper.classList.contains("collapsed")) {
                 searchWrapper.classList.remove("collapsed");
                 searchWrapper.classList.add("expanded");
@@ -612,17 +614,17 @@
             }
         });
 
-        searchInput.addEventListener("keydown", function () {
+        searchInput.addEventListener("keydown", function() {
             startIdleTimer(); // Reset the timer on any keypress
         });
     });
-</script> 
+</script>
 
 <script>
-                document.querySelectorAll('.selectable-filter').forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        tag.classList.toggle('selected');
-                    });
-                });
-            </script>
+    document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+        tag.addEventListener('click', function() {
+            tag.classList.toggle('selected');
+        });
+    });
+</script>
 @endsection

@@ -68,6 +68,11 @@ body {
   border-radius: 8px;
 }
 
+/* Center the cards */
+.dashboard-stats {
+  justify-content: center;
+}
+
 /* Stats Cards */
 .stat-card {
   background: white;
@@ -378,5 +383,17 @@ body {
   right: 0;
   background-color: white;
   z-index: 5;
+  text-align: center;      /* center text horizontally */
+  vertical-align: middle;  /* center text vertically */
 }
+
+.sticky-actions {
+  display: flex;
+  flex-direction: row;   /* stack buttons horizontally */
+  align-items: center;      /* center horizontally */
+  justify-content: center;  /* center vertically */
+  height: 100%;             /* match the cell height */
+  gap: 8px;                 /* add gap between buttons */
+}
+
 

@@ -1,6 +1,35 @@
 @extends('welcome')
 
 @section('content')
+
+<style>
+    .form-check-input {
+        height: 20px;
+        width: 20px;
+        border-color: #D2D5DA;
+        margin-right: 15px;
+    }
+
+    .form-check-input:focus {
+        border-color: #dc3545 !important;
+        outline: 0 !important;
+        box-shadow: 0 0 0 2.1px #dc354533 !important;
+    }
+
+    .form-check-input:checked {
+        background-color: #dc3545 !important;
+        border-color: #dc3545 !important;
+    }
+
+    .form-check-label {
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+
+
+    }
+</style>
+
 <div class="main-wrapper">
     <div class="row d-flex justify-content-between">
         <div class="col-lg-6 col-12">
@@ -18,33 +47,37 @@
                 <div>
                     <p class="card-section-title">Customer Name</p>
 
-                    <div class="d-flex search-div align-items-center">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M16.893 16.92L19.973 20M19 11.5C19 13.4891 18.2098 15.3968 16.8033 16.8033C15.3968 18.2098 13.4891 19 11.5 19C9.51088 19 7.60322 18.2098 6.1967 16.8033C4.79018 15.3968 4 13.4891 4 11.5C4 9.51088 4.79018 7.60322 6.1967 6.1967C7.60322 4.79018 9.51088 4 11.5 4C13.4891 4 15.3968 4.79018 16.8033 6.1967C18.2098 7.60322 19 9.51088 19 11.5Z"
-                                stroke="#AAB6C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span class="w-100 mx-3 search-select">
-                            <select id="multi-select-dropdown" name="states[]" multiple="multiple">
-                                <option value="AL">Alabama</option>
-                                <option value="CA">California</option>
-                                <option value="FL">Florida</option>
-                                <option value="NY">New York</option>
-                                <option value="TX">Texas</option>
-                                <option value="WA">Washington</option>
-                            </select>
-                        </span>
-                        <span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M12.7073 15.7073C12.5198 15.8948 12.2655 16.0001 12.0003 16.0001C11.7352 16.0001 11.4809 15.8948 11.2933 15.7073L5.63634 10.0503C5.54083 9.9581 5.46465 9.84775 5.41224 9.72575C5.35983 9.60374 5.33225 9.47252 5.33109 9.33974C5.32994 9.20696 5.35524 9.07529 5.40552 8.95239C5.4558 8.82949 5.53006 8.71784 5.62395 8.62395C5.71784 8.53006 5.82949 8.4558 5.95239 8.40552C6.07529 8.35524 6.20696 8.32994 6.33974 8.33109C6.47252 8.33225 6.60374 8.35983 6.72575 8.41224C6.84775 8.46465 6.9581 8.54083 7.05034 8.63634L12.0003 13.5863L16.9503 8.63634C17.1389 8.45418 17.3915 8.35339 17.6537 8.35567C17.9159 8.35795 18.1668 8.46312 18.3522 8.64852C18.5376 8.83393 18.6427 9.08474 18.645 9.34694C18.6473 9.60914 18.5465 9.86174 18.3643 10.0503L12.7073 15.7073Z"
-                                    fill="#AAB6C1" />
-                            </svg>
+                    <div class="mb-4 w-100">
+                        <div class="dropdown w-100">
+                            <button
+                                class="btn custom-dropdown w-100 text-start d-flex align-items-center justify-content-between"
+                                type="button"
+                                id="customerDropdown"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" class="me-2">
+                                        <path
+                                            d="M16.893 16.92L19.973 20M19 11.5C19 13.4891 18.2098 15.3968 16.8033 16.8033C15.3968 18.2098 13.4891 19 11.5 19C9.51088 19 7.60322 18.2098 6.1967 16.8033C4.79018 15.3968 4 13.4891 4 11.5C4 9.51088 4.79018 7.60322 6.1967 6.1967C7.60322 4.79018 9.51088 4 11.5 4C13.4891 4 15.3968 4.79018 16.8033 6.1967C18.2098 7.60322 19 9.51088 19 11.5Z"
+                                            stroke="#AAB6C1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    Select Customer
+                                </span>
+                                <span class="custom-arrow"></span>
+                            </button>
 
-                        </span>
+                            <ul class="dropdown-menu custom-dropdown-menu w-100" aria-labelledby="customerDropdown">
+                                <li><a class="dropdown-item" href="#">Alabama</a></li>
+                                <li><a class="dropdown-item" href="#">California</a></li>
+                                <li><a class="dropdown-item" href="#">Florida</a></li>
+                                <li><a class="dropdown-item" href="#">New York</a></li>
+                                <li><a class="dropdown-item" href="#">Texas</a></li>
+                                <li><a class="dropdown-item" href="#">Washington</a></li>
+                            </ul>
+                        </div>
                     </div>
+
 
 
                     <div class="mt-4">
@@ -104,14 +137,6 @@
 
                                             </button>
                                         </div>
-
-
-
-
-
-
-
-
                                     </div>
 
                                 </div>
@@ -168,14 +193,6 @@
 
                                             </button>
                                         </div>
-
-
-
-
-
-
-
-
                                     </div>
 
                                 </div>
@@ -231,40 +248,67 @@
                                     </thead>
                                     <tbody>
                                         <tr class="checkbox-item" data-name="Apple">
-
-                                            <td><input type="checkbox" id="item1" name="item1"><span
-                                                    class="ms-2">John</span></td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="item1" name="item1">
+                                                    <label class="form-check-label ms-2" for="item1">
+                                                        John
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>6567878</td>
                                         </tr>
 
-                                        <tr class="checkbox-item" data-name="Banana">
 
-                                            <td><input type="checkbox" id="item2" name="item2"><span
-                                                    class="ms-2">George</span></td>
+                                        <tr class="checkbox-item" data-name="Banana">
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="item2" name="item2">
+                                                    <label class="form-check-label ms-2" for="item2">
+                                                        George
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>6567879</td>
                                         </tr>
 
                                         <tr class="checkbox-item" data-name="Grapes">
-
-                                            <td><input type="checkbox" id="item3" name="item3"><span
-                                                    class="ms-2">Sam</span></td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="item3" name="item3">
+                                                    <label class="form-check-label ms-2" for="item3">
+                                                        Sam
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>6567880</td>
                                         </tr>
 
                                         <tr class="checkbox-item" data-name="Apple">
-
-                                            <td><input type="checkbox" id="item4" name="item4"><span
-                                                    class="ms-2">Nimal</span></td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="item4" name="item4">
+                                                    <label class="form-check-label ms-2" for="item4">
+                                                        Nimal
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>6567881</td>
                                         </tr>
 
                                         <tr class="checkbox-item" data-name="Strawberry">
-
-                                            <td><input type="checkbox" id="item5" name="item5"><span
-                                                    class="ms-2">Yot</span></td>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="item5" name="item5">
+                                                    <label class="form-check-label ms-2" for="item5">
+                                                        Yot
+                                                    </label>
+                                                </div>
+                                            </td>
                                             <td>6567882</td>
                                         </tr>
-                                        </tr>
+
+
 
                                     </tbody>
                                 </table>
