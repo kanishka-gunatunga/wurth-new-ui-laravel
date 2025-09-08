@@ -86,34 +86,28 @@
                             <div class="card-body d-flex flex-column gap-4">
                                 <h5 class="card-title">Selected Customers Details</h5>
                                 <div class="details-card">
-                                    <div>
+                                    <div class="card-content">
                                         <p>
-
                                             <span class="bold-text-sm">Customer Name :</span>
-                                            <span class="slip-detail-text-sm">&nbsp;Dimo Lanka -
-                                                Colombo</span>
+                                            <span class="slip-detail-text-sm value" data-field="name">&nbsp;Dimo Lanka - Colombo</span>
                                         </p>
                                         <p>
-
-                                            <span class="bold-text-sm">Customer’s Mobile No. :</span><span
-                                                class="slip-detail-text-sm">&nbsp;0754265235</span>
+                                            <span class="bold-text-sm">Customer’s Mobile No. :</span>
+                                            <span class="slip-detail-text-sm value" data-field="mobile">&nbsp;0754265235</span>
                                         </p>
                                         <p>
-
-                                            <span class="bold-text-sm">Customer’s Email :</span><span
-                                                class="slip-detail-text-sm">&nbsp;Dimo@wurthlanka.lk</span>
+                                            <span class="bold-text-sm">Customer’s Email :</span>
+                                            <span class="slip-detail-text-sm value" data-field="email">&nbsp;Dimo@wurthlanka.lk</span>
                                         </p>
-
                                         <p>
-                                            <span class="bold-text-sm">Customer’s Address :</span><span
-                                                class="slip-detail-text-sm">&nbsp;No.321, Colombo 07</span>
+                                            <span class="bold-text-sm">Customer’s Address :</span>
+                                            <span class="slip-detail-text-sm value" data-field="address">&nbsp;No.321, Colombo 07</span>
                                         </p>
                                     </div>
 
-
                                     <div class="d-block">
                                         <div class="d-flex gap-2 mb-3">
-                                            <button class="red-edit-button-sm">
+                                            <button class="red-edit-button-sm" onclick="toggleEdit(this)">
 
                                                 <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -124,8 +118,7 @@
 
                                                 Edit
                                             </button>
-
-                                            <button class="grey-undo-button-sm">
+                                            <button class="grey-undo-button-sm" onclick="removeCard(this)">
 
                                                 <svg width="14" height="2" viewBox="0 0 14 2" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -138,38 +131,31 @@
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="details-card">
-                                    <div>
+                                    <div class="card-content">
                                         <p>
-
                                             <span class="bold-text-sm">Customer Name :</span>
-                                            <span class="slip-detail-text-sm">&nbsp;Dimo Lanka -
-                                                Colombo</span>
+                                            <span class="slip-detail-text-sm value" data-field="name">&nbsp;Dimo Lanka - Colombo</span>
                                         </p>
                                         <p>
-
-                                            <span class="bold-text-sm">Customer’s Mobile No. :</span><span
-                                                class="slip-detail-text-sm">&nbsp;0754265235</span>
+                                            <span class="bold-text-sm">Customer’s Mobile No. :</span>
+                                            <span class="slip-detail-text-sm value" data-field="mobile">&nbsp;0754265235</span>
                                         </p>
                                         <p>
-
-                                            <span class="bold-text-sm">Customer’s Email :</span><span
-                                                class="slip-detail-text-sm">&nbsp;Dimo@wurthlanka.lk</span>
+                                            <span class="bold-text-sm">Customer’s Email :</span>
+                                            <span class="slip-detail-text-sm value" data-field="email">&nbsp;Dimo@wurthlanka.lk</span>
                                         </p>
-
                                         <p>
-                                            <span class="bold-text-sm">Customer’s Address :</span><span
-                                                class="slip-detail-text-sm">&nbsp;No.321, Colombo 07</span>
+                                            <span class="bold-text-sm">Customer’s Address :</span>
+                                            <span class="slip-detail-text-sm value" data-field="address">&nbsp;No.321, Colombo 07</span>
                                         </p>
                                     </div>
 
-
                                     <div class="d-block">
                                         <div class="d-flex gap-2 mb-3">
-                                            <button class="red-edit-button-sm">
+                                            <button class="red-edit-button-sm" onclick="toggleEdit(this)">
 
                                                 <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -180,8 +166,7 @@
 
                                                 Edit
                                             </button>
-
-                                            <button class="grey-undo-button-sm">
+                                            <button class="grey-undo-button-sm" onclick="removeCard(this)">
 
                                                 <svg width="14" height="2" viewBox="0 0 14 2" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -194,7 +179,6 @@
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -364,21 +348,67 @@
     });
 </script>
 
+<!-- details-card edit and remove functionality -->
 <script>
-function filterCheckboxes() {
-    const searchInput = document.getElementById('search-input').value.toLowerCase();
-    const checkboxItems = document.querySelectorAll('.checkbox-item');
+    function toggleEdit(button) {
+        const card = button.closest(".details-card");
+        const values = card.querySelectorAll(".value");
 
-    checkboxItems.forEach(item => {
-        const fullName = item.querySelector('td:first-child label').textContent.toLowerCase();
-        const invoiceNumber = item.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        if (button.dataset.mode !== "edit") {
+            // Switch to edit mode
+            values.forEach(span => {
+                const text = span.innerText.trim();
+                span.innerHTML = `<input type="text" value="${text}" class="edit-input"/>`;
+            });
 
-        // Show the item if either Full Name or Invoice Number matches
-        if (fullName.includes(searchInput) || invoiceNumber.includes(searchInput)) {
-            item.classList.remove('hidden');
+            // Change button to "Save"
+            button.innerHTML = `Save`;
+            button.dataset.mode = "edit";
         } else {
-            item.classList.add('hidden');
+            // Save mode
+            values.forEach(span => {
+                const input = span.querySelector("input");
+                if (input) {
+                    span.innerHTML = "&nbsp;" + input.value;
+                }
+            });
+
+            // Restore original "Edit" button with SVG
+            button.innerHTML = `
+      <svg width="13" height="12" viewBox="0 0 13 12" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M3 9.5H3.7125L8.6 4.6125L7.8875 3.9L3 8.7875V9.5ZM2 10.5V8.375L8.6 1.7875C8.7 1.69583 8.8105 1.625 8.9315 1.575C9.0525 1.525 9.1795 1.5 9.3125 1.5C9.4455 1.5 9.57467 1.525 9.7 1.575C9.82534 1.625 9.93367 1.7 10.025 1.8L10.7125 2.5C10.8125 2.59167 10.8855 2.7 10.9315 2.825C10.9775 2.95 11.0003 3.075 11 3.2C11 3.33333 10.9772 3.4605 10.9315 3.5815C10.8858 3.7025 10.8128 3.81283 10.7125 3.9125L4.125 10.5H2ZM8.2375 4.2625L7.8875 3.9L8.6 4.6125L8.2375 4.2625Z"
+              fill="white" />
+      </svg>
+      Edit
+    `;
+            button.dataset.mode = "view";
         }
-    });
-}
+    }
+
+    function removeCard(button) {
+        const card = button.closest(".details-card");
+        card.remove(); // completely removes the card
+    }
+</script>
+
+
+<script>
+    function filterCheckboxes() {
+        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const checkboxItems = document.querySelectorAll('.checkbox-item');
+
+        checkboxItems.forEach(item => {
+            const fullName = item.querySelector('td:first-child label').textContent.toLowerCase();
+            const invoiceNumber = item.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+            // Show the item if either Full Name or Invoice Number matches
+            if (fullName.includes(searchInput) || invoiceNumber.includes(searchInput)) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    }
 </script>
