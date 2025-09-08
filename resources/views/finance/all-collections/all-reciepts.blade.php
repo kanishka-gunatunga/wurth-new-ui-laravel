@@ -96,7 +96,7 @@
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                <input type="text" class="search-input" placeholder="Search Receipt Number, Invoice Number, ADM Number or Name" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
             <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
@@ -1443,6 +1443,57 @@
     });
 </script>
 
+<!--  search function -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const globalSearchInput = document.querySelector("#search-box-wrapper .search-input");
+
+        globalSearchInput.addEventListener("input", function() {
+            const query = this.value.trim().toLowerCase();
+
+            // filter Final Receipts
+            const filteredFinal = FinalRecieptInvoices.filter(item =>
+                item.receipt.toLowerCase().includes(query) ||
+                (item.invoiceNumber && item.invoiceNumber.toLowerCase().includes(query)) ||
+                (item.ADMName && item.ADMName.toLowerCase().includes(query)) ||
+                (item.customer && item.customer.toLowerCase().includes(query))
+            );
+
+            // filter Temporary Receipts Invoices
+            const filteredTR = TRInvoices.filter(item =>
+                item.receiptNumber.toLowerCase().includes(query) ||
+                (item.admNumber && item.admNumber.toLowerCase().includes(query)) ||
+                (item.admName && item.admName.toLowerCase().includes(query)) ||
+                (item.customer && item.customer.toLowerCase().includes(query))
+            );
+
+            // filter Temporary Receipts Advance Payments
+            const filteredReceipts = temporaryReceiptsAdvancePaymentTableBody.filter(item =>
+                item.receiptNumber.toLowerCase().includes(query) ||
+                (item.admNumber && item.admNumber.toLowerCase().includes(query)) ||
+                (item.admName && item.admName.toLowerCase().includes(query)) ||
+                (item.customer && item.customer.toLowerCase().includes(query))
+            );
+
+            // reset pages to 1
+            currentPages['final'] = 1;
+            currentPages['tr'] = 1;
+            currentPages['receipts'] = 1;
+
+            // re-render tables + paginations
+            renderTable("final", filteredFinal, 1);
+            renderPagination("final", filteredFinal);
+
+            renderTable("tr", filteredTR, 1);
+            renderPagination("tr", filteredTR);
+
+            renderTable("receipts", filteredReceipts, 1);
+            renderPagination("receipts", filteredReceipts);
+        });
+    });
+</script>
+
+
 <script>
     document.querySelectorAll('.selectable-filter').forEach(function(tag) {
         tag.addEventListener('click', function() {
@@ -1468,28 +1519,28 @@
 
 <!-- pop-up resend SMS modal -->
 <script>
-document.addEventListener('click', function(e) {
-    // Show Resend SMS Modal
-    if (
-        (e.target.classList.contains('red-action-btn') && e.target.textContent.trim() === 'Resend SMS') ||
-        e.target.classList.contains('success-action-btn')
-    ) {
-        e.preventDefault();
-        document.getElementById('resend-sms-modal').style.display = 'block';
-    }
+    document.addEventListener('click', function(e) {
+        // Show Resend SMS Modal
+        if (
+            (e.target.classList.contains('red-action-btn') && e.target.textContent.trim() === 'Resend SMS') ||
+            e.target.classList.contains('success-action-btn')
+        ) {
+            e.preventDefault();
+            document.getElementById('resend-sms-modal').style.display = 'block';
+        }
 
-    // Close Resend SMS Modal (X button)
-    if (e.target.id === 'resend-sms-close') {
-        document.getElementById('resend-sms-modal').style.display = 'none';
-    }
+        // Close Resend SMS Modal (X button)
+        if (e.target.id === 'resend-sms-close') {
+            document.getElementById('resend-sms-modal').style.display = 'none';
+        }
 
-    // Close Resend SMS Modal (Resend SMS button inside modal)
-    if (e.target.id === 'resend-sms-btn') {
-        e.preventDefault();
-        // 👉 add resend SMS logic here
-        document.getElementById('resend-sms-modal').style.display = 'none';
-    }
-});
+        // Close Resend SMS Modal (Resend SMS button inside modal)
+        if (e.target.id === 'resend-sms-btn') {
+            e.preventDefault();
+            // 👉 add resend SMS logic here
+            document.getElementById('resend-sms-modal').style.display = 'none';
+        }
+    });
 </script>
 
 @endsection

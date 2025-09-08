@@ -69,7 +69,7 @@
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
             <div id="search-box-wrapper" class="collapsed">
                 <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                <input type="text" class="search-input" placeholder="Search sender" />
             </div>
             <button class="header-btn" id="search-toggle-button"><i
                     class="fa-solid fa-magnifying-glass fa-xl"></i></button>
@@ -137,36 +137,36 @@
     </div>
     <div class="offcanvas-body">
         <div class="row">
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>ADMs</span>
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>ADMs</span>
 
-                </div>
-
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Marketing</span>
-
-                </div>
-
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Admin</span>
-
-                </div>
-
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Finance</span>
-
-                </div>
-
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Team Leaders</span>
-
-                </div>
-
-                <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
-                    <span>Head of Division</span>
-
-                </div>
             </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Marketing</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Admin</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Finance</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Team Leaders</span>
+
+            </div>
+
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+                <span>Head of Division</span>
+
+            </div>
+        </div>
 
 
         <div class="mt-5 filter-categories">
@@ -546,12 +546,46 @@
     });
 </script>
 
+<!-- Search functionality -->
 <script>
-                document.querySelectorAll('.selectable-filter').forEach(function(tag) {
-                    tag.addEventListener('click', function() {
-                        tag.classList.toggle('selected');
-                    });
-                });
-            </script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.querySelector("#search-box-wrapper .search-input");
+
+        searchInput.addEventListener("input", function() {
+            const query = this.value.trim().toLowerCase();
+
+            // filter by sender
+            const filteredPayment = notificationsData.paymentNotifications.filter(n =>
+                n.sender.toLowerCase().includes(query)
+            );
+            const filteredTemporary = notificationsData.temporaryNotifications.filter(n =>
+                n.sender.toLowerCase().includes(query)
+            );
+
+            // temporarily swap data, render, then restore
+            const originalPayment = notificationsData.paymentNotifications;
+            const originalTemporary = notificationsData.temporaryNotifications;
+
+            notificationsData.paymentNotifications = filteredPayment;
+            notificationsData.temporaryNotifications = filteredTemporary;
+
+            renderNotifications("paymentNotifications");
+            renderNotifications("temporaryNotifications");
+
+            // restore originals so pagination always works correctly
+            notificationsData.paymentNotifications = originalPayment;
+            notificationsData.temporaryNotifications = originalTemporary;
+        });
+    });
+</script>
+
+
+<script>
+    document.querySelectorAll('.selectable-filter').forEach(function(tag) {
+        tag.addEventListener('click', function() {
+            tag.classList.toggle('selected');
+        });
+    });
+</script>
 
 @endsection

@@ -67,7 +67,7 @@
             <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 ">
                 <div id="search-box-wrapper" class="collapsed">
                     <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                    <input type="text" class="search-input" placeholder="Search customer ID, Name or ADM ID, Name" />
+                    <input type="text" class="search-input" placeholder="Search customer ID" />
                 </div>
                 <button class="header-btn" id="search-toggle-button"><i
                         class="fa-solid fa-magnifying-glass fa-xl"></i></button>
@@ -116,10 +116,20 @@
                 <div id="customer-list" class="tab-pane fade show active" role="tabpanel"
                     aria-labelledby="customer-list-tab">
                     <div class="col-12 d-flex justify-content-end  mb-5">
-                        <a href="add-new-customer.html">
-                            <button class="add-new-division-btn">+ Add New Customer</button>
-                        </a>
-                    </div>
+                    <a href="{{ url('/admin-add-new-customer') }}">
+                        {{-- <button class="add-new-division-btn">+ Add New Customer</button> --}}
+                        <button class="red-action-btn-lg add-new-payment-btn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.50726 10.5634H4.85938V9.0141H9.50726V4.36621H11.0566V9.0141H15.7044V10.5634H11.0566V15.2113H9.50726V10.5634Z"
+                                    fill="white" />
+                            </svg>
+
+                            Add New Customer
+                        </button>
+                    </a>
+                </div>
 
                     <div class="table-responsive">
                         <table class="table custom-table-locked" style="min-width: 2800px;">
@@ -607,7 +617,10 @@
                     <td>${data[i].contactPerson}</td>
                     <td>${data[i].totalOutstanding.toFixed(2)}</td>
                     <td class="sticky-column">
-                        <button class="black-action-btn" onclick="window.location.href='customer-details.html?customerId=${data[i].customerId}'">View More</button>
+                        <a href="{{ url('admin-customer-details') }}">
+                        
+                        <button class="black-action-btn">View More</button>
+                        </a>
                     </td>
                 </tr>`;
                 } else if (tableId === 'temporaryCustomers') {
@@ -699,6 +712,38 @@
             });
         });
     </script>
+
+    <!-- Search functionality -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const customerSearchInput = document.querySelector("#search-box-wrapper .search-input");
+
+                customerSearchInput.addEventListener("input", function() {
+                    const query = this.value.trim().toLowerCase();
+
+                    // Filter customer management data
+                    const filteredCustomerData = customerManagementTableData.filter(item =>
+                        item.customerId.toLowerCase().includes(query)
+                    );
+
+                    // Filter temporary customers data
+                    const filteredTemporaryData = temporaryCustomersTableData.filter(item =>
+                        item.customerId.toLowerCase().includes(query)
+                    );
+
+                    // Reset to first page when searching
+                    currentPages.customerManagement = 1;
+                    currentPages.temporaryCustomers = 1;
+
+                    // Render filtered results
+                    renderTable("customerManagement", filteredCustomerData, currentPages.customerManagement);
+                    renderPagination("customerManagement", filteredCustomerData);
+
+                    renderTable("temporaryCustomers", filteredTemporaryData, currentPages.temporaryCustomers);
+                    renderPagination("temporaryCustomers", filteredTemporaryData);
+                });
+            });
+        </script>
 
     <script>
                 document.querySelectorAll('.selectable-filter').forEach(function(tag) {
