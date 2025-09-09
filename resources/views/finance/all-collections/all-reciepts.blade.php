@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table custom-table-locked">
+                    <table class="table custom-table-locked" style="min-width: 1300px;">
                         <thead>
                             <tr>
                                 <th>Customer Name</th>
@@ -199,7 +199,7 @@
             <div class="tab-pane fade" id="temporary-receipts-invoices-pane" role="tabpanel"
                 aria-labelledby="temporary-receipts-invoices" tabindex="0">
                 <div class="table-responsive">
-                    <table class="table custom-table-locked">
+                    <table class="table custom-table-locked" style="min-width: 1300px;">
                         <thead>
                             <tr>
                                 <th scope="col">Customer Name</th>
@@ -222,6 +222,7 @@
                 </nav>
             </div>
 
+                        
             <div class="tab-pane fade" id="temporary-receipts-advance-payment-pane" role="tabpanel"
                 aria-labelledby="temporary-receipts-advance-payment" tabindex="0">
                 <div class="col-12 d-flex justify-content-end pe-0 mb-3 gap-3">
@@ -237,7 +238,7 @@
                     </tr>
                 </div>
                 <div class="table-responsive">
-                    <table class="table custom-table-locked">
+                    <table class="table custom-table-locked" style="min-width: 1300px;">
                         <thead>
                             <tr>
                                 <th scope="col">Customer Name</th>
