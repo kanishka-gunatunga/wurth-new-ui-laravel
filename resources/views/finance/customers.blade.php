@@ -56,6 +56,14 @@
         .col-12.d-flex.justify-content-lg-end {
             align-items: center;
         }
+
+        @media (max-width: 1070px) {
+  .custom-col {
+    flex: 0 0 auto;
+    width: 75%;   /* col-9 = 9/12 = 75% */
+  }
+}
+
     </style>
 
     <div class="main-wrapper">
@@ -163,7 +171,7 @@
                 <!-- Temporary Customers Tab Pane -->
                 <div id="temporary" class="tab-pane fade mt-5" role="tabpanel" aria-labelledby="temporary-tab">
                     <div class="d-flex justify-content-center temp-customers-bg">
-                        <div class="col-7">
+                        <div class="col-7 custom-col">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -628,7 +636,13 @@
                     <td>${data[i].admName}</td>
                     <td>${data[i].admNumber}</td>
                     <td>${data[i].customerId}</td>
-                    <td><button class="action-btn" onclick="window.location.href='edit-temporary-customer.html'">Edit</button></td>
+                    <td>
+                        <a href="{{ url('admin-edit-temporary-customer') }}">
+                        <button class="action-btn">
+                            Edit
+                        </button>
+                        </a>
+                    </td>
                 </tr>`;
                 }
                 tableBody.innerHTML += row;

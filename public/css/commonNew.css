@@ -220,7 +220,7 @@
 .division-table-sub .table {
   font-family: Poppins;
   font-size: 18px;
-  min-width: 900px; /* adjust this until only 6 columns are visible */
+  min-width: 725px; /* adjust this until only 6 columns are visible(900) */
 }
 
 /* Fix the last column (Actions) */
@@ -244,6 +244,37 @@
 .division-table-sub .unlock-btn {
   background-color: #008448;
   color: white;
+}
+
+
+
+
+
+/* Screens below 1400px */
+@media (max-width: 1400px) {
+  .division-table-sub .table {
+    min-width: 55vw;  /* adjust table to viewport */
+  }
+}
+
+/* Medium screens: 978px – 1150px */
+@media (min-width: 978px) and (max-width: 1150px) {
+  .division-table-sub .table {
+    min-width: 50vw;
+    font-size: 16px;
+  }
+}
+
+/* Small screens ≤ 977px */
+@media (max-width: 977px) {
+  .division-table-sub {
+    overflow-x: auto; /* ensure scrolling is always enabled */
+  }
+
+  .division-table-sub .table {
+    min-width: 40vw;  /* table width fits smaller screens */
+    font-size: 16px;  /* smaller font for readability */
+  }
 }
 
 
@@ -442,7 +473,7 @@
 }
 
 .outside-label {
-  font-size: 16px !important;
+  font-size: 12px !important;
   color: #9d9d9d;
 }
 

@@ -92,6 +92,21 @@ td {
     color: #FFFFFF;
 }
 
+@media (max-width: 837px) {
+    .black-action-btn-lg.submit {
+        padding: 8px 40px;   /* reduce horizontal and vertical padding */
+        font-size: 14px;     /* slightly smaller font */
+        min-width: auto;     /* let it shrink naturally */
+    }
+
+    /* Optional: scale down the SVG icon slightly */
+    .black-action-btn-lg.submit svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
 .success-action-btn-lg {
     background-color: #008448;
     color: #FFFFFF;
@@ -165,6 +180,50 @@ td {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
+
+/* Default table responsiveness (for screens below 1400px) */
+@media (max-width: 1400px) {
+    .table-responsive {
+        max-width: 65vw;        /* table fits parent, allows some margin */
+        overflow-x: auto;       /* horizontal scroll if content overflows */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive table {
+        width: 100%;            /* table fills container */
+        table-layout: auto;
+    }
+}
+
+/* Tables for medium screens: 921px – 1150px */
+@media (min-width: 921px) and (max-width: 1150px) {
+    .table-responsive {
+        max-width: 60vw;        /* slightly wider to fit screen */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive table {
+        width: 100%;
+        table-layout: auto;
+    }
+}
+
+/* Tables for smaller screens ≤920px */
+@media (max-width: 920px) {
+    .table-responsive {
+        max-width: 50vw;        /* narrower for small screens */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table-responsive table {
+        width: 100%;
+        table-layout: auto;
+    }
+}
+
+
 /* .table {
     min-width: 600px;
 } */
@@ -204,6 +263,39 @@ td {
     justify-content: end; 
     align-items: center;
     gap: 1.2rem;
+}
+
+@media (max-width: 1065px) {
+  .action-button-lg-row {
+
+    gap: 1rem; /* optional: slightly smaller gap */
+    padding-right: 2rem;
+  }
+
+  .action-button-lg-row a.grey-action-btn-lg,
+  .action-button-lg-row .red-action-btn-lg,
+  .action-button-lg-row .success-action-btn-lg {
+    padding: 0.6rem 1.2rem; /* slightly reduced padding */
+    font-size: 0.95rem;      /* just a bit smaller */
+    min-width: 110px;        /* keeps consistency */
+  }
+}
+
+
+@media (max-width: 840px) {
+  .action-button-lg-row {
+justify-content: center;
+    gap: 1rem; /* optional: slightly smaller gap */
+
+  }
+
+  .action-button-lg-row a.grey-action-btn-lg,
+  .action-button-lg-row .red-action-btn-lg,
+  .action-button-lg-row .success-action-btn-lg {
+    padding: 0.6rem 1.2rem; /* slightly reduced padding */
+    font-size: 0.95rem;      /* just a bit smaller */
+    min-width: 110px;        /* keeps consistency */
+  }
 }
 
 
