@@ -661,6 +661,23 @@
         const endIndex = Math.min(startIndex + rowsPerPage, data.length);
 
         for (let i = startIndex; i < endIndex; i++) {
+            let statusClass = '';
+            switch (data[i].status) {
+                case 'Approved':
+                case 'approved':
+                    statusClass = 'success-status-btn';
+                    break;
+                case 'Deposited':
+                case 'deposited':
+                    statusClass = 'blue-status-btn';
+                    break;
+                case 'Rejected':
+                case 'rejected':
+                    statusClass = 'danger-status-btn';
+                    break;
+                default:
+                    statusClass = 'grey-status-btn';
+            }
             const row = `
                 <tr>
                     <td>${data[i].inquiryType}</td>
@@ -670,7 +687,7 @@
                     <td>
                         <a href="/attachments/${data[i].attachment}" target="_blank">${data[i].attachment}</a>
                     </td>
-                    <td>${data[i].status}</td>
+                    <td><button class="${statusClass}"> ${data[i].status}</button></td>
                     <td class="sticky-column">
                         <button class="success-action-btn">Approve</button>
                         <button class="red-action-btn">Reject</button>

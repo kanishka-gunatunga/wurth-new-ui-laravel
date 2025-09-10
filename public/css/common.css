@@ -233,6 +233,20 @@ body {
   background: #a8a8a8;
 }
 
+/* ✅ Below 1238px: keep width, add horizontal scroll */
+@media (max-width: 1238px) {
+  .activities-card {
+    overflow-x: auto;                /* allow horizontal scroll */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .activities-list {
+    min-width: 200px;                /* lock to same width as large screens */
+    max-width: 100%;                 /* prevent overflow beyond card */
+    overflow-x: auto;                /* horizontal scroll if needed */
+  }
+}
+
 .activity-item {
   padding: 1rem 0;
   border-bottom: 1px solid #f0f0f0;

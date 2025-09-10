@@ -61,6 +61,19 @@
             background-color: #771d1d0d;
             padding: 30px;
         }
+
+        /* Below 1384px → keep width same, allow scrolling */
+    @media (max-width: 1384px) {
+        .table-responsive {
+            overflow-x: auto;
+            /* enable horizontal scroll */
+        }
+
+        .table-responsive table {
+            min-width: 35vw;
+            /* force same width as 1385px */
+        }
+    }
     </style>
 
 

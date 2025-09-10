@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-wrapper">
     <div class="d-flex justify-content-between">
-        <div class="col-lg-2 col-12">
+        <div class="col-lg-4 col-12">
             <h1 class="header-title">Set - Off</h1>
         </div>
 
