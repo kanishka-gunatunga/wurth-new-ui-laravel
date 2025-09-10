@@ -63,7 +63,7 @@
 
     <div class="row d-flex justify-content-between">
         <div class="col-lg-6 col-12">
-            <h1 class="header-title">Cash Deposites</h1>
+            <h1 class="header-title">Cash Deposits</h1>
         </div>
         <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
             <div id="search-box-wrapper" class="collapsed">
@@ -83,7 +83,6 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Deposite Types</th>
                         <th>Status</th>
                         <th>ADM Number</th>
                         <th>ADM Name</th>
@@ -527,7 +526,6 @@
     // Cash deposit data
     const cashDepositeTableData = [{
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Approved",
             admNumber: "ADM1001",
             admName: "Alice Smith",
@@ -536,7 +534,6 @@
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Paid",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
@@ -545,7 +542,6 @@
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Approved",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
@@ -554,7 +550,6 @@
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "Approved",
             admNumber: "ADM1004",
             admName: "Diana Prince",
@@ -563,7 +558,6 @@
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Approved",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
@@ -572,7 +566,6 @@
         },
         {
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Rejected",
             admNumber: "ADM1001",
             admName: "Alice Smith",
@@ -581,7 +574,6 @@
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Approved",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
@@ -590,7 +582,6 @@
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Approved",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
@@ -599,7 +590,6 @@
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "paid",
             admNumber: "ADM1004",
             admName: "Diana Prince",
@@ -608,7 +598,6 @@
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Paid",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
@@ -616,7 +605,6 @@
 
         }, {
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Paid",
             admNumber: "ADM1001",
             admName: "Alice Smith",
@@ -625,7 +613,6 @@
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Approved",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
@@ -634,7 +621,6 @@
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Approved",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
@@ -643,7 +629,6 @@
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "Paid",
             admNumber: "ADM1004",
             admName: "Diana Prince",
@@ -652,7 +637,6 @@
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Rejected",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
@@ -696,7 +680,6 @@
             const row = `
         <tr class="clickable-row" data-href="/payment-slip">
             <td>${data[i].date}</td>
-            <td>${data[i].depositType}</td>
             <td><button class="${statusClass}"> ${data[i].status}</button></td>
             <td>${data[i].admNumber}</td>
             <td>${data[i].admName}</td>

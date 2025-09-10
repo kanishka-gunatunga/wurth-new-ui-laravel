@@ -89,8 +89,6 @@
                         <th>Customer Name</th>
                         <th>Payment Amount</th>
                         <th>Reason</th>
-                        <th>Attachment</th>
-                        <th>Customer Signature</th>
                         <th class="sticky-column">Actions</th>
 
                     </tr>
@@ -525,8 +523,6 @@
             customerName: "John Doe",
             paymentAmount: 1500.00,
             reason: "Invoice Payment",
-            attachment: "invoice_1001.pdf",
-            customerSignature: "signature_1001.png"
         },
         {
             date: "2024-06-03",
@@ -535,8 +531,6 @@
             customerName: "Jane Roe",
             paymentAmount: 2000.00,
             reason: "Cheque Deposit",
-            attachment: "cheque_2002.pdf",
-            customerSignature: "signature_2002.png"
         },
         {
             date: "2024-05-28",
@@ -545,8 +539,6 @@
             customerName: "Mike Lee",
             paymentAmount: 3500.00,
             reason: "Advance Payment",
-            attachment: "advance_3003.pdf",
-            customerSignature: "signature_3003.png"
         },
         {
             date: "2024-06-05",
@@ -555,8 +547,6 @@
             customerName: "Sara Kim",
             paymentAmount: 5000.00,
             reason: "Refund",
-            attachment: "refund_4004.pdf",
-            customerSignature: "signature_4004.png"
         },
         {
             date: "2024-06-07",
@@ -565,8 +555,6 @@
             customerName: "Tom Clark",
             paymentAmount: 1200.00,
             reason: "Partial Payment",
-            attachment: "partial_5005.pdf",
-            customerSignature: "signature_5005.png"
         },
         {
             date: "2024-06-08",
@@ -575,8 +563,6 @@
             customerName: "Anna Bell",
             paymentAmount: 1800.00,
             reason: "Cheque Deposit",
-            attachment: "cheque_6006.pdf",
-            customerSignature: "signature_6006.png"
         },
         {
             date: "2024-06-09",
@@ -585,8 +571,6 @@
             customerName: "Chris Evans",
             paymentAmount: 2200.00,
             reason: "Invoice Payment",
-            attachment: "invoice_7007.pdf",
-            customerSignature: "signature_7007.png"
         },
         {
             date: "2024-06-10",
@@ -595,8 +579,6 @@
             customerName: "Lisa Ray",
             paymentAmount: 2700.00,
             reason: "Advance Payment",
-            attachment: "advance_8008.pdf",
-            customerSignature: "signature_8008.png"
         },
         {
             date: "2024-06-11",
@@ -605,8 +587,6 @@
             customerName: "Paul Young",
             paymentAmount: 3200.00,
             reason: "Refund",
-            attachment: "refund_9009.pdf",
-            customerSignature: "signature_9009.png"
         },
         {
             date: "2024-06-12",
@@ -615,8 +595,6 @@
             customerName: "Nina Fox",
             paymentAmount: 4000.00,
             reason: "Partial Payment",
-            attachment: "partial_1010.pdf",
-            customerSignature: "signature_1010.png"
         }
     ];
 
@@ -635,19 +613,13 @@
 
         for (let i = startIndex; i < endIndex; i++) {
             const row = `
-                 <tr>
+                 <tr class="clickable-row" data-href="/advance-payments-details">
                     <td>${data[i].date}</td>
                     <td>${data[i].admNumber}</td>
                     <td>${data[i].admName}</td>
                     <td>${data[i].customerName}</td>
                     <td>${data[i].paymentAmount.toFixed(2)}</td>
                     <td>${data[i].reason}</td>
-                    <td>
-                        <a href="${data[i].attachment}" download>${data[i].attachment}</a>
-                    </td>
-                    <td>
-                        <img src="${data[i].customerSignature}" alt="Signature" style="height:32px;">
-                    </td>
                     <td class="sticky-column">
                         <button class="success-action-btn">Approve</button>
                         <button class="red-action-btn">Reject</button>
@@ -715,6 +687,16 @@
     };
 </script>
 
+<!-- link entire row of table -->
+<script>
+    document.addEventListener('click', function(e) {
+        const row = e.target.closest('.clickable-row');
+        if (row && !e.target.closest('button')) {
+            window.location.href = row.getAttribute('data-href');
+        }
+    });
+</script>
+
 <!-- Search functionality -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -754,8 +736,6 @@
                     <td>${data[i].customerName}</td>
                     <td>${data[i].paymentAmount.toFixed(2)}</td>
                     <td>${data[i].reason}</td>
-                    <td><a href="${data[i].attachment}" download>${data[i].attachment}</a></td>
-                    <td><img src="${data[i].customerSignature}" alt="Signature" style="height:32px;"></td>
                     <td class="sticky-column">
                         <button class="success-action-btn">Approve</button>
                         <button class="red-action-btn">Reject</button>

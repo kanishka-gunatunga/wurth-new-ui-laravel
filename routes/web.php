@@ -43,6 +43,11 @@ Route::get('/advance-payments', function () {
     return view('finance.all-collections.advance-payments');
 });
 
+// advance payments-details
+Route::get('/advance-payments-details', function () {
+    return view('finance.all-collections.advance-payments-details');
+});
+
 // all outstanding
 Route::get('/all-outstanding', function () {
     return view('finance.all-collections.all-outstanding');
