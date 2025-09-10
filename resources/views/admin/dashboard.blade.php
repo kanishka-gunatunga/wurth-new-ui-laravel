@@ -63,42 +63,42 @@
           </div> -->
 
           <div class="row gx-4 gy-3 dashboard-stats">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <div class="stat-card p-3">
-                <p class="stat-label">Total Users</p>
-                <h3 class="stat-number">231</h3>
-              </div>
-            </div>
-
-            <div class="col-md-2">
-              <div class="stat-card p-3">
-                <p class="stat-label">Sales Representatives</p>
-                <h3 class="stat-number">180</h3>
+                <p class="stat-label">Current Month Actual Deposits</p>
+                <h3 class="stat-number">LKR 12,500.00</h3>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="stat-card p-3">
-                <p class="stat-label">Team Leaders</p>
-                <h3 class="stat-number">12</h3>
+                <p class="stat-label">On-Hand Collection</p>
+                <h3 class="stat-number">LKR 34,500.00</h3>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="stat-card p-3">
-                <p class="stat-label">Area Sales Managers</p>
-                <h3 class="stat-number">10</h3>
+                <p class="stat-label">Current Month Collection</p>
+                <h3 class="stat-number">LKR 92,500.00</h3>
               </div>
             </div>
 
             <div class="col-md-3">
               <div class="stat-card p-3">
-                <p class="stat-label">Regional Sales Managers</p>
-                <h3 class="stat-number">15</h3>
+                <p class="stat-label">Current Month Cheque Collection</p>
+                <h3 class="stat-number">LKR 120,500.00</h3>
               </div>
             </div>
 
             <div class="col-md-3">
+              <div class="stat-card p-3">
+                <p class="stat-label">Cash on Hand</p>
+                <h3 class="stat-number">LKR 13,500.00</h3>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-3">
               <div class="stat-card p-3">
                 <p class="stat-label">Warehouse Managers</p>
                 <h3 class="stat-number">2</h3>
@@ -117,7 +117,7 @@
                 <p class="stat-label"> Head of Division</p>
                 <h3 class="stat-number">4</h3>
               </div>
-            </div>
+            </div> -->
 
           </div>
 

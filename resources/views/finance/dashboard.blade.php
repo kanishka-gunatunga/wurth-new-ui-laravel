@@ -144,7 +144,7 @@
                     <div class="section-card">
                         <div class="card-body">
                             <h3 class="table-title">Recent Cheque Deposits</h3>
-                            <div class="table-responsive">
+                            <div class="table-responsive unlock-column-table-wrapper">
                                 <table class="table unlock-column-table ">
                                     <thead>
                                         <tr>

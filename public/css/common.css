@@ -71,7 +71,10 @@ body {
 
 /* Center the cards */
 .dashboard-stats {
+  display: flex;
+  flex-wrap: wrap;  /* ✅ allow wrapping */
   justify-content: center;
+  gap: 1rem; /* optional: spacing between cards */
 }
 
 /* Stats Cards */

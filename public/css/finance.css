@@ -230,10 +230,12 @@ td {
 } */
 .dashboard-stats .col-md-2 {
     width: 18.5%;
+    min-width: 220px; /* ✅ prevent shrinking too small */
 }
 
 .dashboard-stats .col-md-3 {
     width: 22%;
+    min-width: 250px; /* ✅ prevent shrinking too small */
 } 
 
 .header-with-button {
