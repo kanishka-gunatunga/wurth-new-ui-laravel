@@ -316,7 +316,7 @@
 @endsection
 @section('bottom-bar')
 <div class="action-button-lg-row ">
-    <a href="{{ url('add-new-collection')}}">
+    <a href="{{ url('dashboard')}}">
         <button class="black-action-btn-lg mb-3 ">
             Cancel
         </button>

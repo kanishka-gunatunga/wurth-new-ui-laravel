@@ -80,7 +80,7 @@
     <div class="styled-tab-main">
         <div class="header-and-content-gap-lg"></div>
         <div class="table-responsive">
-            <table class="table custom-table-locked" style="min-width: 2000px;">
+            <table class="table custom-table-locked" style="min-width: 1600px;">
                 <thead>
                     <tr>
                         <th>Date</th>
@@ -88,7 +88,6 @@
                         <th>ADM Name</th>
                         <th>Customer Name</th>
                         <th>Payment Amount</th>
-                        <th>Reason</th>
                         <th class="sticky-column">Actions</th>
 
                     </tr>
@@ -405,70 +404,6 @@
     </div>
 </div>
 
-<!-- Approve Modal -->
-<div id="approve-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
-
-        <!-- Close button -->
-        <button id="approve-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Approval</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to confirm this payment. Please provide a reason for approval.
-        </p>
-
-        <!-- Textarea with button inside -->
-        <div style="position:relative;">
-            <textarea id="approve-modal-input" rows="3" placeholder="Enter your reason here...."
-                style="width:100%; border:1px solid #ddd; border-radius:12px; padding:0.75rem 3rem 0.75rem 1rem; font-size:0.95rem; resize:none; outline:none;"></textarea>
-
-            <!-- Green tick button -->
-            <button id="approve-modal-tick" style="position:absolute; bottom:10px; right:10px; background:#2E7D32; border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-<!-- Reject Modal -->
-<div id="reject-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
-
-        <!-- Close button -->
-        <button id="reject-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Rejection</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to reject this payment. Please provide a reason for rejection.
-        </p>
-
-        <!-- Input fields -->
-        <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem;">
-            <input type="text" placeholder="Header"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-            <input type="text" placeholder="GL"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-        </div>
-
-        <!-- Red tick button -->
-        <div style="display:flex; justify-content:flex-end;">
-            <button id="reject-modal-tick" style="background:#CC0000; border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
 
 
 
@@ -522,7 +457,6 @@
             admName: "Alice Smith",
             customerName: "John Doe",
             paymentAmount: 1500.00,
-            reason: "Invoice Payment",
         },
         {
             date: "2024-06-03",
@@ -530,7 +464,6 @@
             admName: "Bob Johnson",
             customerName: "Jane Roe",
             paymentAmount: 2000.00,
-            reason: "Cheque Deposit",
         },
         {
             date: "2024-05-28",
@@ -538,7 +471,6 @@
             admName: "Charlie Brown",
             customerName: "Mike Lee",
             paymentAmount: 3500.00,
-            reason: "Advance Payment",
         },
         {
             date: "2024-06-05",
@@ -546,7 +478,6 @@
             admName: "Diana Prince",
             customerName: "Sara Kim",
             paymentAmount: 5000.00,
-            reason: "Refund",
         },
         {
             date: "2024-06-07",
@@ -554,7 +485,6 @@
             admName: "Edward Nigma",
             customerName: "Tom Clark",
             paymentAmount: 1200.00,
-            reason: "Partial Payment",
         },
         {
             date: "2024-06-08",
@@ -562,7 +492,6 @@
             admName: "Fiona Glenanne",
             customerName: "Anna Bell",
             paymentAmount: 1800.00,
-            reason: "Cheque Deposit",
         },
         {
             date: "2024-06-09",
@@ -570,7 +499,6 @@
             admName: "George Miller",
             customerName: "Chris Evans",
             paymentAmount: 2200.00,
-            reason: "Invoice Payment",
         },
         {
             date: "2024-06-10",
@@ -578,7 +506,6 @@
             admName: "Helen Carter",
             customerName: "Lisa Ray",
             paymentAmount: 2700.00,
-            reason: "Advance Payment",
         },
         {
             date: "2024-06-11",
@@ -586,7 +513,6 @@
             admName: "Ian Wright",
             customerName: "Paul Young",
             paymentAmount: 3200.00,
-            reason: "Refund",
         },
         {
             date: "2024-06-12",
@@ -594,7 +520,6 @@
             admName: "Julia Roberts",
             customerName: "Nina Fox",
             paymentAmount: 4000.00,
-            reason: "Partial Payment",
         }
     ];
 
@@ -613,20 +538,18 @@
 
         for (let i = startIndex; i < endIndex; i++) {
             const row = `
-                 <tr class="clickable-row" data-href="/advance-payments-details">
-                    <td>${data[i].date}</td>
-                    <td>${data[i].admNumber}</td>
-                    <td>${data[i].admName}</td>
-                    <td>${data[i].customerName}</td>
-                    <td>${data[i].paymentAmount.toFixed(2)}</td>
-                    <td>${data[i].reason}</td>
-                    <td class="sticky-column">
-                        <button class="success-action-btn">Approve</button>
-                        <button class="red-action-btn">Reject</button>
-                        <button class="black-action-btn submit">Download</button>
-                    </td>
-                </tr>
-            `;
+        <tr class="clickable-row" data-href="/advance-payments-details">
+            <td>${data[i].date}</td>
+            <td>${data[i].admNumber}</td>
+            <td>${data[i].admName}</td>
+            <td>${data[i].customerName}</td>
+            <td>${data[i].paymentAmount.toFixed(2)}</td>
+            <td class="sticky-column">
+                <button class="success-action-btn" data-href="/advance-payments-details">View More</button>
+                <button class="black-action-btn submit">Download</button>
+            </td>
+        </tr>
+    `;
             tableBody.innerHTML += row;
         }
     }
@@ -729,20 +652,18 @@
 
             for (let i = startIndex; i < endIndex; i++) {
                 const row = `
-                 <tr>
-                    <td>${data[i].date}</td>
-                    <td>${data[i].admNumber}</td>
-                    <td>${data[i].admName}</td>
-                    <td>${data[i].customerName}</td>
-                    <td>${data[i].paymentAmount.toFixed(2)}</td>
-                    <td>${data[i].reason}</td>
-                    <td class="sticky-column">
-                        <button class="success-action-btn">Approve</button>
-                        <button class="red-action-btn">Reject</button>
-                        <button class="black-action-btn submit">Download</button>
-                    </td>
-                </tr>
-            `;
+        <tr>
+            <td>${data[i].date}</td>
+            <td>${data[i].admNumber}</td>
+            <td>${data[i].admName}</td>
+            <td>${data[i].customerName}</td>
+            <td>${data[i].paymentAmount.toFixed(2)}</td>
+            <td class="sticky-column">
+                <button class="success-action-btn" data-href="/advance-payments-details">View More</button>
+                <button class="black-action-btn submit">Download</button>
+            </td>
+        </tr>
+    `;
                 tableBody.innerHTML += row;
             }
         }
@@ -843,12 +764,17 @@
     });
 </script>
 
-<!-- for toast message -->
+<!-- for toast message + view more button -->
 <script>
     document.addEventListener('click', function(e) {
+        // View More button
+        if (e.target.classList.contains('success-action-btn')) {
+            window.location.href = e.target.getAttribute('data-href');
+        }
+        // Download button (toast message, keep as is)
         if (e.target.classList.contains('submit')) {
             e.preventDefault();
-            e.stopPropagation(); // Prevent row click
+            e.stopPropagation();
             const toast = document.getElementById('user-toast');
             toast.style.display = 'block';
             setTimeout(() => {
@@ -858,44 +784,4 @@
     });
 </script>
 
-<!-- for reject modal pop-up -->
-<script>
-    document.addEventListener('click', function(e) {
-        // Approve button click
-        if (e.target.classList.contains('success-action-btn')) {
-            e.preventDefault();
-            e.stopPropagation();
-            document.getElementById('approve-modal').style.display = 'block';
-            document.getElementById('approve-modal-input').value = '';
-        }
-        // Approve modal tick
-        if (e.target.id === 'approve-modal-tick' || e.target.closest('#approve-modal-tick')) {
-            document.getElementById('approve-modal').style.display = 'none';
-        }
-        // Approve modal close
-        if (e.target.id === 'approve-modal-close') {
-            document.getElementById('approve-modal').style.display = 'none';
-        }
-
-        // Reject button click
-        if (e.target.classList.contains('red-action-btn')) {
-            e.preventDefault();
-            e.stopPropagation();
-            document.getElementById('reject-modal').style.display = 'block';
-            // Optionally clear input fields here if needed
-            var inputs = document.querySelectorAll('#reject-modal input');
-            inputs.forEach(function(input) {
-                input.value = '';
-            });
-        }
-        // Reject modal tick
-        if (e.target.id === 'reject-modal-tick' || e.target.closest('#reject-modal-tick')) {
-            document.getElementById('reject-modal').style.display = 'none';
-        }
-        // Reject modal close
-        if (e.target.id === 'reject-modal-close') {
-            document.getElementById('reject-modal').style.display = 'none';
-        }
-    });
-</script>
 @endsection

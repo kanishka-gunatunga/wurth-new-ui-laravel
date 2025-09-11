@@ -10,7 +10,7 @@
                     d="M12.0938 16L7.09375 11L8.49375 9.55L11.0938 12.15V4H13.0938V12.15L15.6938 9.55L17.0938 11L12.0938 16ZM6.09375 20C5.54375 20 5.07308 19.8043 4.68175 19.413C4.29042 19.0217 4.09442 18.5507 4.09375 18V15H6.09375V18H18.0938V15H20.0938V18C20.0938 18.55 19.8981 19.021 19.5068 19.413C19.1154 19.805 18.6444 20.0007 18.0938 20H6.09375Z"
                     fill="white" />
             </svg>
-            Download
+            Receipt Download
         </button>
     </div>
 
@@ -40,16 +40,16 @@
             </p>
 
             <p>
+                <span class="bold-text">Customer ID :</span><span class="slip-detail-text">&nbsp;CUS123456</span>
+            </p>
+
+            <p>
                 <span class="bold-text">Reason :</span><span class="slip-detail-text">&nbsp;Invoice Payment</span>
             </p>
 
             <p>
-                <span class="bold-text">Attachment :</span>
-                <span class="slip-detail-text">
-                    &nbsp;<a href="invoice_1001.pdf" download>
-                        invoice_1001.pdf
-                    </a>
-                </span>
+                <span class="bold-text">Attachment Download :</span>
+                <button class="black-action-btn submit">Download</button>
             </p>
 
         </div>
@@ -81,90 +81,15 @@
     </div>
 </div>
 
-<!-- Approve Modal -->
-<div id="approve-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
 
-        <!-- Close button -->
-        <button id="approve-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Approval</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to confirm this payment. Please provide a reason for approval.
-        </p>
-
-        <!-- Textarea with button inside -->
-        <div style="position:relative;">
-            <textarea id="approve-modal-input" rows="3" placeholder="Enter your reason here...."
-                style="width:100%; border:1px solid #ddd; border-radius:12px; padding:0.75rem 3rem 0.75rem 1rem; font-size:0.95rem; resize:none; outline:none;"></textarea>
-
-            <!-- Green tick button -->
-            <button id="approve-modal-tick" style="position:absolute; bottom:10px; right:10px; background:#2E7D32; border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-<!-- Reject Modal -->
-<div id="reject-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
-
-        <!-- Close button -->
-        <button id="reject-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Rejection</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to reject this payment. Please provide a reason for rejection.
-        </p>
-
-        <!-- Input fields -->
-        <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem;">
-            <input type="text" placeholder="Header"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-            <input type="text" placeholder="GL"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-        </div>
-
-        <!-- Red tick button -->
-        <div style="display:flex; justify-content:flex-end;">
-            <button id="reject-modal-tick" style="background:#CC0000; border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('bottom-bar')
 <div class="py-3">
-    <div class="action-button-lg-row">
+    <div class="action-button-lg-row" style="margin-right: 40px;">
         <a href="{{ url('advance-payments') }}" class="grey-action-btn-lg" style="text-decoration: none;">
             Back
         </a>
-
-
-
-        <button class="red-action-btn-lg">
-
-            Reject
-        </button>
-
-        <button class="success-action-btn-lg">
-
-            Approve
-        </button>
     </div>
 </div>
 
