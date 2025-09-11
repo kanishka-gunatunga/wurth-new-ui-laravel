@@ -1,125 +1,195 @@
-@extends("welcome")
-@section("content")
-
-<style>
-    /* Search box styles */
-    #search-box-wrapper {
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        background-color: #fff;
-        transition: width 0.3s ease;
-        border-radius: 30px;
-        height: 45px;
-        width: 45px;
-        border: 1px solid transparent;
-        position: relative;
-        width: 0;
-    }
-
-    #search-box-wrapper.collapsed {
-        width: 0;
-        padding: 0;
-        margin: 0;
-        border: 1px solid transparent;
-        background-color: transparent;
-    }
-
-    #search-box-wrapper.expanded {
-        width: 450px;
-        padding: 0 15px;
-    }
-
-    .search-input {
-        flex-grow: 1;
-        border: none;
-        background: transparent;
-        outline: none;
-        font-size: 16px;
-        color: #333;
-        width: 100%;
-        /* Add padding to make space for the icon */
-        padding-left: 30px;
-    }
-
-    .search-input::placeholder {
-        color: #888;
-    }
-
-    .search-icon-inside {
-        position: absolute;
-        left: 10px;
-        /* Adjust as needed */
-        color: #888;
-    }
-
-    /* Optional: Adjust button alignment if needed */
-    .col-12.d-flex.justify-content-lg-end {
-        align-items: center;
-    }
-</style>
-
+@extends('welcome')
+@section('content')
 <div class="main-wrapper">
 
-    <div class="row d-flex justify-content-between">
-        <div class="col-lg-6 col-12">
-            <h1 class="header-title">Card Payments</h1>
-        </div>
-        <div class="col-lg-6 col-12 d-flex justify-content-lg-end gap-3 pe-5">
-            <div id="search-box-wrapper" class="collapsed">
-                <i class="fa-solid fa-magnifying-glass fa-xl search-icon-inside"></i>
-                <input type="text" class="search-input" placeholder="Search Deposit Type, ADM Number or Name" />
-            </div>
-            <button class="header-btn" id="search-toggle-button"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-            <button class="header-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#searchByFilter" aria-controls="offcanvasRight"><i class="fa-solid fa-filter fa-xl"></i></button>
-        </div>
+    <div class="d-flex justify-content-between align-items-center header-with-button">
+        <h1 class="header-title">Cheque No. - 586485235647</h1>
+        <button class="black-action-btn-lg submit">
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12.0938 16L7.09375 11L8.49375 9.55L11.0938 12.15V4H13.0938V12.15L15.6938 9.55L17.0938 11L12.0938 16ZM6.09375 20C5.54375 20 5.07308 19.8043 4.68175 19.413C4.29042 19.0217 4.09442 18.5507 4.09375 18V15H6.09375V18H18.0938V15H20.0938V18C20.0938 18.55 19.8981 19.021 19.5068 19.413C19.1154 19.805 18.6444 20.0007 18.0938 20H6.09375Z"
+                    fill="white" />
+            </svg>
+            Download
+        </button>
     </div>
 
 
+
+
     <div class="styled-tab-main">
+        <div class="header-and-content-gap-md"></div>
+        <div class="slip-details">
+            <p>
+                <span class="bold-text">ADM Name :</span><span class="slip-detail-text">&nbsp;L.K
+                    Perera</span>
+            </p>
+            <p>
+                <span class="bold-text">ADM No. :</span><span class="slip-detail-text">&nbsp;4585689557</span>
+            </p>
+            <p>
+                <span class="bold-text">Deposit Date :</span><span class="slip-detail-text">&nbsp;2024.12.26</span>
+            </p>
+
+            <p>
+                <span class="bold-text">Bank Name :</span><span class="slip-detail-text">&nbsp;Bank of Ceylon</span>
+            </p>
+
+            <p>
+                <span class="bold-text">Branch Name :</span><span class="slip-detail-text">&nbsp;Colombo</span>
+            </p>
+
+            <p>
+                <span class="bold-text"> Total Amount :</span><span class="slip-detail-text">&nbsp;Rs.
+                    545,000.00</span>
+            </p>
+
+        </div>
+
         <div class="header-and-content-gap-lg"></div>
         <div class="table-responsive">
-            <table class="table custom-table-locked">
+            <table class="table unlock-column-table">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>ADM Number</th>
-                        <th>ADM Name</th>
-                        <th>Amount</th>
-                        <th class="sticky-column">Actions</th>
+                        <th>Receipt Number</th>
+                        <th>Customer Name</th>
+                        <th>Customer ID</th>
+                        <th>Customer Paid Date</th>
+                        <th>Customer Paid Amount</th>
+
 
                     </tr>
                 </thead>
-                <tbody id="cashDepositeTableBody">
+                <tbody id="paymentSlips">
                 </tbody>
             </table>
 
         </div>
         <nav class="d-flex justify-content-center mt-5">
-            <ul id="cashDepositePagination" class="pagination"></ul>
+            <ul id="paymentSlipsPagination" class="pagination"></ul>
         </nav>
     </div>
+</div>
 
+<!-- Toast message -->
+<div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
+    role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
+    <div class="d-flex align-items-center">
+        <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" fill="#fff" />
+                <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </span>
+        <div class="toast-body flex-grow-1">
+            Downloaded successfully
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
+            onclick="document.getElementById('user-toast').style.display='none';"></button>
+    </div>
+</div>
 
+<!-- Approve Modal -->
+<div id="approve-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
+    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
 
+        <!-- Close button -->
+        <button id="approve-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
 
+        <!-- Title -->
+        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Approval</h4>
 
+        <!-- Subtitle -->
+        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
+            You're about to confirm this payment. Please provide a reason for approval.
+        </p>
+
+        <!-- Textarea with button inside -->
+        <div style="position:relative;">
+            <textarea id="approve-modal-input" rows="3" placeholder="Enter your reason here...."
+                style="width:100%; border:1px solid #ddd; border-radius:12px; padding:0.75rem 3rem 0.75rem 1rem; font-size:0.95rem; resize:none; outline:none;"></textarea>
+
+            <!-- Green tick button -->
+            <button id="approve-modal-tick" style="position:absolute; bottom:10px; right:10px; background:#2E7D32; border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
 </div>
 
 
+<!-- Reject Modal -->
+<div id="reject-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
+    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
+
+        <!-- Close button -->
+        <button id="reject-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
+
+        <!-- Title -->
+        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Rejection</h4>
+
+        <!-- Subtitle -->
+        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
+            You're about to reject this payment. Please provide a reason for rejection.
+        </p>
+
+        <!-- Input fields -->
+        <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem;">
+            <input type="text" placeholder="Header"
+                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
+            <input type="text" placeholder="GL"
+                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
+        </div>
+
+        <!-- Red tick button -->
+        <div style="display:flex; justify-content:flex-end;">
+            <button id="reject-modal-tick" style="background:#CC0000; border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('bottom-bar')
+<div class="py-3">
+    <div class="action-button-lg-row">
+        <a href="{{ url('cheque-deposits') }}" class="grey-action-btn-lg" style="text-decoration: none;">
+            Back
+        </a>
+
+
+
+        <button class="red-action-btn-lg">
+
+            Reject
+        </button>
+
+        <button class="success-action-btn-lg">
+
+            Approve
+        </button>
+    </div>
 </div>
 
-</div>
+@endsection
 
-</div>
+
+
+
+
+
 
 
 <div class="offcanvas offcanvas-end offcanvas-filter" tabindex="-1" id="searchByFilter"
     aria-labelledby="offcanvasRightLabel">
     <div class="row d-flex justify-content-end">
-        <button type="button" class="btn-close rounded-circle" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+        <button type="button" class="btn-close rounded-circle" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
     <div class="offcanvas-header d-flex justify-content-between">
@@ -135,34 +205,34 @@
     </div>
     <div class="offcanvas-body">
         <div class="row">
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>ADMs</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
 
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>Marketing</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
 
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>Admin</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
 
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>Finance</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
 
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>Team Leaders</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
 
-            <div class="col-4 filter-tag d-flex align-items-center justify-content-between selectable-filter">
+            <div class="col-4 filter-tag d-flex align-items-center justify-content-between">
                 <span>Head of Division</span>
-
+                <button class="btn btn-sm p-0"><i class="fa-solid fa-xmark fa-lg"></i></button>
             </div>
         </div>
 
@@ -395,93 +465,6 @@
 </div>
 
 
-<!-- Toast message -->
-<div id="user-toast" class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-4"
-    role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999; display: none; min-width: 320px;">
-    <div class="d-flex align-items-center">
-        <span class="toast-icon-circle d-flex align-items-center justify-content-center me-3">
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="12" fill="#fff" />
-                <path d="M7 12.5l3 3 7-7" stroke="#28a745" stroke-width="2" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-        </span>
-        <div class="toast-body flex-grow-1">
-            Downloaded successfully
-        </div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label="Close"
-            onclick="document.getElementById('user-toast').style.display='none';"></button>
-    </div>
-</div>
-
-<!-- Approve Modal -->
-<div id="approve-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
-
-        <!-- Close button -->
-        <button id="approve-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Approval</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to confirm this payment. Please provide a reason for approval.
-        </p>
-
-        <!-- Textarea with button inside -->
-        <div style="position:relative;">
-            <textarea id="approve-modal-input" rows="3" placeholder="Enter your reason here...."
-                style="width:100%; border:1px solid #ddd; border-radius:12px; padding:0.75rem 3rem 0.75rem 1rem; font-size:0.95rem; resize:none; outline:none;"></textarea>
-
-            <!-- Green tick button -->
-            <button id="approve-modal-tick" style="position:absolute; bottom:10px; right:10px; background:#2E7D32; border:none; border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-<!-- Reject Modal -->
-<div id="reject-modal" class="modal" tabindex="-1" style="display:none; position:fixed; z-index:1050; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3);">
-    <div style="background:#fff; border-radius:12px; max-width:460px; margin:10% auto; padding:2rem; position:relative; box-shadow:0 2px 16px rgba(0,0,0,0.2);">
-
-        <!-- Close button -->
-        <button id="reject-modal-close" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:1.5rem; color:#555; cursor:pointer;">&times;</button>
-
-        <!-- Title -->
-        <h4 style="margin:0 0 0.5rem 0; font-weight:600; color:#000;">Payment Rejection</h4>
-
-        <!-- Subtitle -->
-        <p style="margin:0 0 1.5rem 0; color:#6c757d; font-size:0.95rem; line-height:1.4;">
-            You're about to reject this payment. Please provide a reason for rejection.
-        </p>
-
-        <!-- Input fields -->
-        <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1rem;">
-            <input type="text" placeholder="Header"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-            <input type="text" placeholder="GL"
-                style="width:100%; border:1px solid #ddd; border-radius:20px; padding:0.6rem 1rem; font-size:0.95rem; outline:none;">
-        </div>
-
-        <!-- Red tick button -->
-        <div style="display:flex; justify-content:flex-end;">
-            <button id="reject-modal-tick" style="background:#CC0000; border:none; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
-                    <path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-    </div>
-</div>
-
-
-
-
 
 
 <script>
@@ -524,171 +507,146 @@
 </script>
 
 <script>
-    // Card Payment data
-    const cashDepositeTableData = [{
-            date: "2024-06-01",
-            status: "Approved",
-            admNumber: "ADM1001",
-            admName: "Alice Smith",
-            amount: 1500.00,
-
+    // Payment slips data
+    const paymentSlipsData = [{
+            recieptNumber: "125684588",
+            customerName: "Dimo Lanka - Navinna",
+            customerId: "1547854445",
+            customerPaidDate: "2024.12.26",
+            customerPaidAmount: 100000.00,
         },
         {
-            date: "2024-06-03",
-            status: "Paid",
-            admNumber: "ADM1002",
-            admName: "Bob Johnson",
-            amount: 2000.00,
-
+            recieptNumber: "125684589",
+            customerName: "Auto World - Colombo",
+            customerId: "1547854446",
+            customerPaidDate: "2024.12.25",
+            customerPaidAmount: 75000.00,
         },
         {
-            date: "2024-05-28",
-            status: "Paid",
-            admNumber: "ADM1003",
-            admName: "Charlie Brown",
-            amount: 3500.00,
-
+            recieptNumber: "125684590",
+            customerName: "Lanka Motors",
+            customerId: "1547854447",
+            customerPaidDate: "2024.12.24",
+            customerPaidAmount: 120000.00,
         },
         {
-            date: "2024-06-05",
-            status: "Rejected",
-            admNumber: "ADM1004",
-            admName: "Diana Prince",
-            amount: 5000.00,
-
+            recieptNumber: "125684591",
+            customerName: "Super Tyres",
+            customerId: "1547854448",
+            customerPaidDate: "2024.12.23",
+            customerPaidAmount: 95000.00,
         },
         {
-            date: "2024-06-07",
-            status: "Rejected",
-            admNumber: "ADM1005",
-            admName: "Edward Nigma",
-            amount: 1200.00,
-
+            recieptNumber: "125684592",
+            customerName: "Speed Auto",
+            customerId: "1547854449",
+            customerPaidDate: "2024.12.22",
+            customerPaidAmount: 110000.00,
         },
         {
-            date: "2024-06-01",
-            status: "Approved",
-            admNumber: "ADM1001",
-            admName: "Alice Smith",
-            amount: 1500.00,
-
+            recieptNumber: "125684593",
+            customerName: "Car Care Center",
+            customerId: "1547854450",
+            customerPaidDate: "2024.12.21",
+            customerPaidAmount: 80000.00,
         },
         {
-            date: "2024-06-03",
-            status: "Approved",
-            admNumber: "ADM1002",
-            admName: "Bob Johnson",
-            amount: 2000.00,
-
+            recieptNumber: "125684594",
+            customerName: "Auto Parts Hub",
+            customerId: "1547854451",
+            customerPaidDate: "2024.12.20",
+            customerPaidAmount: 105000.00,
         },
         {
-            date: "2024-05-28",
-            status: "Rejected",
-            admNumber: "ADM1003",
-            admName: "Charlie Brown",
-            amount: 3500.00,
-
+            recieptNumber: "125684595",
+            customerName: "Lanka Traders",
+            customerId: "1547854452",
+            customerPaidDate: "2024.12.19",
+            customerPaidAmount: 90000.00,
         },
         {
-            date: "2024-06-05",
-            status: "Approved",
-            admNumber: "ADM1004",
-            admName: "Diana Prince",
-            amount: 5000.00,
-
+            recieptNumber: "125684596",
+            customerName: "Motor City",
+            customerId: "1547854453",
+            customerPaidDate: "2024.12.18",
+            customerPaidAmount: 115000.00,
         },
         {
-            date: "2024-06-07",
-            status: "Paid",
-            admNumber: "ADM1005",
-            admName: "Edward Nigma",
-            amount: 1200.00,
-
-        }, {
-            date: "2024-06-01",
-            status: "Rejected",
-            admNumber: "ADM1001",
-            admName: "Alice Smith",
-            amount: 1500.00,
-
+            recieptNumber: "125684597",
+            customerName: "Auto Zone",
+            customerId: "1547854454",
+            customerPaidDate: "2024.12.17",
+            customerPaidAmount: 98000.00,
         },
         {
-            date: "2024-06-03",
-            status: "Approved",
-            admNumber: "ADM1002",
-            admName: "Bob Johnson",
-            amount: 2000.00,
-
+            recieptNumber: "125684598",
+            customerName: "Car Experts",
+            customerId: "1547854455",
+            customerPaidDate: "2024.12.16",
+            customerPaidAmount: 102000.00,
         },
         {
-            date: "2024-05-28",
-            status: "Approved",
-            admNumber: "ADM1003",
-            admName: "Charlie Brown",
-            amount: 3500.00,
-
+            recieptNumber: "125684599",
+            customerName: "Lanka Wheels",
+            customerId: "1547854456",
+            customerPaidDate: "2024.12.15",
+            customerPaidAmount: 87000.00,
         },
         {
-            date: "2024-06-05",
-            status: "Paid",
-            admNumber: "ADM1004",
-            admName: "Diana Prince",
-            amount: 5000.00,
-
+            recieptNumber: "125684600",
+            customerName: "Auto Solutions",
+            customerId: "1547854457",
+            customerPaidDate: "2024.12.14",
+            customerPaidAmount: 95000.00,
         },
         {
-            date: "2024-06-07",
-            status: "Rejected",
-            admNumber: "ADM1005",
-            admName: "Edward Nigma",
-            amount: 1200.00,
+            recieptNumber: "125684601",
+            customerName: "Motor Masters",
+            customerId: "1547854458",
+            customerPaidDate: "2024.12.13",
+            customerPaidAmount: 108000.00,
+        },
+        {
+            recieptNumber: "125684602",
+            customerName: "Car Point",
+            customerId: "1547854459",
+            customerPaidDate: "2024.12.12",
+            customerPaidAmount: 99000.00,
+        },
+        {
+            recieptNumber: "125684603",
+            customerName: "Auto Garage",
+            customerId: "1547854460",
+            customerPaidDate: "2024.12.11",
+            customerPaidAmount: 103000.00,
+        },
 
-        }
+
+
     ];
 
     const rowsPerPage = 10;
     const currentPages = {
-        cashDeposite: 1
+        paymentSlips: 1
     }; // track pages separately
 
     // Table render function
     function renderTable(tableId, data, page) {
-        const tableBody = document.getElementById(`${tableId}TableBody`);
+        const tableBody = document.getElementById(`paymentSlips`);
         tableBody.innerHTML = '';
 
         const startIndex = (page - 1) * rowsPerPage;
         const endIndex = Math.min(startIndex + rowsPerPage, data.length);
 
         for (let i = startIndex; i < endIndex; i++) {
-            let statusClass = '';
-            switch (data[i].status) {
-                case 'Approved':
-                case 'approved':
-                    statusClass = 'success-status-btn';
-                    break;
-                case 'Deposited':
-                case 'deposited':
-                    statusClass = 'blue-status-btn';
-                    break;
-                case 'Rejected':
-                case 'rejected':
-                    statusClass = 'danger-status-btn';
-                    break;
-                default:
-                    statusClass = 'grey-status-btn';
-            }
             const row = `
-                <tr class="clickable-row" data-href="/card-payment-details">
-                    <td>${data[i].date}</td>
-                    <td><button class="${statusClass}"> ${data[i].status}</button></td>
-                    <td>${data[i].admNumber}</td>
-                    <td>${data[i].admName}</td>
-                    <td>${data[i].amount.toFixed(2)}</td>
-                    <td class="sticky-column">
-                        <button class="success-action-btn">Approve</button>
-                        <button class="red-action-btn">Reject</button>
-                        <button class="black-action-btn submit">Download</button>    
-                    </td>
+                <tr>
+                    <td>${data[i].recieptNumber}</td>
+                    <td>${data[i].customerName}</td>
+                    <td>${data[i].customerId}</td>
+                    <td>${data[i].customerPaidDate}</td>
+                    <td>${data[i].customerPaidAmount.toFixed(2)}</td>
+                    
                 </tr>
             `;
             tableBody.innerHTML += row;
@@ -697,7 +655,7 @@
 
     // Pagination render
     function renderPagination(tableId, data) {
-        const pagination = document.getElementById(`${tableId}Pagination`);
+        const pagination = document.getElementById(`paymentSlipsPagination`);
         pagination.innerHTML = '';
 
         const totalPages = Math.ceil(data.length / rowsPerPage);
@@ -741,103 +699,21 @@
 
     // Helper to get data by tableId
     function getTableData(tableId) {
-        if (tableId === 'cashDeposite') return cashDepositeTableData;
+        if (tableId === 'paymentSlips') return paymentSlipsData;
         return [];
     }
 
     // Initial load after page ready
     window.onload = function() {
-        changePage('cashDeposite', 1);
+        changePage('paymentSlips', 1);
     };
 </script>
 
-<!-- expand search bar and search functionality -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const searchWrapper = document.getElementById("search-box-wrapper");
-        const searchToggleButton = document.getElementById("search-toggle-button");
-        const searchInput = searchWrapper.querySelector(".search-input");
-
-        let idleTimeout;
-        const idleTime = 5000; // 5 seconds
-
-        function collapseSearch() {
-            searchWrapper.classList.remove("expanded");
-            searchWrapper.classList.add("collapsed");
-            searchToggleButton.classList.remove("d-none");
-            clearTimeout(idleTimeout);
-        }
-
-        function startIdleTimer() {
-            clearTimeout(idleTimeout);
-            idleTimeout = setTimeout(() => {
-                if (!searchInput.value) collapseSearch();
-            }, idleTime);
-        }
-
-        searchToggleButton.addEventListener("click", function() {
-            if (searchWrapper.classList.contains("collapsed")) {
-                searchWrapper.classList.remove("collapsed");
-                searchWrapper.classList.add("expanded");
-                searchToggleButton.classList.add("d-none");
-                searchInput.focus();
-                startIdleTimer();
-            } else {
-                collapseSearch();
-            }
-        });
-
-        searchInput.addEventListener("input", function() {
-            filterTable(this.value);
-            startIdleTimer();
-        });
-
-        searchInput.addEventListener("keydown", startIdleTimer);
-    });
-
-    // Filter table based on Deposit Type, ADM Number, or ADM Name
-    function filterTable(query) {
-        const searchQuery = query.toLowerCase();
-        const tableRows = document.querySelectorAll("#cashDepositeTableBody tr");
-
-        tableRows.forEach(row => {
-            const depositType = row.children[1].textContent.toLowerCase();
-            const admNumber = row.children[3].textContent.toLowerCase();
-            const admName = row.children[4].textContent.toLowerCase();
-
-            if (depositType.includes(searchQuery) || admNumber.includes(searchQuery) || admName.includes(searchQuery)) {
-                row.style.display = "";
-            } else {
-                row.style.display = "none";
-            }
-        });
-    }
-</script>
-
-<!-- link entire row of table -->
-<script>
-    document.addEventListener('click', function(e) {
-        const row = e.target.closest('.clickable-row');
-        if (row && !e.target.closest('button')) {
-            window.location.href = row.getAttribute('data-href');
-        }
-    });
-</script>
-
-<script>
-    document.querySelectorAll('.selectable-filter').forEach(function(tag) {
-        tag.addEventListener('click', function() {
-            tag.classList.toggle('selected');
-        });
-    });
-</script>
-
-<!-- for toast message -->
+<!-- toast message -->
 <script>
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('submit')) {
             e.preventDefault();
-            e.stopPropagation(); // Prevent row click
             const toast = document.getElementById('user-toast');
             toast.style.display = 'block';
             setTimeout(() => {
@@ -851,7 +727,7 @@
 <script>
     document.addEventListener('click', function(e) {
         // Approve button click
-        if (e.target.classList.contains('success-action-btn')) {
+        if (e.target.classList.contains('success-action-btn-lg')) {
             e.preventDefault();
             e.stopPropagation();
             document.getElementById('approve-modal').style.display = 'block';
@@ -867,7 +743,7 @@
         }
 
         // Reject button click
-        if (e.target.classList.contains('red-action-btn')) {
+        if (e.target.classList.contains('red-action-btn-lg')) {
             e.preventDefault();
             e.stopPropagation();
             document.getElementById('reject-modal').style.display = 'block';
@@ -887,6 +763,3 @@
         }
     });
 </script>
-
-
-@endsection

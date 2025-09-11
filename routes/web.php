@@ -69,16 +69,32 @@ Route::get('/cheque-deposits', function () {
     return view('finance.deposit.cheque-deposits');
 });
 
+// cheque deposit-details
+Route::get('/cheque-deposit-details', function () {
+    return view('finance.deposit.cheque-deposit-details');
+});
+
 
 // fund transfers
 Route::get('/fund-transfers', function () {
     return view('finance.deposit.fund-transfers');
 });
 
+// fund transfer-details
+Route::get('/fund-transfer-details', function () {
+    return view('finance.deposit.fund-transfer-details');
+});
+
 // card payments
 Route::get('/card-payments', function () {
     return view('finance.deposit.card-payments');
 });
+
+// card payments-details
+Route::get('/card-payment-details', function () {
+    return view('finance.deposit.card-payment-details');
+});
+
 // invoice-inner
 Route::get('/invoices-inner', function () {
     return view('finance.all-collections.invoices-inner');
@@ -131,6 +147,11 @@ Route::get('/customers', function () {
 // inquiries
 Route::get('/inquiries', function () {
     return view('finance.inquiries');
+});
+
+// inquiry-details
+Route::get('/inquiry-details', function () {
+    return view('finance.inquiry-details');
 });
 
 // notifications

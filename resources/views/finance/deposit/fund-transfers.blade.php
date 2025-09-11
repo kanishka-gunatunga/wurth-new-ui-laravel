@@ -83,10 +83,10 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Deposite Types</th>
                         <th>Status</th>
                         <th>ADM Number</th>
                         <th>ADM Name</th>
+                        <th>Transfer Ref. No.</th>
                         <th>Amount</th>
                         <th class="sticky-column">Actions</th>
 
@@ -527,135 +527,135 @@
     // Cash deposit data
     const cashDepositeTableData = [{
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Approved",
             admNumber: "ADM1001",
             admName: "Alice Smith",
+            transferReference: "TRF1001",
             amount: 1500.00,
 
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Paid",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
+            transferReference: "TRF1001",
             amount: 2000.00,
 
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Paid",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
+            transferReference: "TRF1001",
             amount: 3500.00,
 
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "Rejected",
             admNumber: "ADM1004",
             admName: "Diana Prince",
+            transferReference: "TRF1001",
             amount: 5000.00,
 
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Rejected",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
+            transferReference: "TRF1001",
             amount: 1200.00,
 
         },
         {
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Approved",
             admNumber: "ADM1001",
             admName: "Alice Smith",
+            transferReference: "TRF1001",
             amount: 1500.00,
 
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Approved",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
+            transferReference: "TRF1001",
             amount: 2000.00,
 
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Rejected",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
+            transferReference: "TRF1001",
             amount: 3500.00,
 
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "Approved",
             admNumber: "ADM1004",
             admName: "Diana Prince",
+            transferReference: "TRF1001",
             amount: 5000.00,
 
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Paid",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
+            transferReference: "TRF1001",
             amount: 1200.00,
 
         }, {
             date: "2024-06-01",
-            depositType: "Cash",
             status: "Rejected",
             admNumber: "ADM1001",
             admName: "Alice Smith",
+            transferReference: "TRF1001",
             amount: 1500.00,
 
         },
         {
             date: "2024-06-03",
-            depositType: "Cheque",
             status: "Approved",
             admNumber: "ADM1002",
             admName: "Bob Johnson",
+            transferReference: "TRF1001",
             amount: 2000.00,
 
         },
         {
             date: "2024-05-28",
-            depositType: "Online Transfer",
             status: "Approved",
             admNumber: "ADM1003",
             admName: "Charlie Brown",
+            transferReference: "TRF1001",
             amount: 3500.00,
 
         },
         {
             date: "2024-06-05",
-            depositType: "Cash",
             status: "Paid",
             admNumber: "ADM1004",
             admName: "Diana Prince",
+            transferReference: "TRF1001",
             amount: 5000.00,
 
         },
         {
             date: "2024-06-07",
-            depositType: "Cheque",
             status: "Rejected",
             admNumber: "ADM1005",
             admName: "Edward Nigma",
+            transferReference: "TRF1001",
             amount: 1200.00,
 
         }
@@ -693,12 +693,12 @@
                     statusClass = 'grey-status-btn';
             }
             const row = `
-                <tr>
+                <tr class="clickable-row" data-href="/fund-transfer-details">
                     <td>${data[i].date}</td>
-                    <td>${data[i].depositType}</td>
                     <td><button class="${statusClass}"> ${data[i].status}</button></td>
                     <td>${data[i].admNumber}</td>
                     <td>${data[i].admName}</td>
+                    <td>${data[i].transferReference}</td>
                     <td>${data[i].amount.toFixed(2)}</td>
                     <td class="sticky-column">
                         <button class="success-action-btn">Approve</button>
@@ -765,6 +765,16 @@
     window.onload = function() {
         changePage('cashDeposite', 1);
     };
+</script>
+
+<!-- link entire row of table -->
+<script>
+    document.addEventListener('click', function(e) {
+        const row = e.target.closest('.clickable-row');
+        if (row && !e.target.closest('button')) {
+            window.location.href = row.getAttribute('data-href');
+        }
+    });
 </script>
 
 <!-- expand search bar and search functionality -->

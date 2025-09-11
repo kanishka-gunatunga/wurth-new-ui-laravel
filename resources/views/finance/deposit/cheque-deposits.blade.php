@@ -713,7 +713,7 @@
                     statusClass = 'grey-status-btn';
             }
             const row = `
-                <tr class="clickable-row" data-href="/payment-slip">
+                <tr class="clickable-row" data-href="/cheque-deposit-details">
                     <td>${data[i].date}</td>
                     <td><button class="${statusClass}"> ${data[i].status}</button></td>
                     <td>${data[i].admNumber}</td>

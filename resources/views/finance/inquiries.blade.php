@@ -85,7 +85,6 @@
                         <th>Inquiry Type</th>
                         <th>Customer Name</th>
                         <th>Invoice Number</th>
-                        <th>Reason</th>
                         <th>Attachment</th>
                         <th>Status</th>
                         <th class="sticky-column">Actions</th>
@@ -529,7 +528,6 @@
             inquiryType: "Payment Issue",
             customerName: "Alice Smith",
             invoiceNumber: "INV-1001",
-            reason: "Payment not received",
             attachment: "receipt.pdf",
             status: "Pending"
         },
@@ -537,23 +535,20 @@
             inquiryType: "Refund Request",
             customerName: "Bob Johnson",
             invoiceNumber: "INV-1002",
-            reason: "Product returned",
             attachment: "return_form.pdf",
-            status: "Approved"
+            status: "Solved"
         },
         {
             inquiryType: "Invoice Correction",
             customerName: "Charlie Brown",
             invoiceNumber: "INV-1003",
-            reason: "Wrong amount",
             attachment: "invoice.pdf",
-            status: "Rejected"
+            status: "Pending"
         },
         {
             inquiryType: "Duplicate Payment",
             customerName: "Diana Prince",
             invoiceNumber: "INV-1004",
-            reason: "Paid twice",
             attachment: "bank_statement.pdf",
             status: "Pending"
         },
@@ -561,7 +556,6 @@
             inquiryType: "Missing Invoice",
             customerName: "Edward Nigma",
             invoiceNumber: "INV-1005",
-            reason: "Invoice not received",
             attachment: "email_screenshot.png",
             status: "Pending"
         },
@@ -569,23 +563,20 @@
             inquiryType: "Payment Issue",
             customerName: "Frank Castle",
             invoiceNumber: "INV-1006",
-            reason: "Delayed payment",
             attachment: "payment_proof.pdf",
-            status: "Approved"
+            status: "Solved"
         },
         {
             inquiryType: "Refund Request",
             customerName: "Grace Hopper",
             invoiceNumber: "INV-1007",
-            reason: "Service not delivered",
             attachment: "service_report.pdf",
-            status: "Rejected"
+            status: "Pending"
         },
         {
             inquiryType: "Invoice Correction",
             customerName: "Helen Parr",
             invoiceNumber: "INV-1008",
-            reason: "Incorrect details",
             attachment: "invoice.pdf",
             status: "Pending"
         },
@@ -593,15 +584,13 @@
             inquiryType: "Duplicate Payment",
             customerName: "Ian Malcolm",
             invoiceNumber: "INV-1009",
-            reason: "Paid twice",
             attachment: "bank_statement.pdf",
-            status: "Approved"
+            status: "Solved"
         },
         {
             inquiryType: "Missing Invoice",
             customerName: "Jane Foster",
             invoiceNumber: "INV-1010",
-            reason: "Invoice not received",
             attachment: "email_screenshot.png",
             status: "Pending"
         },
@@ -609,15 +598,13 @@
             inquiryType: "Payment Issue",
             customerName: "Kyle Reese",
             invoiceNumber: "INV-1011",
-            reason: "Payment not received",
             attachment: "receipt.pdf",
-            status: "Rejected"
+            status: "Pending"
         },
         {
             inquiryType: "Refund Request",
             customerName: "Laura Palmer",
             invoiceNumber: "INV-1012",
-            reason: "Product returned",
             attachment: "return_form.pdf",
             status: "Pending"
         },
@@ -625,23 +612,20 @@
             inquiryType: "Invoice Correction",
             customerName: "Mike Ross",
             invoiceNumber: "INV-1013",
-            reason: "Wrong amount",
             attachment: "invoice.pdf",
-            status: "Approved"
+            status: "Solved"
         },
         {
             inquiryType: "Duplicate Payment",
             customerName: "Nancy Drew",
             invoiceNumber: "INV-1014",
-            reason: "Paid twice",
             attachment: "bank_statement.pdf",
-            status: "Rejected"
+            status: "Pending"
         },
         {
             inquiryType: "Missing Invoice",
             customerName: "Oscar Wilde",
             invoiceNumber: "INV-1015",
-            reason: "Invoice not received",
             attachment: "email_screenshot.png",
             status: "Pending"
         }
@@ -663,8 +647,8 @@
         for (let i = startIndex; i < endIndex; i++) {
             let statusClass = '';
             switch (data[i].status) {
-                case 'Approved':
-                case 'approved':
+                case 'Solved':
+                case 'Solved':
                     statusClass = 'success-status-btn';
                     break;
                 case 'Deposited':
@@ -679,11 +663,10 @@
                     statusClass = 'grey-status-btn';
             }
             const row = `
-                <tr>
+                <tr class="clickable-row" data-href="/inquiry-details">
                     <td>${data[i].inquiryType}</td>
                     <td>${data[i].customerName}</td>
                     <td>${data[i].invoiceNumber}</td>
-                    <td>${data[i].reason}</td>
                     <td>
                         <a href="/attachments/${data[i].attachment}" target="_blank">${data[i].attachment}</a>
                     </td>
@@ -753,6 +736,16 @@
     window.onload = function() {
         changePage('cashDeposite', 1);
     };
+</script>
+
+<!-- link entire row of table -->
+<script>
+    document.addEventListener('click', function(e) {
+        const row = e.target.closest('.clickable-row');
+        if (row && !e.target.closest('button')) {
+            window.location.href = row.getAttribute('data-href');
+        }
+    });
 </script>
 
 <!-- expand search bar and search function -->
