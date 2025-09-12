@@ -505,7 +505,7 @@
 
         for (let i = startIndex; i < endIndex; i++) {
             const row = `
-                <tr>
+                <tr class="clickable-row" data-href="/outstanding-details">
                     <td>${data[i].invoice}</td>
                     <td>${data[i].customer}</td>
                     <td>${data[i].date}</td>
@@ -574,6 +574,16 @@
     window.onload = function() {
         changePage('outstanding', 1);
     };
+</script>
+
+<!-- link entire row of table -->
+<script>
+    document.addEventListener('click', function(e) {
+        const row = e.target.closest('.clickable-row');
+        if (row && !e.target.closest('button')) {
+            window.location.href = row.getAttribute('data-href');
+        }
+    });
 </script>
 
 <!-- search function -->

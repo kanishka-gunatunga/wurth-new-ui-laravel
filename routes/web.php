@@ -53,6 +53,11 @@ Route::get('/all-outstanding', function () {
     return view('finance.all-collections.all-outstanding');
 });
 
+// outstanding-details
+Route::get('/outstanding-details', function () {
+    return view('finance.all-collections.outstanding-details');
+});
+
 // all receipts
 Route::get('/all-receipts', function () {
     return view('finance.all-collections.all-reciepts');
